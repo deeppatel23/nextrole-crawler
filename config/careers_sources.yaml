@@ -1,0 +1,72 @@
+- company: Zeta
+  source_type: api
+
+  api:
+    method: GET
+    url: https://jobs.lever.co/v0/postings/zeta?mode=json
+
+  parser: zeta
+
+  mapping:
+    job_id: id
+    title: text
+    role: categories.team
+    category: categories.department
+
+    city: categories.location
+    country: country
+    workplace_type: workplaceType
+
+    description: descriptionPlain
+
+    apply_link: applyUrl
+    hosted_link: hostedUrl
+
+    created_at: createdAt
+
+
+- company: Amazon
+  source_type: api
+
+  api:
+    method: POST
+    url: https://amazon.jobs/api/jobs/search?is_als=true
+    headers:
+      Content-Type: application/json
+      Cookie: ""
+
+    body:
+      accessLevel: EXTERNAL
+      query: ""
+      size: 10
+      start: 0
+      treatment: OM
+      sort:
+        sortOrder: DESCENDING
+        sortType: SCORE
+
+  pagination:
+    type: offset
+    start: 0
+    step: 10
+    max: 30
+
+  parser: amazon
+
+  mapping:
+    job_id: fields.artJobId
+    title: fields.title
+    role: fields.jobRole
+    category: fields.jobFamily
+
+    city: fields.normalizedCityName
+    state: fields.normalizedStateName
+    country: fields.normalizedCountryCode
+
+    description: fields.description
+    skills: fields.basicQualifications
+
+    apply_link: fields.urlNextStep
+
+    created_at: fields.createdDate
+    updated_at: fields.updatedDate
