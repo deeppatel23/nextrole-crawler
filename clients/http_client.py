@@ -2,10 +2,14 @@ import requests
 
 
 def call_api(method, url, headers=None, params=None, body=None):
+    # Disable compression to avoid zstd decompression issues
+    request_headers = headers or {}
+    request_headers['Accept-Encoding'] = 'gzip, deflate'
+    
     response = requests.request(
         method=method,
         url=url,
-        headers=headers,
+        headers=request_headers,
         params=params,
         json=body,
         timeout=30
