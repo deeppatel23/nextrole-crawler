@@ -1,0 +1,83 @@
+[
+  {
+    "company": "Uber",
+    "role": null,
+    "level": null,
+    "years_of_experience": null,
+    "location": null,
+    "mode": null,
+    "source_url": "https://leetcode.com/discuss/post/7548356/uber-system-design-round-l5-by-akhiilgup-pfop/",
+    "additional_links": [
+      "https://assets.leetcode.com/users/images/d1917ecb-7e88-4c2d-a5e0-40f80cc792d2_1770114702.9370987.png"
+    ],
+    "rounds": [
+      {
+        "round_number": 1,
+        "round_type": [
+          "System Design"
+        ],
+        "topics": [
+          "Design a distributed message broker similar to Apache Kafka"
+        ],
+        "verdict": null,
+        "description": "Discussed design of a distributed message broker similar to Apache Kafka. Topics focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. Probed on push vs. pull model and settled on pull-based. Highlighted real Kafka internals and evolutions."
+      }
+    ],
+    "final_verdict": null,
+    "description": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\". The discussion went well but ended up with some frustrating feedback due to not asking enough clarifying questions. Feels that the interview went quite well and was expecting Hire, however, was told that might only be eligible for L4. Interview process was rescheduled multiple times."
+  },
+  {
+    "company": "IBM",
+    "role": "Associate Software Engineer",
+    "level": null,
+    "years_of_experience": null,
+    "location": null,
+    "mode": "offline",
+    "source_url": "https://leetcode.com/discuss/post/7548518/ibm-off-compus-hiring-offline-exam-diffi-9ihh/",
+    "additional_links": [],
+    "rounds": [
+      {
+        "round_number": 1,
+        "round_type": [
+          "Coding Round"
+        ],
+        "topics": [
+          "Easy level LeetCode problems"
+        ],
+        "verdict": null,
+        "description": "The problems presented during the coding round were generally of easy level from LeetCode. There were a total of 2 questions. If you were able to solve 1.5 questions, you would receive an interview call."
+      }
+    ],
+    "final_verdict": null,
+    "description": null
+  },
+  {
+    "company": null,
+    "role": null,
+    "level": null,
+    "years_of_experience": null,
+    "location": null,
+    "mode": null,
+    "source_url": "https://leetcode.com/discuss/post/7548298/leetcode-daily-streaks-are-not-motivatio-8dfh/",
+    "additional_links": [],
+    "rounds": [
+      {
+        "round_number": 1,
+        "round_type": [
+          "Discussion"
+        ],
+        "topics": [
+          "Daily streaks",
+          "Learning",
+          "Consistency",
+          "Problem-solving ability",
+          "LeetCode muscle memory"
+        ],
+        "verdict": null,
+        "description": "The post argues that daily streaks on platforms like LeetCode are not beneficial for building problem-solving ability, but rather serve as a form of behavioral engineering to keep users engaged. It claims that most people with long streaks cannot solve unseen problems without hints, panic when the question isn't a known pattern, and collapse when the editorial is not obvious. Instead, it suggests that one deep problem a week would lead to more learning than 30 shallow daily solves."
+      }
+    ],
+    "final_verdict": null,
+    "description": null
+  }
+]

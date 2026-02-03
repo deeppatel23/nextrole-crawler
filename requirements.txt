@@ -1,3 +1,5 @@
 requests
 dataclasses
 pathlib
+dotenv
+huggingface_hub

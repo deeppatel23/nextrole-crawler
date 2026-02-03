@@ -1,0 +1,77 @@
+import json
+from models.interview import InterviewExperience, InterviewRound
+from utils.llm_client import LLMClient
+
+
+class InterviewExtractor:
+    def __init__(self, llm_client: LLMClient):
+        self.llm = llm_client
+
+    def extract(self, text: str) -> InterviewExperience:
+        prompt = f"""
+You are an information extraction system.
+Return ONLY valid JSON.
+For "description", provide a detailed, raw-as-possible extract of the relevant experience.
+Preserve original wording, punctuation, and line breaks where helpful.
+If the post includes a problem statement or test cases (inputs/outputs), include them verbatim in "description".
+For each round "description", include round-specific details if present, using the same raw style.
+
+Schema:
+{{
+  "company": string | null,
+  "role": string | null,
+  "level": string | null,
+  "years_of_experience": number | null,
+  "location": string | null,
+  "mode": string | null,
+  "rounds": [
+    {{
+      "round_number": number,
+      "round_type": [string],
+      "topics": [string],
+      "verdict": string | null,
+      "description": string | null
+    }}
+  ],
+  "final_verdict": string | null,
+  "description": string | null,
+  "additional_links": [string]
+}}
+
+Post:
+{text}
+"""
+
+        raw = self.llm.extract_json(prompt)
+
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            raise ValueError("LLM returned invalid JSON")
+
+        rounds = []
+
+        for r in data.get("rounds", []):
+            rounds.append(
+                InterviewRound(
+                    round_number=r.get("round_number"),
+                    round_type=r.get("round_type", []),
+                    topics=r.get("topics", []),
+                    verdict=r.get("verdict"),
+                    description=r.get("description"),
+                )
+            )
+
+
+        return InterviewExperience(
+            company=data.get("company"),
+            role=data.get("role"),
+            level=data.get("level"),
+            years_of_experience=data.get("years_of_experience"),
+            location=data.get("location"),
+            mode=data.get("mode"),
+            rounds=rounds,
+            final_verdict=data.get("final_verdict"),
+            description=data.get("description"),
+            additional_links=data.get("additional_links", []),
+        )
