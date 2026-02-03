@@ -7,7 +7,7 @@ class InterviewExtractor:
     def __init__(self, llm_client: LLMClient):
         self.llm = llm_client
 
-    def extract(self, text: str) -> InterviewExperience:
+    def extract(self, text: str, title: str | None = None) -> InterviewExperience:
         prompt = f"""
 You are an information extraction system.
 Return ONLY valid JSON.
@@ -15,6 +15,7 @@ For "description", provide a detailed, raw-as-possible extract of the relevant e
 Preserve original wording, punctuation, and line breaks where helpful.
 If the post includes a problem statement or test cases (inputs/outputs), include them verbatim in "description".
 For each round "description", include round-specific details if present, using the same raw style.
+If the title contains a level like L5, save it in "role".
 
 Schema:
 {{
@@ -37,6 +38,9 @@ Schema:
   "description": string | null,
   "additional_links": [string]
 }}
+
+Title:
+{title or ""}
 
 Post:
 {text}

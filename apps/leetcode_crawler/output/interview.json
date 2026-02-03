@@ -2,11 +2,21 @@
   {
     "company": "Uber",
     "role": null,
-    "level": null,
+    "level": "L5",
     "years_of_experience": null,
     "location": null,
     "mode": null,
+    "title": "Uber | System Design Round | L5 | Design Kafka",
     "source_url": "https://leetcode.com/discuss/post/7548356/uber-system-design-round-l5-by-akhiilgup-pfop/",
+    "source_uuid": "UQadJE1M",
+    "source_slug": "uber-system-design-round-l5-by-akhiilgup-pfop",
+    "source_topic_id": 7548356,
+    "source_summary": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\" The requirements focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with pa",
+    "source_tags": [
+      "compensation",
+      "interview"
+    ],
+    "original_content": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\" The requirements focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. I thought the discussion went really well\u2014covered a ton of depth, including real Kafka internals and evolutions\u2014but ended up with some frustrating feedback.\n\n1. Requirements Clarification\nFunctional: Topics, publish/subscribe, ordered messages per partition, consumer groups for parallel processing, at-least-once guarantees via consumer acks.\nNon-functional: High throughput/low latency, durability (persistence to disk), scalability, fault tolerance.\nProbed on push vs. pull model \u2192 settled on pull-based (consumer polls) for better consumer pacing and backpressure handling.\n\n2. High-Level Architecture\nCore Components:\nBrokers clustered for scalability.\nTopics \u2192 Partitions \u2192 Replicas (primary + secondaries for fault tolerance).\nProducers publish to topics (key-based partitioning for ordering).\nConsumers in groups, with one-to-many consumer-to-partition mapping for parallelism.\nCoordination: Initially Zookeeper for metadata, leader election, and consumer offsets\u2014but explicitly discussed evolution to KRaft (quorum-based controller, no external dependency) as a more modern, ops-friendly direction.\nOptional Frontend Layer: Introduced a lightweight proxy layer for \"dumb\" clients (handles routing, auth, rate-limiting). Smart clients bypass it and talk directly to brokers after fetching metadata.\n\n3. Deep Dives & Trade-offs\nThis is where I went deep:\nStorage & Durability:\nWrite-ahead log style: Messages appended to partition segments on disk.\nPage cache leverage for fast reads.\nIn-sync replicas (ISR) concept: Leader waits for ack from ISR before committing.\nReplication & Failure Handling:\nPrimary host per partition, secondaries for redundancy.\nMix of sync (for durability) and async (for latency) replication.\nLeader election via ZAB (Zookeeper Atomic Broadcast) for strong consistency and quorum handling during network partitions or broker failures.\nRecovery: Log recovery with high-water mark; discussed truncation risks in unclean leader election.\nProducer Side:\nSerialized operations at partition level for ordering.\nKey-based partitioning (consistent hashing implied).\nConsumer Side:\nPoll + explicit ack for at-least-once guarantees.\nOffset tracking per consumer group/partition.\nParallel consumption within groups.\nRebalancing & Assignment:\nPartition assignment: Round-robin or resource-aware, ensuring replicas not co-located.\nCoordination: Used a flag (e.g., in Redis or metadata store) to pause consumers during rebalance\u2014simple and safe to avoid message loss/duplication. Discussed how this evolves toward Zookeeper based rebalancing in mature systems.\nScalability Topics:\nAdding/removing brokers: Reassign partitions via controller.\nHot partitions: Key design or manual splits.\nOverall: Thousands of partitions via sharding.\n\n\n4. Other Advanced Points\nExplicitly highlighted Kafka's real evolution: From heavy Zookeeper dependency \u2192 KRaft for self-managed quorum (reduces ops overhead, better resilience).\nTrade-offs everywhere: Durability vs. latency (sync acks), external coordination vs. fully decentralized.\n\n\n**Overall, I felt that the interview went quite well and was expecting Hire at least from the round. Considering other rounds were also postivie only I felt that I had more than 50% chance of being selected. However, to my horror I was told that I might only be eligible for L4 as there were callouts in relation to not asking enough calrifying questions. Since LLD, DSA and Managerial rounds went well and this problem itself was not very vague I can't seem to figure out what went wrong. My guess is that there are too many candidates so they end up finding weird reasons to reject candidates. To top it all, they rescheduled my interviews like 5-6 times and I had to keep on brushing up my concepts**\n\n![Screenshot 2026-01-23 at 3.33.29\u202fPM.png](https://assets.leetcode.com/users/images/d1917ecb-7e88-4c2d-a5e0-40f80cc792d2_1770114702.9370987.png)\n\n",
     "additional_links": [
       "https://assets.leetcode.com/users/images/d1917ecb-7e88-4c2d-a5e0-40f80cc792d2_1770114702.9370987.png"
     ],
@@ -17,14 +27,14 @@
           "System Design"
         ],
         "topics": [
-          "Design a distributed message broker similar to Apache Kafka"
+          "Design a distributed message broker similar to Apache Kafka."
         ],
         "verdict": null,
-        "description": "Discussed design of a distributed message broker similar to Apache Kafka. Topics focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. Probed on push vs. pull model and settled on pull-based. Highlighted real Kafka internals and evolutions."
+        "description": "Design for a distributed message broker that meets the following requirements: Topics-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. Clarify functional and non-functional requirements, discuss high-level architecture, deep dives into storage & durability, replication & failure handling, consumer side considerations, scaling topics, and other advanced points."
       }
     ],
     "final_verdict": null,
-    "description": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\". The discussion went well but ended up with some frustrating feedback due to not asking enough clarifying questions. Feels that the interview went quite well and was expecting Hire, however, was told that might only be eligible for L4. Interview process was rescheduled multiple times."
+    "description": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\" The requirements focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. I thought the discussion went really well\u2014covered a ton of depth, including real Kafka internals and evolutions\u2014but ended up with some frustrating feedback. The interviewer highlighted that although the problem itself was not very vague, the lack of clarifying questions might have led to a lower evaluation."
   },
   {
     "company": "IBM",
@@ -33,48 +43,31 @@
     "years_of_experience": null,
     "location": null,
     "mode": "offline",
+    "title": "IBM off compus hiring offline exam difficulty ",
     "source_url": "https://leetcode.com/discuss/post/7548518/ibm-off-compus-hiring-offline-exam-diffi-9ihh/",
-    "additional_links": [],
-    "rounds": [
-      {
-        "round_number": 1,
-        "round_type": [
-          "Coding Round"
-        ],
-        "topics": [
-          "Easy level LeetCode problems"
-        ],
-        "verdict": null,
-        "description": "The problems presented during the coding round were generally of easy level from LeetCode. There were a total of 2 questions. If you were able to solve 1.5 questions, you would receive an interview call."
-      }
+    "source_uuid": "wQQ2yOiu",
+    "source_slug": "ibm-off-compus-hiring-offline-exam-diffi-9ihh",
+    "source_topic_id": 7548518,
+    "source_summary": "In the ofline IBM hiring for Associate software engineer role\nthe problems where generally from easy level leetcode problems difficulty  and there are total 2 questions if you able to solve the 1.5 questions you will going to get the interview call.",
+    "source_tags": [
+      "ibm",
+      "career",
+      "online-assessment",
+      "interview"
     ],
-    "final_verdict": null,
-    "description": null
-  },
-  {
-    "company": null,
-    "role": null,
-    "level": null,
-    "years_of_experience": null,
-    "location": null,
-    "mode": null,
-    "source_url": "https://leetcode.com/discuss/post/7548298/leetcode-daily-streaks-are-not-motivatio-8dfh/",
+    "original_content": "In the ofline IBM hiring for Associate software engineer role\r\nthe problems where generally from easy level leetcode problems difficulty  and there are total 2 questions if you able to solve the 1.5 questions you will going to get the interview call.  ",
     "additional_links": [],
     "rounds": [
       {
         "round_number": 1,
         "round_type": [
-          "Discussion"
+          "Exam"
         ],
         "topics": [
-          "Daily streaks",
-          "Learning",
-          "Consistency",
-          "Problem-solving ability",
-          "LeetCode muscle memory"
+          "LeetCode"
         ],
         "verdict": null,
-        "description": "The post argues that daily streaks on platforms like LeetCode are not beneficial for building problem-solving ability, but rather serve as a form of behavioral engineering to keep users engaged. It claims that most people with long streaks cannot solve unseen problems without hints, panic when the question isn't a known pattern, and collapse when the editorial is not obvious. Instead, it suggests that one deep problem a week would lead to more learning than 30 shallow daily solves."
+        "description": "The offline IBM hiring for the Associate Software Engineer role presented problems that were generally of an easy level from LeetCode. There were a total of 2 questions. If you were able to solve approximately 1.5 questions, you would receive an interview call."
       }
     ],
     "final_verdict": null,

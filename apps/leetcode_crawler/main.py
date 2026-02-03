@@ -54,9 +54,16 @@ def main():
             if not is_interview_post(content):
                 continue
 
-            interview = extractor.extract(content)
+            interview = extractor.extract(content, title=post.get("title"))
             interview.source_url = build_discuss_url(topic_id, slug)
             interview.additional_links = extract_links(content)
+            interview.title = post.get("title")
+            interview.source_uuid = post.get("uuid")
+            interview.source_slug = slug
+            interview.source_topic_id = topic_id
+            interview.source_summary = summary
+            interview.source_tags = [t.get("slug") for t in post.get("tags", []) if t]
+            interview.original_content = content
             # append_jobs expects an iterable of jobs; pass a single-item list
             append_jobs("apps/leetcode_crawler/output/interview.json", [interview])
 
