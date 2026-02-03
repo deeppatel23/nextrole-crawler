@@ -77,6 +77,12 @@ def main():
                 )
                 continue
 
+            if interview.LLM_Process and not interview.rounds:
+                print(
+                    f"⚠ Skipped post (missing rounds): {source_url or slug}"
+                )
+                continue
+
             interview.source_url = source_url
             interview.additional_links = extract_links(content)
             interview.title = post.get("title")

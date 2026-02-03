@@ -9,6 +9,7 @@ class InterviewRound:
     topics: List[str]
     verdict: Optional[str] = None
     description: Optional[str] = None
+    questions: List[str] = field(default_factory=list)
 
 
 @dataclass
