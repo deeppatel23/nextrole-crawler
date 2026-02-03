@@ -113,7 +113,7 @@ class LeetCodeClient:
                 )
 
                 data = resp.json()
-                print(f"Fetched data for {key}: {data}")
+                # print(f"Fetched data for {key}: {data}")
                 if "errors" in data:
                     return None
 

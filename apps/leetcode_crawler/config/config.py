@@ -11,4 +11,4 @@ LEETCODE_GRAPHQL_URL = "https://leetcode.com/graphql"
 OUTPUT_FILE = "interview_experiences.json"
 
 REQUEST_TIMEOUT = 20
-MAX_POSTS = 5
+MAX_POSTS = 10

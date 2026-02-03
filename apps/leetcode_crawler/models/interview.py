@@ -27,6 +27,7 @@ class InterviewExperience:
     source_summary: Optional[str] = None
     source_tags: List[str] = field(default_factory=list)
     original_content: Optional[str] = None
+    LLM_Process: Optional[bool] = None
     additional_links: List[str] = field(default_factory=list)
     rounds: List[InterviewRound] = field(default_factory=list)
     final_verdict: Optional[str] = None

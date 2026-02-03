@@ -17,6 +17,7 @@
       "interview"
     ],
     "original_content": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\" The requirements focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. I thought the discussion went really well\u2014covered a ton of depth, including real Kafka internals and evolutions\u2014but ended up with some frustrating feedback.\n\n1. Requirements Clarification\nFunctional: Topics, publish/subscribe, ordered messages per partition, consumer groups for parallel processing, at-least-once guarantees via consumer acks.\nNon-functional: High throughput/low latency, durability (persistence to disk), scalability, fault tolerance.\nProbed on push vs. pull model \u2192 settled on pull-based (consumer polls) for better consumer pacing and backpressure handling.\n\n2. High-Level Architecture\nCore Components:\nBrokers clustered for scalability.\nTopics \u2192 Partitions \u2192 Replicas (primary + secondaries for fault tolerance).\nProducers publish to topics (key-based partitioning for ordering).\nConsumers in groups, with one-to-many consumer-to-partition mapping for parallelism.\nCoordination: Initially Zookeeper for metadata, leader election, and consumer offsets\u2014but explicitly discussed evolution to KRaft (quorum-based controller, no external dependency) as a more modern, ops-friendly direction.\nOptional Frontend Layer: Introduced a lightweight proxy layer for \"dumb\" clients (handles routing, auth, rate-limiting). Smart clients bypass it and talk directly to brokers after fetching metadata.\n\n3. Deep Dives & Trade-offs\nThis is where I went deep:\nStorage & Durability:\nWrite-ahead log style: Messages appended to partition segments on disk.\nPage cache leverage for fast reads.\nIn-sync replicas (ISR) concept: Leader waits for ack from ISR before committing.\nReplication & Failure Handling:\nPrimary host per partition, secondaries for redundancy.\nMix of sync (for durability) and async (for latency) replication.\nLeader election via ZAB (Zookeeper Atomic Broadcast) for strong consistency and quorum handling during network partitions or broker failures.\nRecovery: Log recovery with high-water mark; discussed truncation risks in unclean leader election.\nProducer Side:\nSerialized operations at partition level for ordering.\nKey-based partitioning (consistent hashing implied).\nConsumer Side:\nPoll + explicit ack for at-least-once guarantees.\nOffset tracking per consumer group/partition.\nParallel consumption within groups.\nRebalancing & Assignment:\nPartition assignment: Round-robin or resource-aware, ensuring replicas not co-located.\nCoordination: Used a flag (e.g., in Redis or metadata store) to pause consumers during rebalance\u2014simple and safe to avoid message loss/duplication. Discussed how this evolves toward Zookeeper based rebalancing in mature systems.\nScalability Topics:\nAdding/removing brokers: Reassign partitions via controller.\nHot partitions: Key design or manual splits.\nOverall: Thousands of partitions via sharding.\n\n\n4. Other Advanced Points\nExplicitly highlighted Kafka's real evolution: From heavy Zookeeper dependency \u2192 KRaft for self-managed quorum (reduces ops overhead, better resilience).\nTrade-offs everywhere: Durability vs. latency (sync acks), external coordination vs. fully decentralized.\n\n\n**Overall, I felt that the interview went quite well and was expecting Hire at least from the round. Considering other rounds were also postivie only I felt that I had more than 50% chance of being selected. However, to my horror I was told that I might only be eligible for L4 as there were callouts in relation to not asking enough calrifying questions. Since LLD, DSA and Managerial rounds went well and this problem itself was not very vague I can't seem to figure out what went wrong. My guess is that there are too many candidates so they end up finding weird reasons to reject candidates. To top it all, they rescheduled my interviews like 5-6 times and I had to keep on brushing up my concepts**\n\n![Screenshot 2026-01-23 at 3.33.29\u202fPM.png](https://assets.leetcode.com/users/images/d1917ecb-7e88-4c2d-a5e0-40f80cc792d2_1770114702.9370987.png)\n\n",
+    "LLM_Process": true,
     "additional_links": [
       "https://assets.leetcode.com/users/images/d1917ecb-7e88-4c2d-a5e0-40f80cc792d2_1770114702.9370987.png"
     ],
@@ -27,14 +28,60 @@
           "System Design"
         ],
         "topics": [
-          "Design a distributed message broker similar to Apache Kafka."
+          "Design a distributed message broker similar to Apache Kafka"
         ],
         "verdict": null,
-        "description": "Design for a distributed message broker that meets the following requirements: Topics-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. Clarify functional and non-functional requirements, discuss high-level architecture, deep dives into storage & durability, replication & failure handling, consumer side considerations, scaling topics, and other advanced points."
+        "description": "Design of a distributed message broker focusing on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. Topics included high throughput/low latency, scalability, fault tolerance, push vs pull model, and more."
       }
     ],
     "final_verdict": null,
-    "description": "Recently went through a system design round at Uber where the prompt was: \"Design a distributed message broker similar to Apache Kafka.\" The requirements focused on topic-based pub/sub, partitioned ordered storage, durability, consumer groups with parallel consumption, and at-least-once delivery. I thought the discussion went really well\u2014covered a ton of depth, including real Kafka internals and evolutions\u2014but ended up with some frustrating feedback. The interviewer highlighted that although the problem itself was not very vague, the lack of clarifying questions might have led to a lower evaluation."
+    "description": "Recently went through a system design round at Uber where the prompt was: 'Design a distributed message broker similar to Apache Kafka.' The interview focused on the requirements, high-level architecture, deep dives & trade-offs, and other advanced points. Despite feeling that the interview went well, feedback indicated potential issues with asking enough clarifying questions which might have resulted in a lower level offer than expected."
+  },
+  {
+    "company": "Walmart",
+    "role": "SDE-3",
+    "level": null,
+    "years_of_experience": null,
+    "location": null,
+    "mode": null,
+    "title": "Walmart SDE - 3 interview experience",
+    "source_url": "https://leetcode.com/discuss/post/7548791/walmart-sde-3-interview-experience-by-ra-sj7r/",
+    "source_uuid": "vvFdbs9G",
+    "source_slug": "walmart-sde-3-interview-experience-by-ra-sj7r",
+    "source_topic_id": 7548791,
+    "source_summary": "Walmart SDE-3 Interview ExperienceRecently interviewed for SDE-3 at Walmart. Sharing my experience in case it helps others.Round 1 \u2013 DSAQ1: Next Greater Element IIQ2: A grid-based problem similar to Walls and Gates / Rotting Oranges (classic BFS patt",
+    "source_tags": [
+      "interview"
+    ],
+    "original_content": "Walmart SDE-3 Interview Experience\n\nRecently interviewed for SDE-3 at Walmart. Sharing my experience in case it helps others.\n\nRound 1 \u2013 DSA\n\nQ1: Next Greater Element II\n\nQ2: A grid-based problem similar to Walls and Gates / Rotting Oranges (classic BFS pattern)\n\n\u27a1\ufe0f Got confirmation from the recruiter that I cleared Round 1.\n\nRound 2 \u2013 LLD + Java\n\nThis was my first Low-Level Design round, and honestly, I didn\u2019t perform well here.\n\nI was able to answer Java and Spring Boot\u2013related questions confidently.\n\nHowever, my LLD approach and structuring were not strong enough.\n\n\u274c Didn\u2019t qualify for Round 3.\n\nTakeaway\n\nDSA alone isn\u2019t enough for senior roles.\n\nStrong LLD fundamentals are critical for SDE-3 and above.\n\nLesson learned \u2014 time to focus more on design patterns, object modeling, and clean design thinking.\n\nHope this helps someone preparing for similar roles. All the best! \ud83d\ude80",
+    "LLM_Process": true,
+    "additional_links": [],
+    "rounds": [
+      {
+        "round_number": 1,
+        "round_type": [
+          "DSA"
+        ],
+        "topics": [
+          "Next Greater Element II",
+          "Grid-based problem similar to Walls and Gates / Rotting Oranges (classic BFS pattern)"
+        ],
+        "verdict": "Passed",
+        "description": null
+      },
+      {
+        "round_number": 2,
+        "round_type": [
+          "LLD",
+          "Java"
+        ],
+        "topics": [],
+        "verdict": "Failed",
+        "description": "Q3: Low-Level Design (LLD) problem. Confident in answering Java and Spring Boot questions, but LLD approach and structuring were not strong enough."
+      }
+    ],
+    "final_verdict": "Failed",
+    "description": "Recently interviewed for SDE-3 at Walmart. Sharing my experience to help others. DSA alone isn't enough for senior roles, strong LLD fundamentals are critical for SDE-3 and above. Lesson learned \u2014 time to focus more on design patterns, object modeling, and clean design thinking."
   },
   {
     "company": "IBM",
@@ -42,7 +89,7 @@
     "level": null,
     "years_of_experience": null,
     "location": null,
-    "mode": "offline",
+    "mode": "Offline",
     "title": "IBM off compus hiring offline exam difficulty ",
     "source_url": "https://leetcode.com/discuss/post/7548518/ibm-off-compus-hiring-offline-exam-diffi-9ihh/",
     "source_uuid": "wQQ2yOiu",
@@ -56,21 +103,82 @@
       "interview"
     ],
     "original_content": "In the ofline IBM hiring for Associate software engineer role\r\nthe problems where generally from easy level leetcode problems difficulty  and there are total 2 questions if you able to solve the 1.5 questions you will going to get the interview call.  ",
+    "LLM_Process": true,
     "additional_links": [],
     "rounds": [
       {
         "round_number": 1,
         "round_type": [
-          "Exam"
+          "Written Exam"
         ],
         "topics": [
-          "LeetCode"
+          "LeetCode problems (Easy level)"
         ],
         "verdict": null,
-        "description": "The offline IBM hiring for the Associate Software Engineer role presented problems that were generally of an easy level from LeetCode. There were a total of 2 questions. If you were able to solve approximately 1.5 questions, you would receive an interview call."
+        "description": "The problems in the offline IBM hiring for Associate Software Engineer role were generally from easy level LeetCode problems. There were a total of 2 questions. If you were able to solve approximately 1.5 questions, you would receive an interview call."
       }
     ],
     "final_verdict": null,
     "description": null
+  },
+  {
+    "company": "Microsoft",
+    "role": null,
+    "level": null,
+    "years_of_experience": null,
+    "location": null,
+    "mode": "Onsite",
+    "title": "Hiring drive for Microsoft(L61)",
+    "source_url": "https://leetcode.com/discuss/post/7547258/hiring-drive-for-microsoft-by-anonymous_-udic/",
+    "source_uuid": "rTAzxfUq",
+    "source_slug": "hiring-drive-for-microsoft-by-anonymous_-udic",
+    "source_topic_id": 7547258,
+    "source_summary": "Hi all, I recently appeared for microsoft drive on 21st Jan, there were 2 screening rounds initially based on which 2 rounds of interview were scheduled in the next week. How much time does it take for getting the update on candidature after final ro",
+    "source_tags": [
+      "interview"
+    ],
+    "original_content": "Hi all, I recently appeared for microsoft drive on 21st Jan, there were 2 screening rounds initially based on which 2 rounds of interview were scheduled in the next week. How much time does it take for getting the update on candidature after final round? Thanks!",
+    "LLM_Process": true,
+    "additional_links": [],
+    "rounds": [
+      {
+        "round_number": 1,
+        "round_type": [
+          "Screening"
+        ],
+        "topics": [],
+        "verdict": null,
+        "description": "Initially, there were two screening rounds held on 21st Jan."
+      },
+      {
+        "round_number": 2,
+        "round_type": [
+          "Screening"
+        ],
+        "topics": [],
+        "verdict": null,
+        "description": "Based on the results of these initial rounds, two interview rounds were scheduled for the next week."
+      },
+      {
+        "round_number": 3,
+        "round_type": [
+          "Interview"
+        ],
+        "topics": [],
+        "verdict": null,
+        "description": null
+      },
+      {
+        "round_number": 4,
+        "round_type": [
+          "Interview"
+        ],
+        "topics": [],
+        "verdict": null,
+        "description": null
+      }
+    ],
+    "final_verdict": null,
+    "description": "The applicant appeared for Microsoft's hiring drive on 21st Jan. They went through two screening rounds initially, and based on the results, they were scheduled for two interview rounds in the next week."
   }
 ]

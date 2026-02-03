@@ -1,6 +1,7 @@
 from utils.leetcode_client import LeetCodeClient
 from utils.llm_client import LLMClient
 from processor.extractor import InterviewExtractor
+from models.interview import InterviewExperience
 from processor.repository import InterviewRepository
 from utils.rules import is_interview_post
 from config.config import MAX_POSTS
@@ -35,13 +36,13 @@ def main():
             summary = post.get("summary", "")
 
             try:
-                print("Post is being processed:", post)
+                print("Post is being processed:", post.get("title"))
                 slug = post["slug"]
                 topic_id = post.get("topicId")
 
                 content = leetcode.fetch_post_content(slug, topic_id)
 
-                print(f"✔ Fetched content for {slug}, content {content}")
+                print(f"✔ Fetched content for {slug}")
 
                 if not content:
                     print(f"⚠ Using summary for {slug}")
@@ -54,8 +55,29 @@ def main():
             if not is_interview_post(content):
                 continue
 
-            interview = extractor.extract(content, title=post.get("title"))
-            interview.source_url = build_discuss_url(topic_id, slug)
+            source_url = build_discuss_url(topic_id, slug)
+            try:
+                interview = extractor.extract(content, title=post.get("title"))
+                interview.LLM_Process = True
+            except Exception as e:
+                print(f"⚠ LLM failed for {slug}: {e}")
+                interview = InterviewExperience(
+                    company=None,
+                    role=None,
+                    level=None,
+                    years_of_experience=None,
+                    location=None,
+                    mode=None,
+                    LLM_Process=False,
+                )
+
+            if interview.LLM_Process and not interview.company:
+                print(
+                    f"⚠ Skipped post (missing company): {source_url or slug}"
+                )
+                continue
+
+            interview.source_url = source_url
             interview.additional_links = extract_links(content)
             interview.title = post.get("title")
             interview.source_uuid = post.get("uuid")
