@@ -6,7 +6,7 @@ from processor.repository import InterviewRepository
 from utils.rules import is_interview_post
 from config.config import MAX_POSTS
 import re
-from utils.json_writer import append_jobs
+from utils.output_writer import append_interviews
 
 
 def build_discuss_url(topic_id: int | None, slug: str) -> str | None:
@@ -60,16 +60,8 @@ def main():
                 interview = extractor.extract(content, title=post.get("title"))
                 interview.LLM_Process = True
             except Exception as e:
-                print(f"⚠ LLM failed for {slug}: {e}")
-                interview = InterviewExperience(
-                    company=None,
-                    role=None,
-                    level=None,
-                    years_of_experience=None,
-                    location=None,
-                    mode=None,
-                    LLM_Process=False,
-                )
+                print(f"⚠ LLM failed for {slug}: {e}, source url is {source_url}")
+                continue
 
             if interview.LLM_Process and not interview.company:
                 print(
@@ -77,9 +69,9 @@ def main():
                 )
                 continue
 
-            if interview.LLM_Process and not interview.rounds:
+            if interview.LLM_Process and not interview.questions:
                 print(
-                    f"⚠ Skipped post (missing rounds): {source_url or slug}"
+                    f"⚠ Skipped post (missing questions): {source_url or slug}"
                 )
                 continue
 
@@ -92,8 +84,8 @@ def main():
             interview.source_summary = summary
             interview.source_tags = [t.get("slug") for t in post.get("tags", []) if t]
             interview.original_content = content
-            # append_jobs expects an iterable of jobs; pass a single-item list
-            append_jobs("apps/leetcode_crawler/output/interview.json", [interview])
+            # append_interviews expects an iterable; pass a single-item list
+            append_interviews("apps/leetcode_crawler/output/interview.json", [interview])
 
             print(f"✔ Extracted: {interview.company}")
 

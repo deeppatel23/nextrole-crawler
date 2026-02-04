@@ -3,3 +3,5 @@ dataclasses
 pathlib
 dotenv
 huggingface_hub
+pymongo[srv]==3.12
+certifi==2024.12.14

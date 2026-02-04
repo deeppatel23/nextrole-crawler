@@ -1,5 +1,5 @@
 import json
-from models.interview import InterviewExperience, InterviewRound
+from models.interview import InterviewExperience, Question
 from utils.llm_client import LLMClient
 from config.config import EXTRACTOR_PROMPT_MODE
 
@@ -11,8 +11,8 @@ class InterviewExtractor:
     def _build_prompt(self, text: str, title: str | None) -> str:
         base = f"""
 You are an information extraction system.
-Return ONLY valid JSON.
-If the title contains a level starting with L like L5, save it in "role".
+Return ONLY valid JSON. No markdown, no code fences, no extra text.
+If the title contains a level like L5 or E5, save it in "level".
 
 Schema:
 {{
@@ -21,21 +21,22 @@ Schema:
   "level": string | null,
   "years_of_experience": number | null,
   "location": string | null,
-  "mode": string | null,
-  "rounds": [
+  "questions": [
     {{
-      "round_number": number,
-      "round_type": [string],
       "topics": [string],
-      "verdict": string | null,
-      "description": string | null,
-      "questions": [string]
+      "description": string,
+      "links": [string]
     }}
   ],
   "final_verdict": string | null,
-  "description": string | null,
   "additional_links": [string]
 }}
+
+Rules for "questions":
+- Each question must be a single interview question.
+- The "topics" list must include exactly one of: "DSA", "Theory", "LLD", "HLD".
+- If unsure, choose the closest type and keep topics minimal.
+- If a follow-up is clearly tied to the previous question (e.g., starts with "What if..." or "How would you..." about the same scenario), merge it into the same question "description" separated by " / ".
 
 Title:
 {title or ""}
@@ -49,9 +50,7 @@ Post:
                 + """
 Instructions:
 - Do NOT write any summary.
-- Leave top-level "description" as null.
-- Leave each round "description" as null.
-- Extract and list the questions asked in each round in "questions".
+- Focus on extracting the interview questions accurately.
 """
             )
 
@@ -59,11 +58,7 @@ Instructions:
             base
             + """
 Instructions:
-- For "description", provide a detailed, raw-as-possible extract of the relevant experience.
-- Preserve original wording, punctuation, and line breaks where helpful.
-- If the post includes a problem statement or test cases (inputs/outputs), include them verbatim in "description".
-- For each round "description", include round-specific details if present, using the same raw style.
-- Extract and list the questions asked in each round in "questions".
+- Focus on extracting interview questions accurately.
 """
         )
 
@@ -75,19 +70,29 @@ Instructions:
         try:
             data = json.loads(raw)
         except json.JSONDecodeError:
-            raise ValueError("LLM returned invalid JSON")
+            cleaned = self._coerce_json(raw)
+            try:
+                data = json.loads(cleaned)
+            except json.JSONDecodeError:
+                raise ValueError("LLM returned invalid JSON")
 
-        rounds = []
+        questions = []
+        for q in data.get("questions", []):
+            if isinstance(q, str):
+                questions.append(
+                    Question(
+                        topics=[],
+                        description=q,
+                        links=[],
+                    )
+                )
+                continue
 
-        for r in data.get("rounds", []):
-            rounds.append(
-                InterviewRound(
-                    round_number=r.get("round_number"),
-                    round_type=r.get("round_type", []),
-                    topics=r.get("topics", []),
-                    verdict=r.get("verdict"),
-                    description=r.get("description"),
-                    questions=r.get("questions", []),
+            questions.append(
+                Question(
+                    topics=q.get("topics", []) or [],
+                    description=q.get("description", ""),
+                    links=q.get("links", []) or [],
                 )
             )
 
@@ -98,9 +103,31 @@ Instructions:
             level=data.get("level"),
             years_of_experience=data.get("years_of_experience"),
             location=data.get("location"),
-            mode=data.get("mode"),
-            rounds=rounds,
+            questions=questions,
             final_verdict=data.get("final_verdict"),
-            description=data.get("description"),
             additional_links=data.get("additional_links", []),
         )
+
+    @staticmethod
+    def _coerce_json(text: str) -> str:
+        # Strip Markdown code fences if present
+        fence_start = "```"
+        if fence_start in text:
+            parts = text.split(fence_start)
+            # Try to find a fenced block that looks like JSON
+            for part in parts:
+                if "{" in part and "}" in part:
+                    candidate = part
+                    # Remove optional language tag like "json"
+                    candidate = candidate.lstrip()
+                    if candidate.startswith("json"):
+                        candidate = candidate[4:]
+                    return candidate.strip().strip("\n")
+
+        # Fallback: attempt to slice the first JSON object
+        start = text.find("{")
+        end = text.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            return text[start : end + 1]
+
+        return text
