@@ -58,18 +58,17 @@ def main():
             source_url = build_discuss_url(topic_id, slug)
             try:
                 interview = extractor.extract(content, title=post.get("title"))
-                interview.LLM_Process = True
             except Exception as e:
                 print(f"⚠ LLM failed for {slug}: {e}, source url is {source_url}")
                 continue
 
-            if interview.LLM_Process and not interview.company:
+            if not interview.company:
                 print(
                     f"⚠ Skipped post (missing company): {source_url or slug}"
                 )
                 continue
 
-            if interview.LLM_Process and not interview.questions:
+            if not interview.questions:
                 print(
                     f"⚠ Skipped post (missing questions): {source_url or slug}"
                 )
@@ -78,9 +77,6 @@ def main():
             interview.source_url = source_url
             interview.additional_links = extract_links(content)
             interview.title = post.get("title")
-            interview.source_uuid = post.get("uuid")
-            interview.source_slug = slug
-            interview.source_topic_id = topic_id
             interview.source_summary = summary
             interview.source_tags = [t.get("slug") for t in post.get("tags", []) if t]
             interview.original_content = content

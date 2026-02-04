@@ -1,266 +1,212 @@
 [
   {
-    "company": "Kotak",
-    "role": "SDE 2",
-    "level": "Bar Raiser round",
-    "years_of_experience": null,
-    "location": null,
-    "title": "Kotak Interview - SDE 2 (Bar Raiser round)",
-    "source_url": "https://leetcode.com/discuss/post/7551472/kotak-interview-sde-2-bar-raiser-round-b-k1ic/",
-    "source_uuid": "mqGeuqyY",
-    "source_slug": "kotak-interview-sde-2-bar-raiser-round-b-k1ic",
-    "source_topic_id": 7551472,
+    "company": "Dream11",
+    "role": "Lead Engineer",
+    "location": "Mumbai",
+    "title": "Dream11 | Lead Engineer | Mumbai",
+    "source_url": "https://leetcode.com/discuss/post/7552231/dream11-lead-engineer-mumbai-by-anonymou-hqro/",
     "source_tags": [
       "interview"
     ],
-    "LLM_Process": true,
     "additional_links": [],
     "questions": [
       {
         "topics": [
           "DSA"
         ],
-        "description": "Minimum length subarray with sum \u2265 target / Search in a rotated sorted array",
+        "description": "Find least difference in occurrence of two nos. x and y in an array. Assume that these would occur at least once.",
         "links": []
       },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Subset sum in an array with sum k",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Can an array be divided into partitions such that each partition has a sequence having adjacent difference as 1 and size = k.",
+        "links": []
+      }
+    ],
+    "final_verdict": "stalled indefinitely"
+  },
+  {
+    "company": "Arista Networks",
+    "role": "Senior Software Engineer",
+    "location": "Bengaluru",
+    "title": "Arista Networks | Senior Software Engineer | Bengaluru",
+    "source_url": "https://leetcode.com/discuss/post/7551995/arista-networks-senior-software-engineer-q9gs/",
+    "source_tags": [
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "I was shared a Java code snippet to tell what would happen if the code runs. it was a deadlock scenario basically.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Was asked the time based key value store leetcode question. Provided the treemap solution but made the solution a bit complicated",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "Was asked how TLS works in detail",
+        "links": []
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "how would you debug if an API is slow",
+        "links": []
+      }
+    ],
+    "final_verdict": "Rejected"
+  },
+  {
+    "company": "Nielsen",
+    "role": "MTS4",
+    "location": "Gurugram",
+    "title": "Nielsen | MTS4 | Gurugram",
+    "source_url": "https://leetcode.com/discuss/post/7551916/nielsen-mts4-gurugram-by-anonymous_user-8f8q/",
+    "source_tags": [
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
       {
         "topics": [
           "LLD"
         ],
-        "description": "Design Instagram",
+        "description": "Splitwise LLD.",
         "links": []
       },
       {
         "topics": [
           "HLD"
         ],
-        "description": "What issues occur when a celebrity posts content? / Reads become slow after a celebrity posts?",
+        "description": "ads click impression system design.",
         "links": []
       }
     ],
-    "final_verdict": null
+    "final_verdict": "Process discontinued."
   },
   {
-    "company": "Google (L4/L5)",
-    "role": null,
-    "level": null,
-    "years_of_experience": null,
+    "company": "Sumo Logic",
+    "role": "SSE",
     "location": null,
-    "title": "I solved the DSA question perfectly, but still got rejected.\" \u2014 Here\u2019s why (Feb 2026 update)",
-    "source_url": "https://leetcode.com/discuss/post/7551275/i-solved-the-dsa-question-perfectly-but-ugbmw/",
-    "source_uuid": "MDv9ADSq",
-    "source_slug": "i-solved-the-dsa-question-perfectly-but-ugbmw",
-    "source_topic_id": 7551275,
+    "title": "Sumo Logic | SSE | No Offer",
+    "source_url": "https://leetcode.com/discuss/post/7552014/sumo-logic-sse-no-offer-by-thats_not_me-kelm/",
     "source_tags": [
-      "career",
-      "interview",
-      "job-search-2",
-      "hiring-freshers",
-      "trending-2"
-    ],
-    "LLM_Process": true,
-    "additional_links": [
-      "https://assets.leetcode.com/users/images/30b7846a-744a-45ef-af78-66da503eb933_1770191888.6134195.png"
-    ],
-    "questions": [
-      {
-        "topics": [
-          "DSA",
-          "Theory"
-        ],
-        "description": "What if the data is arriving in a stream and we can't store it all?",
-        "links": []
-      },
-      {
-        "topics": [
-          "DSA",
-          "Theory"
-        ],
-        "description": "What if the system crashes halfway through your loop?",
-        "links": []
-      },
-      {
-        "topics": [
-          "DSA",
-          "Theory"
-        ],
-        "description": "How would you explain this to a Product Manager who doesn't know what a Hashmap is? (Assuming the problem you already solved uses a HashMap)",
-        "links": []
-      }
-    ],
-    "final_verdict": null
-  },
-  {
-    "company": "Salesforce",
-    "role": "MTS",
-    "level": null,
-    "years_of_experience": null,
-    "location": "Hyderabad",
-    "title": "Completed my HM round for Salesforce on 31st Jan, haven't received any update yet.",
-    "source_url": "https://leetcode.com/discuss/post/7551023/completed-my-hm-round-for-salesforce-on-wbe77/",
-    "source_uuid": "zjqjg5EO",
-    "source_slug": "completed-my-hm-round-for-salesforce-on-wbe77",
-    "source_topic_id": 7551023,
-    "source_tags": [
-      "career",
-      "feedback",
+      "sumologic",
+      "compensation",
       "interview"
     ],
-    "LLM_Process": true,
     "additional_links": [],
     "questions": [
       {
         "topics": [
           "DSA"
         ],
-        "description": "All the DSA rounds and Problem Solving questions experienced during the Salesforce MTS interview process",
+        "description": "Find majority element with optimal approach (voting algo).",
         "links": []
-      }
-    ],
-    "final_verdict": null
-  },
-  {
-    "company": "LinkedIn",
-    "role": "SWE (IC2) Infra",
-    "level": "Possibly None (Phone Screening)",
-    "years_of_experience": null,
-    "location": null,
-    "title": "LinkedIn SWE (IC2) Infra | Phone Screening",
-    "source_url": "https://leetcode.com/discuss/post/7551445/linkedin-swe-ic2-infra-phone-screening-b-z2zw/",
-    "source_uuid": "EBjjvrDO",
-    "source_slug": "linkedin-swe-ic2-infra-phone-screening-b-z2zw",
-    "source_topic_id": 7551445,
-    "source_tags": [
-      "linkedin",
-      "interview"
-    ],
-    "LLM_Process": true,
-    "additional_links": [],
-    "questions": [
+      },
       {
         "topics": [
           "DSA"
         ],
-        "description": "One DSA Question: Nested Weight List Sum II",
+        "description": "Max area of islands (dfs).",
         "links": []
       },
       {
         "topics": [
-          "Theory",
-          "CS Fundamentals"
-        ],
-        "description": "Project deep dive (to understand under how much scale you have worked)\nFew CS fundamentals:\n- Java basics\n- Process vs Threads",
-        "links": []
-      }
-    ],
-    "final_verdict": null
-  },
-  {
-    "company": "ScreenStack",
-    "role": null,
-    "level": null,
-    "years_of_experience": null,
-    "location": null,
-    "title": "Try ScreenStack for Mock Technical Interviews (with Post-Call Feedback)",
-    "source_url": "https://leetcode.com/discuss/post/7551159/try-screenstack-for-mock-technical-inter-fhrq/",
-    "source_uuid": "fUYqZ0TC",
-    "source_slug": "try-screenstack-for-mock-technical-inter-fhrq",
-    "source_topic_id": 7551159,
-    "source_tags": [
-      "feedback",
-      "interview"
-    ],
-    "LLM_Process": true,
-    "additional_links": [
-      "https://app.screenstack.tech/"
-    ],
-    "questions": [
-      {
-        "topics": [
-          "DSA"
-        ],
-        "description": "How would you approach a technical interview on the ScreenStack platform?",
-        "links": []
-      },
-      {
-        "topics": [
-          "Theory"
-        ],
-        "description": "What analysis does the ScreenStack platform perform during an interview to provide feedback and insights?",
-        "links": []
-      }
-    ],
-    "final_verdict": null
-  },
-  {
-    "company": "Google",
-    "role": null,
-    "level": null,
-    "years_of_experience": null,
-    "location": null,
-    "title": "Google Interview Experience",
-    "source_url": "https://leetcode.com/discuss/post/7550756/google-interview-experience-by-anonymous-458g/",
-    "source_uuid": "PUiE5SdD",
-    "source_slug": "google-interview-experience-by-anonymous-458g",
-    "source_topic_id": 7550756,
-    "source_tags": [
-      "interview"
-    ],
-    "LLM_Process": true,
-    "additional_links": [],
-    "questions": [
-      {
-        "topics": [
-          "Theory"
-        ],
-        "description": "Given a CSV string containing a list of ordered products, find the top K most sold products from the data. You made a mistake by using a max priority queue instead of a min priority queue.",
-        "links": []
-      },
-      {
-        "topics": [
-          "System Design",
           "HLD"
         ],
-        "description": "Design Snapchat.",
+        "description": "Design a distributed Job scheduler. The user should be able to schedule jobs in two ways (once or recurring).",
         "links": []
       }
     ],
-    "final_verdict": null
+    "final_verdict": "No Offer"
   },
   {
-    "company": "Altimetrik",
-    "role": "AI Intern",
-    "level": null,
-    "years_of_experience": null,
+    "company": "Akamai",
+    "role": "SSE",
     "location": null,
-    "title": "Altimetrik EL Round for AI Intern 2026",
-    "source_url": "https://leetcode.com/discuss/post/7550799/altimetrik-el-round-for-ai-intern-2026-b-9ubd/",
-    "source_uuid": "esK4XbXm",
-    "source_slug": "altimetrik-el-round-for-ai-intern-2026-b-9ubd",
-    "source_topic_id": 7550799,
+    "title": "Akamai | SSE | Ghosted ",
+    "source_url": "https://leetcode.com/discuss/post/7551789/akamai-sse-ghosted-by-anonymous_user-p56k/",
     "source_tags": [
-      "career",
-      "feedback",
+      "akamai",
       "interview"
     ],
-    "LLM_Process": true,
+    "additional_links": [
+      "https://leetcode.com/problems/remove-stones-to-minimize-the-total/description"
+    ],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Similar question to remove stones to minimize the total",
+        "links": [
+          "https://leetcode.com/problems/remove-stones-to-minimize-the-total/description"
+        ]
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Given a string, find the minimum length substring that can be removed to make the remaining string have all unique characters (with freq. 1).",
+        "links": []
+      }
+    ],
+    "final_verdict": "Rejection"
+  },
+  {
+    "company": "Agoda",
+    "role": "Staff Engineer",
+    "location": "Gurugram",
+    "title": "Agoda | Staff Engineer | Gurugram",
+    "source_url": "https://leetcode.com/discuss/post/7551684/agoda-interview-experience-staff-enginee-ay1w/",
+    "source_tags": [
+      "interview"
+    ],
     "additional_links": [],
     "questions": [
       {
         "topics": [
-          "Theory"
+          "DSA"
         ],
-        "description": "Explain how the round for AI Intern at Alimetrik in 2026 will go.",
+        "description": "Variant of the largest greater no. on the right side in an array",
         "links": []
       },
       {
         "topics": [
-          "Theory"
+          "DSA"
         ],
-        "description": "Is it an HR round or a Technical round at Alimetrik for the AI Intern position in 2026?",
+        "description": "Largest substring with distinct characters",
+        "links": []
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Analyze the design and propose enhancements for a system where images are being generated using a link that expires in 10s.",
         "links": []
       }
     ],
-    "final_verdict": null
+    "final_verdict": "Rejected"
   }
 ]

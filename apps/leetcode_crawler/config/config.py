@@ -28,6 +28,6 @@ if not _mongo_uri and _mongo_uri_template:
 MONGO_URI = _mongo_uri
 
 REQUEST_TIMEOUT = 30
-MAX_POSTS = 20
+MAX_POSTS = 10
 
 EXTRACTOR_PROMPT_MODE = os.getenv("EXTRACTOR_PROMPT_MODE", "only_questions")

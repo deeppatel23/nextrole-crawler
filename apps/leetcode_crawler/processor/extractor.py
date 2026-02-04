@@ -12,14 +12,12 @@ class InterviewExtractor:
         base = f"""
 You are an information extraction system.
 Return ONLY valid JSON. No markdown, no code fences, no extra text.
-If the title contains a level like L5 or E5, save it in "level".
+If the title mentions a level like L5 or E5, put that in "role" only if it is the role (e.g., "SWE E5").
 
 Schema:
 {{
   "company": string | null,
   "role": string | null,
-  "level": string | null,
-  "years_of_experience": number | null,
   "location": string | null,
   "questions": [
     {{
@@ -100,8 +98,6 @@ Instructions:
         return InterviewExperience(
             company=data.get("company"),
             role=data.get("role"),
-            level=data.get("level"),
-            years_of_experience=data.get("years_of_experience"),
             location=data.get("location"),
             questions=questions,
             final_verdict=data.get("final_verdict"),
