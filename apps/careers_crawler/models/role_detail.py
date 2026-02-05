@@ -32,15 +32,8 @@ class RoleDetail:
 
     # links
     apply_link: Optional[str] = None
-    hosted_link: Optional[str] = None
     source_type: Optional[str] = None
 
     # metadata
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
-
-    # moderation
-    human_approved: bool = False
-
-    # raw (optional, for debugging)
-    raw: Dict[str, Any] = field(default_factory=dict)

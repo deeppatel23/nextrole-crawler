@@ -150,7 +150,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 job_id=str(job_id),
                 company=company,
                 source_type=source_type,
-                # raw=fields,
                 **mapped,
             )
 

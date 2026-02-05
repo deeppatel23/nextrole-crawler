@@ -143,7 +143,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 apply_link=apply_link,
                 created_at=req.get("PostedDate"),
                 updated_at=req.get("PostingEndDate"),
-                # raw=req,
             )
             batch.append(role)
         return batch
