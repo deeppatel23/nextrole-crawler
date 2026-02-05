@@ -108,6 +108,7 @@ def _unwrap_list(value: Any) -> Any:
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    max_saved = source_cfg.get("max_saved_jobs", 9999)
     first_body = dict(API["body"])
     first_body["start"] = 0
     print(f"Amazon: start iteration 1 calling {API['url']}")
@@ -160,8 +161,14 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     append_roles(OUTPUT_FILE, first_batch)
     total_saved += len(first_batch)
     print(f"Amazon: iteration 1 saved {len(first_batch)} jobs")
+    if total_saved >= max_saved:
+        print(f"Amazon: reached max_saved_jobs={max_saved}, stopping.")
+        return total_saved
 
     for page_index in range(1, total_pages):
+        if total_saved >= max_saved:
+            print(f"Amazon: reached max_saved_jobs={max_saved}, stopping.")
+            break
         start = page_index * page_size
         page_body = dict(API["body"])
         page_body["start"] = start

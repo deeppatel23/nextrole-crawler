@@ -110,6 +110,7 @@ def _get_total_count(response: Dict[str, Any]) -> int:
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    max_saved = source_cfg.get("max_saved_jobs", 9999)
     print(f"Microsoft: start iteration 1 calling {_build_url(0)}")
     first_response = call_api(
         method="GET",
@@ -163,8 +164,14 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     append_roles(OUTPUT_FILE, first_batch)
     total_saved += len(first_batch)
     print(f"Microsoft: iteration 1 saved {len(first_batch)} jobs")
+    if total_saved >= max_saved:
+        print(f"Microsoft: reached max_saved_jobs={max_saved}, stopping.")
+        return total_saved
 
     for page_index in range(1, total_pages):
+        if total_saved >= max_saved:
+            print(f"Microsoft: reached max_saved_jobs={max_saved}, stopping.")
+            break
         start = page_index * PAGE_SIZE
         print(f"Microsoft: start iteration {page_index + 1} calling {_build_url(start)}")
         page_response = call_api(
