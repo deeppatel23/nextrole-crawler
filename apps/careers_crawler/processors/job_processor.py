@@ -1,30 +1,15 @@
-from clients.http_client import call_api
-from mappers.role_mapper import map_to_role
 import importlib
 
 
 def process_source(source_cfg):
-    response = call_api(
-        method=source_cfg["api"]["method"],
-        url=source_cfg["api"]["url"],
-        headers=source_cfg["api"].get("headers"),
-        body=source_cfg["api"].get("body"),
-    )
+    handler_name = source_cfg.get("handler")
+    if not handler_name:
+        print(f"No handler specified for {source_cfg.get('company')}, skipping.")
+        return []
 
-    jobs = []
-
-    # If a custom parser is specified in the source config, delegate parsing to it
-    parser_name = source_cfg.get("parser")
-    if parser_name:
-        try:
-            parser_mod = importlib.import_module(f"parsers.custom.{parser_name}")
-            raw_jobs_iter = parser_mod.parse(response, source_cfg)
-            for raw_job in raw_jobs_iter:
-                jobs.append(raw_job)
-            return jobs
-        except Exception as e:
-            print(f"Failed to load custom parser '{parser_name}': {e}")
-            return []
-    else:
-        print("No custom parser specified, using default extraction")
+    try:
+        handler_mod = importlib.import_module(f"companies.{handler_name}")
+        return handler_mod.fetch_roles(source_cfg)
+    except Exception as e:
+        print(f"Failed to load handler '{handler_name}': {e}")
         return []

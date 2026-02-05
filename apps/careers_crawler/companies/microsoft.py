@@ -1,0 +1,167 @@
+import math
+from typing import Any, Dict, List, Optional, Tuple
+from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
+
+from clients.http_client import call_api
+from models.role_detail import RoleDetail
+from utils.extract_utils import get_by_path
+from utils.hash_utils import generate_job_hash
+
+BASE_URL = "https://apply.careers.microsoft.com/api/pcsx/search"
+PAGE_SIZE = 10
+
+DEFAULT_QUERY = {
+    "domain": "microsoft.com",
+    "query": "",
+    "location": "india",
+    "start": "0",
+    "sort_by": "timestamp",
+}
+
+MAPPING = {
+    "job_id": "id",
+    "title": "name",
+    "role": "department",
+    "category": "department",
+    "workplace_type": "workLocationOption",
+    "apply_link": "positionUrl",
+    "created_at": "creationTs",
+    "updated_at": "postedTs",
+}
+
+
+def _build_url(start: int) -> str:
+    parsed = urlparse(BASE_URL)
+    query = dict(parse_qsl(parsed.query))
+    query.update(DEFAULT_QUERY)
+    query["start"] = str(start)
+    new_query = urlencode(query)
+    return urlunparse(parsed._replace(query=new_query))
+
+
+def _iter_positions(response: Dict[str, Any]):
+    data = response.get("data")
+    if not isinstance(data, dict):
+        return
+
+    positions = data.get("positions", [])
+    if not isinstance(positions, list):
+        return
+
+    for position in positions:
+        if isinstance(position, dict):
+            yield position
+
+
+def _parse_standardized_location(value: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    parts = [p.strip() for p in value.split(",") if p.strip()]
+    if len(parts) == 3:
+        return parts[0], parts[1], parts[2]
+    if len(parts) == 2:
+        return parts[0], None, parts[1]
+    if len(parts) == 1:
+        return parts[0], None, None
+    return None, None, None
+
+
+def _parse_full_location(value: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    parts = [p.strip() for p in value.split(",") if p.strip()]
+    if len(parts) == 3:
+        return parts[2], parts[1], parts[0]
+    if len(parts) == 2:
+        return parts[1], None, parts[0]
+    if len(parts) == 1:
+        return parts[0], None, None
+    return None, None, None
+
+
+def _extract_location(position: Dict[str, Any]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    standardized = position.get("standardizedLocations")
+    if isinstance(standardized, list) and standardized:
+        if isinstance(standardized[0], str):
+            return _parse_standardized_location(standardized[0])
+
+    locations = position.get("locations")
+    if isinstance(locations, list) and locations:
+        if isinstance(locations[0], str):
+            return _parse_full_location(locations[0])
+
+    return None, None, None
+
+
+def _normalize_apply_link(position_url: Optional[str]) -> Optional[str]:
+    if not position_url:
+        return None
+    if position_url.startswith("http://") or position_url.startswith("https://"):
+        return position_url
+    return f"https://apply.careers.microsoft.com{position_url}"
+
+
+def _get_total_count(response: Dict[str, Any]) -> int:
+    data = response.get("data")
+    if not isinstance(data, dict):
+        return 0
+    count = data.get("count")
+    if isinstance(count, int):
+        return count
+    return 0
+
+
+def fetch_roles(source_cfg: Dict[str, Any]) -> List[RoleDetail]:
+    first_response = call_api(
+        method="GET",
+        url=_build_url(0),
+    )
+
+    total_count = _get_total_count(first_response)
+    total_pages = max(1, math.ceil(total_count / PAGE_SIZE))
+
+    responses = [first_response]
+    for page_index in range(1, total_pages):
+        start = page_index * PAGE_SIZE
+        responses.append(
+            call_api(
+                method="GET",
+                url=_build_url(start),
+            )
+        )
+
+    company = source_cfg.get("company")
+    source_type = source_cfg.get("source_type")
+
+    roles: List[RoleDetail] = []
+
+    for response in responses:
+        for position in _iter_positions(response):
+            mapped = {
+                field: get_by_path(position, path)
+                for field, path in MAPPING.items()
+            }
+
+            job_id = mapped.get("job_id")
+            if not job_id:
+                continue
+
+            mapped.pop("job_id", None)
+            mapped["apply_link"] = _normalize_apply_link(mapped.get("apply_link"))
+
+            city, state, country = _extract_location(position)
+            if city and not mapped.get("city"):
+                mapped["city"] = city
+            if state and not mapped.get("state"):
+                mapped["state"] = state
+            if country and not mapped.get("country"):
+                mapped["country"] = country
+
+            role = RoleDetail(
+                job_hash=generate_job_hash(company, str(job_id)),
+                job_id=str(job_id),
+                company=company,
+                source_type=source_type,
+                # raw=position,
+                **mapped,
+            )
+
+            roles.append(role)
+
+    return roles
