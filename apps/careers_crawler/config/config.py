@@ -14,6 +14,7 @@ MONGO_DB_USER = os.getenv("MONGO_DB_USER", "")
 MONGO_DB_PSD = os.getenv("MONGO_DB_PSD", "")
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "nextrole")
 MONGO_COLLECTION = os.getenv("CAREERS_MONGO_COLLECTION", "")
+CAREERS_TTL_DAYS = int(os.getenv("CAREERS_TTL_DAYS", "21"))
 
 # Prefer explicit MONGO_URI, otherwise build from template + creds.
 _mongo_uri = os.getenv("MONGO_URI", "").strip()
