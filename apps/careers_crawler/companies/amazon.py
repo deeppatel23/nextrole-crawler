@@ -8,6 +8,7 @@ from config.config import OUTPUT_FILE
 from utils.extract_utils import get_by_path
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
+from utils.role_enricher import get_enrichment
 
 API = {
     "method": "POST",
@@ -54,7 +55,7 @@ API = {
             ]
         ],
         "query": "",
-        "size": 100,
+        "size": 25,
         "start": 0,
         "treatment": "OM",
         "cookieInfo": "",
@@ -145,11 +146,31 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             mapped.pop("job_id", None)
             mapped["apply_link"] = _normalize_amazon_job_link(mapped.get("apply_link"))
 
+            desc_text = mapped.get("description") or ""
+            skills_text = mapped.get("skills") or ""
+            if isinstance(desc_text, list):
+                desc_text = " ".join(str(s) for s in desc_text if s)
+            if isinstance(skills_text, list):
+                skills_text = " ".join(str(s) for s in skills_text if s)
+            combined_text = " ".join([str(desc_text), str(skills_text)]).strip()
+
+            enrichment = get_enrichment(
+                mapped.get("title"),
+                mapped.get("description"),
+                mapped.get("apply_link"),
+                combined_text,
+            )
+
+            mapped.pop("skills", None)
+
             role = RoleDetail(
                 job_hash=generate_job_hash(company, str(job_id)),
                 job_id=str(job_id),
                 company=company,
                 source_type=source_type,
+                skills=enrichment["skills"],
+                min_yoe=enrichment["min_yoe"],
+                max_yoe=enrichment["max_yoe"],
                 **mapped,
             )
 

@@ -7,8 +7,10 @@ from config.config import OUTPUT_FILE
 from models.role_detail import RoleDetail
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
+from utils.role_enricher import get_enrichment
 
 BASE_URL = "https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions"
+DETAIL_URL = "https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails"
 BASE_APPLY_URL = "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job"
 LIMIT = 25
 LOCATION_ID = 300000000289360  # India
@@ -43,6 +45,35 @@ def _build_url(offset: int) -> str:
     query["finder"] = finder
     new_query = urlencode(query)
     return urlunparse(parsed._replace(query=new_query))
+
+
+def _build_detail_url(job_id: str) -> str:
+    parsed = urlparse(DETAIL_URL)
+    query = dict(parse_qsl(parsed.query))
+    query["expand"] = "all"
+    query["onlyData"] = "true"
+    query["finder"] = f'ById;Id="{job_id}",siteNumber=CX_1001'
+    new_query = urlencode(query)
+    return urlunparse(parsed._replace(query=new_query))
+
+
+def _fetch_external_description(job_id: str) -> Optional[str]:
+    try:
+        resp = call_api(
+            method="GET",
+            url=_build_detail_url(job_id),
+        )
+    except Exception:
+        return None
+
+    items = resp.get("items")
+    if isinstance(items, list) and items:
+        if isinstance(items[0], dict):
+            return items[0].get("ExternalDescriptionStr")
+    elif isinstance(items, dict):
+        return items.get("ExternalDescriptionStr")
+
+    return None
 
 
 def _get_items(response: Dict[str, Any]) -> Optional[Dict[str, Any]]:
@@ -127,6 +158,14 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
             apply_link = f"{BASE_APPLY_URL}/{job_id}"
 
+            external_desc = _fetch_external_description(str(job_id))
+            enrichment = get_enrichment(
+                req.get("Title"),
+                req.get("ShortDescriptionStr"),
+                apply_link,
+                external_desc,
+            )
+
             role = RoleDetail(
                 job_hash=generate_job_hash(company, str(job_id)),
                 job_id=str(job_id),
@@ -141,6 +180,9 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 workplace_type=req.get("WorkplaceType"),
                 description=req.get("ShortDescriptionStr"),
                 apply_link=apply_link,
+                skills=enrichment["skills"],
+                min_yoe=enrichment["min_yoe"],
+                max_yoe=enrichment["max_yoe"],
                 created_at=req.get("PostedDate"),
                 updated_at=req.get("PostingEndDate"),
             )

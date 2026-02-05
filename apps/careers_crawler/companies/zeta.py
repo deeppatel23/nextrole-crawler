@@ -6,6 +6,8 @@ from config.config import OUTPUT_FILE
 from utils.extract_utils import get_by_path
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
+from utils.html_utils import fetch_visible_text
+from utils.role_enricher import get_enrichment
 
 API = {
     "method": "GET",
@@ -58,11 +60,24 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
         mapped.pop("job_id", None)
 
+        apply_link = f"https://jobs.lever.co/zeta/{job_id}"
+        mapped["apply_link"] = apply_link
+        page_text = fetch_visible_text(apply_link) or ""
+        enrichment = get_enrichment(
+            mapped.get("title"),
+            mapped.get("description"),
+            apply_link,
+            page_text,
+        )
+
         role = RoleDetail(
             job_hash=generate_job_hash(company, str(job_id)),
             job_id=str(job_id),
             company=company,
             source_type=source_type,
+            skills=enrichment["skills"],
+            min_yoe=enrichment["min_yoe"],
+            max_yoe=enrichment["max_yoe"],
             **mapped,
         )
 

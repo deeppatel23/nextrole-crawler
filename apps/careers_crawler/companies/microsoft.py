@@ -8,8 +8,10 @@ from config.config import OUTPUT_FILE
 from utils.extract_utils import get_by_path
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
+from utils.role_enricher import get_enrichment
 
 BASE_URL = "https://apply.careers.microsoft.com/api/pcsx/search"
+DETAIL_URL = "https://apply.careers.microsoft.com/api/pcsx/position_details"
 PAGE_SIZE = 10
 
 DEFAULT_QUERY = {
@@ -99,6 +101,26 @@ def _normalize_apply_link(position_url: Optional[str]) -> Optional[str]:
     return f"https://apply.careers.microsoft.com{position_url}"
 
 
+def _build_detail_url(job_id: str) -> str:
+    return f"{DETAIL_URL}?position_id={job_id}&domain=microsoft.com&hl=en"
+
+
+def _fetch_job_description(job_id: str) -> Optional[str]:
+    try:
+        resp = call_api(
+            method="GET",
+            url=_build_detail_url(job_id),
+        )
+    except Exception:
+        return None
+
+    data = resp.get("data")
+    if isinstance(data, dict):
+        desc = data.get("jobDescription")
+        return desc if isinstance(desc, str) else None
+    return None
+
+
 def _get_total_count(response: Dict[str, Any]) -> int:
     data = response.get("data")
     if not isinstance(data, dict):
@@ -148,11 +170,22 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             if country and not mapped.get("country"):
                 mapped["country"] = country
 
+            detail_desc = _fetch_job_description(str(job_id))
+            enrichment = get_enrichment(
+                mapped.get("title"),
+                mapped.get("description"),
+                mapped.get("apply_link"),
+                detail_desc,
+            )
+
             role = RoleDetail(
                 job_hash=generate_job_hash(company, str(job_id)),
                 job_id=str(job_id),
                 company=company,
                 source_type=source_type,
+                skills=enrichment["skills"],
+                min_yoe=enrichment["min_yoe"],
+                max_yoe=enrichment["max_yoe"],
                 **mapped,
             )
 
