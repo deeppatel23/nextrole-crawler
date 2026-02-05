@@ -9,7 +9,7 @@ HF_MODEL = "moonshotai/Kimi-K2-Instruct-0905"
 LEETCODE_GRAPHQL_URL = "https://leetcode.com/graphql"
 
 OUTPUT_FILE = "interview_experiences.json"
-OUTPUT_DESTINATION = os.getenv("OUTPUT_DESTINATION", "FILE").upper()
+OUTPUT_DESTINATION = os.getenv("LEETCODE_OUTPUT_DESTINATION", "FILE").upper()
 
 # MongoDB settings (used when OUTPUT_DESTINATION=MONGO)
 MONGO_DB_USER = os.getenv("MONGO_DB_USER", "")
