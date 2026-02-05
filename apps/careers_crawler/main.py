@@ -1,6 +1,5 @@
 import yaml
 from processors.job_processor import process_source
-from storage.json_writer import append_jobs
 
 
 def load_sources():
@@ -12,9 +11,8 @@ def main():
     sources = load_sources()
 
     for source in sources:
-        jobs = process_source(source)
-        append_jobs("apps/careers_crawler/output/jobs.json", jobs)
-        print(f"{source['company']}: saved {len(jobs)} jobs")
+        saved_count = process_source(source)
+        print(f"{source['company']}: saved {saved_count} jobs")
 
 
 if __name__ == "__main__":

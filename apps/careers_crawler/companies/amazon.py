@@ -1,10 +1,13 @@
+import math
 import re
 from typing import Any, Dict, List, Optional
 
 from clients.http_client import call_api
 from models.role_detail import RoleDetail
+from config.config import OUTPUT_FILE
 from utils.extract_utils import get_by_path
 from utils.hash_utils import generate_job_hash
+from utils.output_writer import append_roles
 
 API = {
     "method": "POST",
@@ -15,14 +18,12 @@ API = {
     },
     "body": {
         "accessLevel": "EXTERNAL",
-        "query": "",
-        "size": 9999,
-        "start": 0,
-        "treatment": "OM",
-        "sort": {
-            "sortOrder": "DESCENDING",
-            "sortType": "SCORE",
-        },
+        "contentFilterFacets": [
+            {
+                "name": "primarySearchLabel",
+                "requestedFacetCount": 9999,
+            }
+        ],
         "filterFacets": [
             {
                 "name": "country",
@@ -34,6 +35,33 @@ API = {
                 ],
             }
         ],
+        "includeFacets": [],
+        "jobTypeFacets": [],
+        "locationFacets": [
+            [
+                {
+                    "name": "country",
+                    "requestedFacetCount": 9999,
+                },
+                {
+                    "name": "normalizedStateName",
+                    "requestedFacetCount": 9999,
+                },
+                {
+                    "name": "normalizedCityName",
+                    "requestedFacetCount": 9999,
+                },
+            ]
+        ],
+        "query": "",
+        "size": 100,
+        "start": 0,
+        "treatment": "OM",
+        "cookieInfo": "",
+        "sort": {
+            "sortOrder": "DESCENDING",
+            "sortType": "SCORE",
+        },
     },
 }
 
@@ -79,41 +107,70 @@ def _unwrap_list(value: Any) -> Any:
     return value
 
 
-def fetch_roles(source_cfg: Dict[str, Any]) -> List[RoleDetail]:
+def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    first_body = dict(API["body"])
+    first_body["start"] = 0
     response = call_api(
         method=API["method"],
         url=API["url"],
         headers=API.get("headers"),
-        body=API.get("body"),
+        body=first_body,
     )
+
+    found = response.get("found")
+    page_size = first_body.get("size", 100)
+    total_pages = 1
+    if isinstance(found, int) and page_size:
+        total_pages = max(1, math.ceil(found / page_size))
 
     company = source_cfg.get("company")
     source_type = source_cfg.get("source_type")
 
-    roles: List[RoleDetail] = []
+    total_saved = 0
 
-    for fields in _iter_amazon_fields(response):
-        mapped = {
-            field: _unwrap_list(get_by_path(fields, path))
-            for field, path in MAPPING.items()
-        }
+    def _accumulate_from_response(resp: Dict[str, Any]) -> List[RoleDetail]:
+        roles: List[RoleDetail] = []
+        for fields in _iter_amazon_fields(resp):
+            mapped = {
+                field: _unwrap_list(get_by_path(fields, path))
+                for field, path in MAPPING.items()
+            }
 
-        job_id = mapped.get("job_id")
-        if not job_id:
-            continue
+            job_id = mapped.get("job_id")
+            if not job_id:
+                continue
 
-        mapped.pop("job_id", None)
-        mapped["apply_link"] = _normalize_amazon_job_link(mapped.get("apply_link"))
+            mapped.pop("job_id", None)
+            mapped["apply_link"] = _normalize_amazon_job_link(mapped.get("apply_link"))
 
-        role = RoleDetail(
-            job_hash=generate_job_hash(company, str(job_id)),
-            job_id=str(job_id),
-            company=company,
-            source_type=source_type,
-            # raw=fields,
-            **mapped,
+            role = RoleDetail(
+                job_hash=generate_job_hash(company, str(job_id)),
+                job_id=str(job_id),
+                company=company,
+                source_type=source_type,
+                # raw=fields,
+                **mapped,
+            )
+
+            roles.append(role)
+        return roles
+
+    first_batch = _accumulate_from_response(response)
+    append_roles(OUTPUT_FILE, first_batch)
+    total_saved += len(first_batch)
+
+    for page_index in range(1, total_pages):
+        start = page_index * page_size
+        page_body = dict(API["body"])
+        page_body["start"] = start
+        page_response = call_api(
+            method=API["method"],
+            url=API["url"],
+            headers=API.get("headers"),
+            body=page_body,
         )
+        batch = _accumulate_from_response(page_response)
+        append_roles(OUTPUT_FILE, batch)
+        total_saved += len(batch)
 
-        roles.append(role)
-
-    return roles
+    return total_saved

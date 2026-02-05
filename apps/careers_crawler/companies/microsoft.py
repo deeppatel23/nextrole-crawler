@@ -4,8 +4,10 @@ from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 
 from clients.http_client import call_api
 from models.role_detail import RoleDetail
+from config.config import OUTPUT_FILE
 from utils.extract_utils import get_by_path
 from utils.hash_utils import generate_job_hash
+from utils.output_writer import append_roles
 
 BASE_URL = "https://apply.careers.microsoft.com/api/pcsx/search"
 PAGE_SIZE = 10
@@ -107,7 +109,7 @@ def _get_total_count(response: Dict[str, Any]) -> int:
     return 0
 
 
-def fetch_roles(source_cfg: Dict[str, Any]) -> List[RoleDetail]:
+def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     first_response = call_api(
         method="GET",
         url=_build_url(0),
@@ -116,23 +118,14 @@ def fetch_roles(source_cfg: Dict[str, Any]) -> List[RoleDetail]:
     total_count = _get_total_count(first_response)
     total_pages = max(1, math.ceil(total_count / PAGE_SIZE))
 
-    responses = [first_response]
-    for page_index in range(1, total_pages):
-        start = page_index * PAGE_SIZE
-        responses.append(
-            call_api(
-                method="GET",
-                url=_build_url(start),
-            )
-        )
-
     company = source_cfg.get("company")
     source_type = source_cfg.get("source_type")
 
-    roles: List[RoleDetail] = []
+    total_saved = 0
 
-    for response in responses:
-        for position in _iter_positions(response):
+    def _build_batch(resp: Dict[str, Any]) -> List[RoleDetail]:
+        batch: List[RoleDetail] = []
+        for position in _iter_positions(resp):
             mapped = {
                 field: get_by_path(position, path)
                 for field, path in MAPPING.items()
@@ -162,6 +155,21 @@ def fetch_roles(source_cfg: Dict[str, Any]) -> List[RoleDetail]:
                 **mapped,
             )
 
-            roles.append(role)
+            batch.append(role)
+        return batch
 
-    return roles
+    first_batch = _build_batch(first_response)
+    append_roles(OUTPUT_FILE, first_batch)
+    total_saved += len(first_batch)
+
+    for page_index in range(1, total_pages):
+        start = page_index * PAGE_SIZE
+        page_response = call_api(
+            method="GET",
+            url=_build_url(start),
+        )
+        batch = _build_batch(page_response)
+        append_roles(OUTPUT_FILE, batch)
+        total_saved += len(batch)
+
+    return total_saved
