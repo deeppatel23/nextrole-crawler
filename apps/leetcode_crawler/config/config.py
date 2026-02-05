@@ -15,7 +15,7 @@ OUTPUT_DESTINATION = os.getenv("OUTPUT_DESTINATION", "FILE").upper()
 MONGO_DB_USER = os.getenv("MONGO_DB_USER", "")
 MONGO_DB_PSD = os.getenv("MONGO_DB_PSD", "")
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "nextrole")
-MONGO_COLLECTION = os.getenv("MONGO_COLLECTION", "leetcode_interviews")
+MONGO_COLLECTION = os.getenv("LEETCODE_MONGO_COLLECTION", "leetcode_interviews")
 
 # Prefer explicit MONGO_URI, otherwise build from template + creds.
 _mongo_uri = os.getenv("MONGO_URI", "").strip()

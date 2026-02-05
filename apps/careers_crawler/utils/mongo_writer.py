@@ -23,5 +23,8 @@ def append_jobs_mongo(jobs: Iterable) -> None:
     db = client[MONGO_DB_NAME]
     collection = db[MONGO_COLLECTION]
     payload = [asdict(job) for job in jobs]
+    for doc in payload:
+        if "job_hash" in doc:
+            doc["_id"] = doc["job_hash"]
     if payload:
-        collection.insert_many(payload)
+        collection.insert_many(payload, ordered=False)
