@@ -110,6 +110,7 @@ def _unwrap_list(value: Any) -> Any:
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     first_body = dict(API["body"])
     first_body["start"] = 0
+    print(f"Amazon: start iteration 1 calling {API['url']}")
     response = call_api(
         method=API["method"],
         url=API["url"],
@@ -158,11 +159,13 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     first_batch = _accumulate_from_response(response)
     append_roles(OUTPUT_FILE, first_batch)
     total_saved += len(first_batch)
+    print(f"Amazon: iteration 1 saved {len(first_batch)} jobs")
 
     for page_index in range(1, total_pages):
         start = page_index * page_size
         page_body = dict(API["body"])
         page_body["start"] = start
+        print(f"Amazon: start iteration {page_index + 1} calling {API['url']}")
         page_response = call_api(
             method=API["method"],
             url=API["url"],
@@ -172,5 +175,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         batch = _accumulate_from_response(page_response)
         append_roles(OUTPUT_FILE, batch)
         total_saved += len(batch)
+        print(f"Amazon: iteration {page_index + 1} saved {len(batch)} jobs")
 
     return total_saved

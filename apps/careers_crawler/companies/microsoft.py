@@ -110,6 +110,7 @@ def _get_total_count(response: Dict[str, Any]) -> int:
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    print(f"Microsoft: start iteration 1 calling {_build_url(0)}")
     first_response = call_api(
         method="GET",
         url=_build_url(0),
@@ -161,9 +162,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     first_batch = _build_batch(first_response)
     append_roles(OUTPUT_FILE, first_batch)
     total_saved += len(first_batch)
+    print(f"Microsoft: iteration 1 saved {len(first_batch)} jobs")
 
     for page_index in range(1, total_pages):
         start = page_index * PAGE_SIZE
+        print(f"Microsoft: start iteration {page_index + 1} calling {_build_url(start)}")
         page_response = call_api(
             method="GET",
             url=_build_url(start),
@@ -171,5 +174,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         batch = _build_batch(page_response)
         append_roles(OUTPUT_FILE, batch)
         total_saved += len(batch)
+        print(f"Microsoft: iteration {page_index + 1} saved {len(batch)} jobs")
 
     return total_saved
