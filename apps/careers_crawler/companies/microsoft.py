@@ -193,9 +193,12 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         return batch
 
     first_batch = _build_batch(first_response)
-    append_roles(OUTPUT_FILE, first_batch)
-    total_saved += len(first_batch)
-    print(f"Microsoft: iteration 1 saved {len(first_batch)} jobs")
+    saved_count, stop_fetch = append_roles(OUTPUT_FILE, first_batch)
+    total_saved += saved_count
+    print(f"Microsoft: iteration 1 saved {saved_count} jobs")
+    if stop_fetch:
+        print("Microsoft: existing job_hash found, stopping further fetch.")
+        return total_saved
     if total_saved >= max_saved:
         print(f"Microsoft: reached max_saved_jobs={max_saved}, stopping.")
         return total_saved
@@ -211,8 +214,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             url=_build_url(start),
         )
         batch = _build_batch(page_response)
-        append_roles(OUTPUT_FILE, batch)
-        total_saved += len(batch)
-        print(f"Microsoft: iteration {page_index + 1} saved {len(batch)} jobs")
+        saved_count, stop_fetch = append_roles(OUTPUT_FILE, batch)
+        total_saved += saved_count
+        print(f"Microsoft: iteration {page_index + 1} saved {saved_count} jobs")
+        if stop_fetch:
+            print("Microsoft: existing job_hash found, stopping further fetch.")
+            return total_saved
 
     return total_saved

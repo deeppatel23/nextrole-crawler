@@ -12,7 +12,7 @@ from utils.role_enricher import get_enrichment
 BASE_URL = "https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions"
 DETAIL_URL = "https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails"
 BASE_APPLY_URL = "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job"
-LIMIT = 25
+LIMIT = 10
 LOCATION_ID = 300000000289360  # India
 
 DEFAULT_QUERY = {
@@ -172,8 +172,8 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 company=company,
                 source_type=source_type,
                 title=req.get("Title"),
-                role=req.get("JobFunction"),
-                category=req.get("JobFamily"),
+                role=req.get("JobFamily"),
+                category=req.get("JobFunction"),
                 city=city,
                 state=state,
                 country=country or req.get("PrimaryLocationCountry"),
@@ -192,9 +192,12 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     total_saved = 0
 
     first_batch = _build_batch(first_response)
-    append_roles(OUTPUT_FILE, first_batch)
-    total_saved += len(first_batch)
-    print(f"JP Morgan & Chase: iteration 1 saved {len(first_batch)} jobs")
+    saved_count, stop_fetch = append_roles(OUTPUT_FILE, first_batch)
+    total_saved += saved_count
+    print(f"JP Morgan & Chase: iteration 1 saved {saved_count} jobs")
+    if stop_fetch:
+        print("JP Morgan & Chase: existing job_hash found, stopping further fetch.")
+        return total_saved
     if total_saved >= max_saved:
         print(f"JP Morgan & Chase: reached max_saved_jobs={max_saved}, stopping.")
         return total_saved
@@ -210,8 +213,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             url=_build_url(offset),
         )
         batch = _build_batch(page_response)
-        append_roles(OUTPUT_FILE, batch)
-        total_saved += len(batch)
-        print(f"JP Morgan & Chase: iteration {page_index + 1} saved {len(batch)} jobs")
+        saved_count, stop_fetch = append_roles(OUTPUT_FILE, batch)
+        total_saved += saved_count
+        print(f"JP Morgan & Chase: iteration {page_index + 1} saved {saved_count} jobs")
+        if stop_fetch:
+            print("JP Morgan & Chase: existing job_hash found, stopping further fetch.")
+            return total_saved
 
     return total_saved

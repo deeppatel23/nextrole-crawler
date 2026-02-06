@@ -17,8 +17,8 @@ API = {
 MAPPING = {
     "job_id": "id",
     "title": "text",
-    "role": "categories.team",
-    "category": "categories.department",
+    "role": "categories.department",
+    "category": "categories.team",
     "city": "categories.location",
     "country": "country",
     "workplace_type": "workplaceType",
@@ -83,5 +83,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
         roles.append(role)
 
-    append_roles(OUTPUT_FILE, roles)
-    return len(roles)
+    saved_count, stop_fetch = append_roles(OUTPUT_FILE, roles)
+    if stop_fetch:
+        print("Zeta: existing job_hash found, stopping further fetch.")
+    return saved_count

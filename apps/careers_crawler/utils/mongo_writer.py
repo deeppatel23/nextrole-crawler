@@ -1,9 +1,9 @@
 from dataclasses import asdict
 from datetime import datetime, timedelta
-from typing import Iterable
+from typing import Iterable, Tuple
 
 import certifi
-from pymongo import MongoClient
+from pymongo import MongoClient, UpdateOne
 
 from config.config import MONGO_COLLECTION, MONGO_DB_NAME, MONGO_URI, CAREERS_TTL_DAYS
 
@@ -20,7 +20,7 @@ def _get_client() -> MongoClient:
     return _client
 
 
-def append_jobs_mongo(jobs: Iterable) -> None:
+def append_jobs_mongo(jobs: Iterable) -> Tuple[int, bool]:
     client = _get_client()
     db = client[MONGO_DB_NAME]
     collection = db[MONGO_COLLECTION]
@@ -36,5 +36,23 @@ def append_jobs_mongo(jobs: Iterable) -> None:
         if "job_hash" in doc:
             doc["_id"] = doc["job_hash"]
         doc["expires_at"] = expires_at
-    if payload:
-        collection.insert_many(payload, ordered=False)
+    ops = []
+    for doc in payload:
+        job_hash = doc.get("job_hash")
+        if not job_hash:
+            continue
+        ops.append(
+            UpdateOne(
+                {"_id": job_hash},
+                {"$setOnInsert": doc},
+                upsert=True,
+            )
+        )
+
+    if not ops:
+        return 0, False
+
+    result = collection.bulk_write(ops, ordered=False)
+    saved_count = int(getattr(result, "upserted_count", 0))
+    stop_fetch = saved_count < len(ops)
+    return saved_count, stop_fetch

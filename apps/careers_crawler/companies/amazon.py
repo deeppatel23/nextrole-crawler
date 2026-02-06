@@ -178,9 +178,12 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         return roles
 
     first_batch = _accumulate_from_response(response)
-    append_roles(OUTPUT_FILE, first_batch)
-    total_saved += len(first_batch)
-    print(f"Amazon: iteration 1 saved {len(first_batch)} jobs")
+    saved_count, stop_fetch = append_roles(OUTPUT_FILE, first_batch)
+    total_saved += saved_count
+    print(f"Amazon: iteration 1 saved {saved_count} jobs")
+    if stop_fetch:
+        print("Amazon: existing job_hash found, stopping further fetch.")
+        return total_saved
     if total_saved >= max_saved:
         print(f"Amazon: reached max_saved_jobs={max_saved}, stopping.")
         return total_saved
@@ -200,8 +203,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             body=page_body,
         )
         batch = _accumulate_from_response(page_response)
-        append_roles(OUTPUT_FILE, batch)
-        total_saved += len(batch)
-        print(f"Amazon: iteration {page_index + 1} saved {len(batch)} jobs")
+        saved_count, stop_fetch = append_roles(OUTPUT_FILE, batch)
+        total_saved += saved_count
+        print(f"Amazon: iteration {page_index + 1} saved {saved_count} jobs")
+        if stop_fetch:
+            print("Amazon: existing job_hash found, stopping further fetch.")
+            return total_saved
 
     return total_saved
