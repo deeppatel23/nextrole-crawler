@@ -7,7 +7,7 @@ class LeetCodeClient:
     def fetch_posts(
         self,
         limit: int,
-        tag: str = "interview",
+        tag: str | None = "interview",
         skip: int = 0,
         order_by: str = "MOST_RECENT", #HOT
     ) -> List[dict]:
@@ -50,7 +50,7 @@ class LeetCodeClient:
             "variables": {
                 "orderBy": order_by,
                 "keywords": [""],
-                "tagSlugs": [tag],
+                "tagSlugs": [] if not tag else [tag],
                 "skip": skip,
                 "first": limit,
             },

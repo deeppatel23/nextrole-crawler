@@ -24,13 +24,14 @@ The LeetCode crawler reads one-time load settings from:
 Fields:
 - `one_time_data_load`: boolean.
 - `one_time_post_limit`: integer. Maximum number of posts to attempt in one-time mode.
-- `one_time_load_last_saved_timestamp`: ISO timestamp string.
+- `skip_posts`: integer. Number of most-recent posts to skip when running one-time mode.
 
 Behavior:
 - When `one_time_data_load: true`:
   - The crawler runs a one-time batch and stops after `one_time_post_limit` attempted posts.
-  - If `one_time_load_last_saved_timestamp` is set, it skips newer posts and starts from posts older than this timestamp.
-  - After each successfully saved post, `one_time_load_last_saved_timestamp` is updated with that post’s `createdAt`.
+  - Fetches posts in `MOST_RECENT` order.
+  - Uses `skip_posts` as the GraphQL `skip` value to resume from a specific offset.
+  - After each successfully saved post, `skip_posts` is incremented and written back to the YAML.
 - When `one_time_data_load: false`:
   - Incremental mode is enabled (only when output destination is Mongo).
   - Posts are fetched in `MOST_RECENT` order and the crawler stops once it sees a post whose `interview_hash` already exists in Mongo.
