@@ -32,9 +32,11 @@ Schema:
 
 Rules for "questions":
 - Each question must be a single interview question.
-- The "topics" list must include exactly one of: "DSA", "Theory", "LLD", "HLD".
+- The "topics" list must include exactly one primary type from: "DSA", "Theory", "LLD", "HLD", "Product Thinking", "Behavioral", "Leadership", "Testing", "Security", "DevOps".
 - If unsure, choose the closest type and keep topics minimal.
 - If a follow-up is clearly tied to the previous question (e.g., starts with "What if..." or "How would you..." about the same scenario), merge it into the same question "description" separated by " / ".
+- The "description" must preserve the original wording as much as possible, then add a short, plain-English clarification after " - ". Example: "Design a rate limiter - Explain how to limit requests per user over time."
+- If the topic is "Theory", add a second topic entry for the category, e.g., ["Theory", "Database"]. Choose the most specific category possible (e.g., Database, Java, OOP, Data Structures, OS, Networks, Concurrency, System Design, Security, Testing, DevOps, etc.). Do NOT add the category to "description".
 
 Title:
 {title or ""}
@@ -49,6 +51,7 @@ Post:
 Instructions:
 - Do NOT write any summary.
 - Focus on extracting the interview questions accurately.
+- The short plain-English clarification in each "description" is required and is not a summary of the post.
 """
             )
 
@@ -82,6 +85,7 @@ Instructions:
                         topics=[],
                         description=q,
                         links=[],
+                        question_approved=False,
                     )
                 )
                 continue
@@ -91,6 +95,7 @@ Instructions:
                     topics=q.get("topics", []) or [],
                     description=q.get("description", ""),
                     links=q.get("links", []) or [],
+                    question_approved=False,
                 )
             )
 

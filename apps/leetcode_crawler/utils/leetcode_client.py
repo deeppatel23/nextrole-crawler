@@ -9,7 +9,7 @@ class LeetCodeClient:
         limit: int,
         tag: str = "interview",
         skip: int = 0,
-        order_by: str = "HOT",
+        order_by: str = "MOST_RECENT", #HOT
     ) -> List[dict]:
 
         query = """
@@ -34,6 +34,7 @@ class LeetCodeClient:
                 slug
                 summary
                 topicId
+                createdAt
                 tags {
                   name
                   slug

@@ -7,6 +7,10 @@ from utils.rules import is_interview_post
 from config.config import MAX_POSTS
 import re
 from utils.output_writer import append_interviews
+from config.config import OUTPUT_DESTINATION, LEETCODE_STATE_FILE
+from utils.state_store import read_state
+from utils.mongo_writer import has_interview_hash
+from hashlib import sha256
 
 
 def build_discuss_url(topic_id: int | None, slug: str) -> str | None:
@@ -21,72 +25,108 @@ def extract_links(text: str) -> list[str]:
     return sorted({match.rstrip(".,;:") for match in re.findall(pattern, text)})
 
 
+def build_interview_hash(topic_id: int | None, slug: str | None) -> str:
+    base = f"{topic_id or ''}:{slug or ''}"
+    return sha256(base.encode("utf-8")).hexdigest()
+
+
 def main():
     leetcode = LeetCodeClient()
     llm = LLMClient()
     extractor = InterviewExtractor(llm)
     repo = InterviewRepository()
 
-    posts = leetcode.fetch_posts(MAX_POSTS, tag="interview")
     results = []
+    state = read_state(LEETCODE_STATE_FILE)
+    one_time_data_load = bool(state.get("one_time_data_load", True))
+    one_time_post_limit = state.get("one_time_post_limit", 9999)
+    incremental_mode = OUTPUT_DESTINATION == "MONGO" and not one_time_data_load
 
-    for post in posts:
-        try:
-            slug = post["slug"]
-            summary = post.get("summary", "")
+    skip = 0
+    processed = 0
+    order_by = "MOST_RECENT" if incremental_mode else "HOT"
 
+    while True:
+        posts = leetcode.fetch_posts(MAX_POSTS, tag="interview", skip=skip, order_by=order_by)
+        if not posts:
+            break
+
+        for post in posts:
             try:
-                print("Post is being processed:", post.get("title"))
+                processed += 1
+                if one_time_data_load and processed > one_time_post_limit:
+                    print(
+                        f"Reached one-time post limit of {one_time_post_limit}. Stopping."
+                    )
+                    return
+
                 slug = post["slug"]
-                topic_id = post.get("topicId")
+                summary = post.get("summary", "")
+                created_at = post.get("createdAt")
 
-                content = leetcode.fetch_post_content(slug, topic_id)
+                if incremental_mode:
+                    topic_id = post.get("topicId")
+                    interview_hash = build_interview_hash(topic_id, slug)
+                    if has_interview_hash(interview_hash):
+                        return
 
-                print(f"✔ Fetched content for {slug}")
+                try:
+                    print("Post is being processed:", post.get("title"), " counter is ", processed)
+                    slug = post["slug"]
+                    topic_id = post.get("topicId")
 
-                if not content:
-                    print(f"⚠ Using summary for {slug}")
+                    content = leetcode.fetch_post_content(slug, topic_id)
+
+                    print(f"✔ Fetched content for {slug}")
+
+                    if not content:
+                        print(f"⚠ Using summary for {slug}")
+                        content = summary
+
+                except Exception as e:
+                    print(f"⚠ Using summary for {slug}: {e}")
                     content = summary
 
+                if not is_interview_post(content):
+                    print(f"⚠ Skipped non-interview post: {slug}")
+                    continue
+
+                source_url = build_discuss_url(topic_id, slug)
+                try:
+                    interview = extractor.extract(content, title=post.get("title"))
+                except Exception as e:
+                    print(f"⚠ LLM failed for {slug}: {e}, source url is {source_url}")
+                    continue
+
+                if not interview.company:
+                    print(
+                        f"⚠ Skipped post (missing company): {source_url or slug}"
+                    )
+                    continue
+
+                if not interview.questions:
+                    print(
+                        f"⚠ Skipped post (missing questions): {source_url or slug}"
+                    )
+                    continue
+
+                interview.source_url = source_url
+                interview.additional_links = extract_links(content)
+                interview.title = post.get("title")
+                interview.created_date = created_at
+                interview.interview_hash = build_interview_hash(topic_id, slug)
+                interview.source_summary = summary
+                interview.source_tags = [t.get("slug") for t in post.get("tags", []) if t]
+                interview.original_content = content
+                # append_interviews expects an iterable; pass a single-item list
+                append_interviews("apps/leetcode_crawler/output/interview.json", [interview])
+
+                print(f"✔ Extracted: {interview.company}, created at {created_at}")
+
             except Exception as e:
-                print(f"⚠ Using summary for {slug}: {e}")
-                content = summary
+                print(f"⚠ Skipped post: {e}")
 
-            if not is_interview_post(content):
-                continue
-
-            source_url = build_discuss_url(topic_id, slug)
-            try:
-                interview = extractor.extract(content, title=post.get("title"))
-            except Exception as e:
-                print(f"⚠ LLM failed for {slug}: {e}, source url is {source_url}")
-                continue
-
-            if not interview.company:
-                print(
-                    f"⚠ Skipped post (missing company): {source_url or slug}"
-                )
-                continue
-
-            if not interview.questions:
-                print(
-                    f"⚠ Skipped post (missing questions): {source_url or slug}"
-                )
-                continue
-
-            interview.source_url = source_url
-            interview.additional_links = extract_links(content)
-            interview.title = post.get("title")
-            interview.source_summary = summary
-            interview.source_tags = [t.get("slug") for t in post.get("tags", []) if t]
-            interview.original_content = content
-            # append_interviews expects an iterable; pass a single-item list
-            append_interviews("apps/leetcode_crawler/output/interview.json", [interview])
-
-            print(f"✔ Extracted: {interview.company}")
-
-        except Exception as e:
-            print(f"⚠ Skipped post: {e}")
+        skip += MAX_POSTS
 
 
 

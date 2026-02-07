@@ -208,5 +208,1066 @@
       }
     ],
     "final_verdict": "Rejected"
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "avgOfStudentsScore()",
+        "links": []
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Parking Lot (multiple floors) question. I still wrote down the class design",
+        "links": []
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "HLD for twitter and only tweets on home page (global tweets + follower tweets). Asked to draw a diagram. / Write down the entities and their fields. / Questions about databases: difference between relational databases vs others, why postgreSQL here, can we use any other database, etc. / Explain how OOP principles would apply here (specifically in data entities).",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s. / Questions about DFS vs BFS.",
+        "links": []
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Google",
+    "role": "Backend Engineer L5",
+    "location": "US",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares given a set of points. / Constraints: cannot use string, char, image or binary for inputs. Squares must have edges to be counted. In the example, xycb and xauq are squares, but bcwq and xzfq are not. This is NOT the detect squares problem. The points must be connected by a square and must also account for squares formed by multiple points.",
+        "links": []
+      }
+    ],
+    "final_verdict": "Negative"
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "avgOfStudentsScore() - Calculate the average score for each student.",
+        "links": []
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Parking Lot (multiple floors) question - Design the classes and their interactions for a multi-floor parking lot system.",
+        "links": []
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "HLD for twitter and only tweets on home page (global tweets + follower tweets). Asked to draw a diagram. / After this, I was asking to write down the entities and their fields. - Design the high-level architecture for Twitter's home page feed, including global and follower tweets, and define the necessary data entities and their fields.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "difference between relational databases vs others, why postgreSQL here, can we use any other database, etc. - Discuss the differences between relational and other database types, justify the choice of PostgreSQL, and consider alternatives.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "exolain how OOP principles would apply here (specificially in data entities). - Explain the application of Object-Oriented Programming principles to the data entities in the system design.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not. - Implement the logic for a blackjack game, specifically handling the Ace's dual value and determining if a hand is a blackjack.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s. Classic leetcode question. - Find the largest connected area of '1's in a binary grid.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "10-20 questions about DFS vs BFS were asked. - Compare and contrast Depth-First Search (DFS) and Breadth-First Search (BFS) algorithms, discussing their applications, complexities, and trade-offs.",
+        "links": []
+      }
+    ],
+    "final_verdict": "Waiting for results"
+  },
+  {
+    "company": "Google",
+    "role": "L5",
+    "location": "US",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares given a set of points and their connections, with specific constraints - Identify and count all valid squares formed by connected points, considering rules like 'squares must have edges' and 'cannot use string, char, image or binary for inputs', and accounting for squares formed by multiple points.",
+        "links": []
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "avgOfStudentsScore() - Implement a function to calculate the average score of students.",
+        "links": []
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Parking Lot (multiple floors) - Design a system for a multi-floor parking lot.",
+        "links": []
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "HLD for twitter and only tweets on home page (global tweets + follower tweets) / Draw a diagram / Write down the entities and their fields - Design a high-level system for Twitter's home page feed, including global and follower tweets, and define its core entities.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "Theory(Database): difference between relational databases vs others, why postgreSQL here, can we use any other database - Explain the distinctions between relational and other database types, justify PostgreSQL's use, and discuss alternative database options.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "Theory(OOP): exolain how OOP principles would apply here (specificially in data entities) - Describe how Object-Oriented Programming principles are applied to the data entities in the system design.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not - Implement a Blackjack game, handling Ace's dual value (1 or 11), and determine if a hand is a Blackjack.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s - Find the maximum area of connected '1's in a binary grid.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory"
+        ],
+        "description": "Theory(Algorithms): 10-20 questions about DFS vs BFS - Discuss the differences, use cases, and complexities of Depth-First Search (DFS) and Breadth-First Search (BFS) algorithms.",
+        "links": []
+      }
+    ],
+    "final_verdict": "Waiting for results"
+  },
+  {
+    "company": "Google",
+    "role": "L5",
+    "location": "US",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares given a set of points and their connections - Determine how many valid squares can be formed by connected points, considering constraints like no string/char/image/binary inputs and requiring edges for squares, and accounting for squares formed by multiple points.",
+        "links": []
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Theory",
+          "Software Engineering"
+        ],
+        "description": "The questions from my resume were relatively easy, just some deep dives - Discuss projects and experiences listed on the resume, including SDLC concepts.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Solve avgOfStudentsScore() - Implement a function to calculate the average score of students.",
+        "links": []
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Verbally solve Parking Lot (multiple floors) question - Design a system for a multi-floor parking lot.",
+        "links": []
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "HLD for twitter and only tweets on home page (global tweets + follower tweets). Asked to draw a diagram - Design the high-level architecture for Twitter's home page feed, including global and follower tweets.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "Difference between relational databases vs others, why postgreSQL here, can we use any other database - Explain the differences between relational and other database types, justify PostgreSQL choice, and discuss alternatives.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Explain how OOP principles would apply here (specifically in data entities) - Describe the application of Object-Oriented Programming principles to data entities within the system design.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not - Implement the logic for a Blackjack game, handling Ace value flexibility and determining if a hand is a blackjack.",
+        "links": []
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s - Find the largest connected area of '1's in a binary grid.",
+        "links": []
+      },
+      {
+        "topics": [
+          "Theory",
+          "Data Structures"
+        ],
+        "description": "10-20 questions about DFS vs BFS were asked - Compare and contrast Depth-First Search and Breadth-First Search algorithms, discussing their applications and characteristics.",
+        "links": []
+      }
+    ],
+    "final_verdict": "Waiting for results"
+  },
+  {
+    "company": "Google",
+    "role": "L5",
+    "location": "US",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares given a set of points and connections - Determine how many valid squares can be formed by connected points, respecting specific constraints (e.g., cannot use string, char, image or binary for inputs; squares must have edges; account for squares formed by multiple points).",
+        "links": []
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "interview_hash": "a8b6a569c01aae2f7919bceba1430c64b88f0048698fc6411a6ac42c7c7b2938",
+    "created_date": "2026-02-07T02:51:50.951457+00:00",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "avgOfStudentsScore() - Implement a function to calculate the average score of students.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Design a Parking Lot (multiple floors) - Explain the class design for a multi-floor parking lot system.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Design HLD for twitter and only tweets on home page (global tweets + follower tweets) - Draw a diagram and explain the high-level architecture for displaying tweets on a user's home feed.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "Explain difference between relational databases vs others, why postgreSQL here, can we use any other database - Discuss various database types, justify the choice of PostgreSQL, and suggest alternatives for the Twitter HLD.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Explain how OOP principles would apply here (specificially in data entities) - Describe the application of Object-Oriented Programming principles to the data entities in the Twitter HLD.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not - Implement the logic for a blackjack game, handling the Ace's dual value and determining if a hand is a blackjack.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s - Find the largest connected component of 1s in a binary grid.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Algorithms"
+        ],
+        "description": "Discuss DFS vs BFS - Explain the differences, use cases, and complexities of Depth-First Search and Breadth-First Search algorithms.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Waiting for results"
+  },
+  {
+    "company": "Google",
+    "role": "Backend Engineer L5",
+    "location": "US",
+    "interview_hash": "6e9b0ea5fa6c83eb97916f381efe48f5201e2c16b24c5afa9b79cc14ffcd65fe",
+    "created_date": "2026-02-07T00:20:07.513481+00:00",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares - Given a set of points and their connections, count all squares where points are connected by edges, and squares can be formed by multiple points, without using string, char, image, or binary inputs.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Fail"
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "interview_hash": "a8b6a569c01aae2f7919bceba1430c64b88f0048698fc6411a6ac42c7c7b2938",
+    "created_date": "2026-02-07T02:51:50.951457+00:00",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "avgOfStudentsScore() - Implement a function to calculate the average score of students.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Parking Lot (multiple floors) - Design a parking lot system with multiple floors.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "HLD for twitter and only tweets on home page (global tweets + follower tweets). Asked to draw a diagram. / Write down the entities and their fields.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "Difference between relational databases vs others, why postgreSQL here, can we use any other database, etc. - Explain database types, justify PostgreSQL choice, and discuss alternatives.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Exolain how OOP principles would apply here (specificially in data entities). - Describe the application of Object-Oriented Programming principles to data entities in the system design.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not. - Implement a Blackjack game logic, handling Ace value and determining a blackjack hand.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s. - Find the maximum area of connected 1s in a binary grid.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Data Structures"
+        ],
+        "description": "10-20 questions about DFS vs BFS were asked. - Compare and contrast Depth-First Search (DFS) and Breadth-First Search (BFS) algorithms.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Waiting for results"
+  },
+  {
+    "company": "Google",
+    "role": "Backend Engineer L5",
+    "location": "US",
+    "interview_hash": "6e9b0ea5fa6c83eb97916f381efe48f5201e2c16b24c5afa9b79cc14ffcd65fe",
+    "created_date": "2026-02-07T00:20:07.513481+00:00",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares - Given a set of points and their connections, count all valid squares where edges must be explicitly present, and squares can be formed by multiple points, with input restrictions (no string, char, image, or binary).",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Teradata",
+    "role": "SDE",
+    "location": null,
+    "interview_hash": "daa5ad9d184ed0596210d1272928f20fa1918de4d6eb84e59d2f391402617e92",
+    "created_date": "2026-02-06T14:05:33.514190+00:00",
+    "title": "Teradata | SDE | DSA Round",
+    "source_url": "https://leetcode.com/discuss/post/7557859/teradata-sde-dsa-round-by-anonymous_user-b9sq/",
+    "source_tags": [
+      "teradata",
+      "backend",
+      "dsa",
+      "interview"
+    ],
+    "additional_links": [
+      "https://leetcode.com/problems/count-prime-gap-balanced-subarrays/description",
+      "https://leetcode.com/problems/insert-delete-getrandom-o1/description/"
+    ],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count Prime Gap Balanced Subarrays - Implement an algorithm to count subarrays with a specific prime gap balance.",
+        "links": [
+          "https://leetcode.com/problems/count-prime-gap-balanced-subarrays/description"
+        ],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Insert Delete GetRandom O(1) - No Duplicates - Design a data structure that supports insert, delete, and getRandom operations in O(1) average time, without duplicates.",
+        "links": [
+          "https://leetcode.com/problems/insert-delete-getrandom-o1/description/"
+        ],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "SQL LEFT JOIN - Explain or demonstrate the use of a SQL LEFT JOIN.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Airbnb, Doordash",
+    "role": "Senior Software Engineer",
+    "location": null,
+    "interview_hash": "04edc4994aab39fefde4332ace2a9d3d1f189d524d557419c5f4436324e65769",
+    "created_date": "2026-02-06T08:40:38.830307+00:00",
+    "title": "[Interview Experience+Mindset]From Endless Rejections to finally landing Airbnb and Doordash Offers!",
+    "source_url": "https://leetcode.com/discuss/post/7557196/from-endless-rejections-to-finally-landi-zlvz/",
+    "source_tags": [
+      "airbnb",
+      "doordash",
+      "career",
+      "interview"
+    ],
+    "additional_links": [
+      "https://blog.bytebytego.com/p/free-system-design-pdf-158-pages",
+      "https://leetcode.com/discuss/post/7541629/interview-experience-microsoft-sde-2l61-qvanx/",
+      "https://offerretriever.com/",
+      "https://offerretriever.com/companies/f00ffbd7-bf49-45f7-8bb5-59703194b9b9",
+      "https://www.youtube.com/c/SystemDesignInterview"
+    ],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Solve a coding problem - Implement an algorithm or data structure to solve a given problem, often from a company's specific question bank.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Design a system - Propose an architecture for a given system requirement, often based on recently asked company questions.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Discuss your experiences aligning with company values - Share stories that demonstrate your fit with the company's culture and principles.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Offers from Airbnb and Doordash"
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "interview_hash": "a8b6a569c01aae2f7919bceba1430c64b88f0048698fc6411a6ac42c7c7b2938",
+    "created_date": "2026-02-07T02:51:50.951457+00:00",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Questions from my resume - Discuss details and experiences from my resume.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Solve avgOfStudentsScore() - Implement a function to calculate the average score of students.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Verbally solve Parking Lot (multiple floors) question - Design a system for a multi-floor parking lot.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Design HLD for Twitter, focusing on tweets on the home page (global tweets + follower tweets) - Draw a system diagram for Twitter's home page feed.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Write down the entities and their fields for the Twitter HLD - Define the data models and attributes for the Twitter system.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "Explain the difference between relational databases vs. other types, why PostgreSQL would be used here, and if other databases could be used - Discuss database choices and their implications for the Twitter design.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Explain how OOP principles would apply in the data entities of the Twitter design - Describe how object-oriented programming concepts are used in the data models.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Design a blackjack game where an Ace can be 1 or 11, and determine if a hand is blackjack - Implement the logic for a simplified blackjack game.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Find the max area of 1s in a grid with 0s and 1s - Implement an algorithm to find the largest connected component of 1s.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Data Structures"
+        ],
+        "description": "Answer questions about DFS vs. BFS - Compare and contrast Depth-First Search and Breadth-First Search algorithms.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Google",
+    "role": "L5",
+    "location": "US",
+    "interview_hash": "6e9b0ea5fa6c83eb97916f381efe48f5201e2c16b24c5afa9b79cc14ffcd65fe",
+    "created_date": "2026-02-07T00:20:07.513481+00:00",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares given a set of points and connections - Identify all valid squares formed by connected points, adhering to specific constraints (e.g., no string/char/image/binary inputs) and accounting for squares formed by multiple points, where squares must have edges to be counted.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Goldman Sachs",
+    "role": null,
+    "location": "USA",
+    "interview_hash": "a8b6a569c01aae2f7919bceba1430c64b88f0048698fc6411a6ac42c7c7b2938",
+    "created_date": "2026-02-07T02:51:50.951457+00:00",
+    "title": "Goldman Sachs Superday + Additional DSA round",
+    "source_url": "https://leetcode.com/discuss/post/7558995/goldman-sachs-superday-additional-dsa-ro-r1v6/",
+    "source_tags": [
+      "goldman-sachs",
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Deep dives into resume projects - Discuss past work experience and projects.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "avgOfStudentsScore() - Implement a function to calculate the average score of students.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Verbally solve Parking Lot (multiple floors) question - Design a system for a multi-floor parking lot.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "HLD for twitter and only tweets on home page (global tweets + follower tweets). Asked to draw a diagram. / Write down the entities and their fields. - Design the high-level architecture for Twitter's home feed, including global and follower tweets, and define the necessary data entities.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "Difference between relational databases vs others, why postgreSQL here, can we use any other database, etc. - Explain the differences between relational and other database types, justify PostgreSQL's use, and discuss alternatives.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Explain how OOP principles would apply here (specifically in data entities). - Describe the application of Object-Oriented Programming principles to the data entities in the system design.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Design a blackjack game where the Ace could be used as 1 or 11. Tell us if a hand is blackjack or not. - Implement the logic for a Blackjack game, handling Ace's dual value and determining if a hand is Blackjack.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Max area of 1s in a grid with 0s and 1s. - Find the maximum area of connected 1s in a binary grid.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Data Structures"
+        ],
+        "description": "Questions about DFS vs BFS - Compare and contrast Depth-First Search and Breadth-First Search algorithms.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Waiting for results"
+  },
+  {
+    "company": "Google",
+    "role": "Backend Engineer L5",
+    "location": "US",
+    "interview_hash": "6e9b0ea5fa6c83eb97916f381efe48f5201e2c16b24c5afa9b79cc14ffcd65fe",
+    "created_date": "2026-02-07T00:20:07.513481+00:00",
+    "title": "US: Google coding interview - find squares-ish",
+    "source_url": "https://leetcode.com/discuss/post/7558860/us-google-coding-interview-find-squares-l4ngs/",
+    "source_tags": [
+      "google",
+      "backend",
+      "feedback",
+      "interview",
+      "senior-level"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count the number of squares - Given a set of points and connections (like a grid with lines), identify and count all valid squares formed by connected points, where squares must have explicit edges and can be formed by multiple points, without using string, char, image, or binary inputs for the problem representation.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Teradata",
+    "role": "SDE",
+    "location": null,
+    "interview_hash": "daa5ad9d184ed0596210d1272928f20fa1918de4d6eb84e59d2f391402617e92",
+    "created_date": "2026-02-06T14:05:33.514190+00:00",
+    "title": "Teradata | SDE | DSA Round",
+    "source_url": "https://leetcode.com/discuss/post/7557859/teradata-sde-dsa-round-by-anonymous_user-b9sq/",
+    "source_tags": [
+      "teradata",
+      "backend",
+      "dsa",
+      "interview"
+    ],
+    "additional_links": [
+      "https://leetcode.com/problems/count-prime-gap-balanced-subarrays/description",
+      "https://leetcode.com/problems/insert-delete-getrandom-o1/description/"
+    ],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Count Prime Gap Balanced Subarrays - Count subarrays where the difference between the number of prime gaps on the left and right is balanced.",
+        "links": [
+          "https://leetcode.com/problems/count-prime-gap-balanced-subarrays/description"
+        ],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Insert Delete GetRandom O(1) - No Duplicates - Design a data structure that supports insertion, deletion, and random element retrieval in average O(1) time, ensuring no duplicate elements.",
+        "links": [
+          "https://leetcode.com/problems/insert-delete-getrandom-o1/description/"
+        ],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "SQL LEFT JOIN - Describe the behavior and common applications of the SQL LEFT JOIN clause.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Omio",
+    "role": "Technical Lead",
+    "location": "Bengaluru",
+    "interview_hash": "845a9ab03f9e7cd134cbbbf44984432fe4f541a7fb7ccd101f2ef928e4999f30",
+    "created_date": "2026-02-06T12:11:44.447722+00:00",
+    "title": "Omio | Technical Lead | Bengaluru",
+    "source_url": "https://leetcode.com/discuss/post/7557629/omio-technical-lead-bengaluru-by-anonymo-f8lq/",
+    "source_tags": [
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "General discussion about what Omio does, my projects, why I'm leaving etc. - Discuss company operations, personal projects, and reasons for job change.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "say there is a continuous stream of data coming from some maching learning model. You have to reduce the noise in data so waiting time can be shown to the customer. - Design an algorithm to reduce noise in a continuous data stream to display customer waiting times.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Rejected"
+  },
+  {
+    "company": "Wego",
+    "role": "Technical Lead",
+    "location": "Bengaluru",
+    "interview_hash": "4099b4519ead7483829cf595e05d7711b6651cdb309f9ae9d11ecc14de2dfb56",
+    "created_date": "2026-02-06T12:04:12.690575+00:00",
+    "title": "Wego | Technical Lead | Bengaluru",
+    "source_url": "https://leetcode.com/discuss/post/7557615/wego-technical-lead-bengaluru-by-anonymo-salk/",
+    "source_tags": [
+      "interview"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Make changes in implementation of the method to make the testcases pass - Modify existing Java code to satisfy given test cases.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Improve the performance of a method - Optimize an existing method, potentially using multithreading.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Rejected"
   }
 ]

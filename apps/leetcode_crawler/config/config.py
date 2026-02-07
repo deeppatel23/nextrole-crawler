@@ -31,3 +31,9 @@ REQUEST_TIMEOUT = 30
 MAX_POSTS = 10
 
 EXTRACTOR_PROMPT_MODE = os.getenv("EXTRACTOR_PROMPT_MODE", "only_questions")
+
+# Incremental load settings
+LEETCODE_STATE_FILE = os.getenv(
+    "LEETCODE_STATE_FILE",
+    "apps/leetcode_crawler/output/leetcode_state.yml",
+)
