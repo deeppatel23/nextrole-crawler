@@ -8,9 +8,10 @@ from config.config import MAX_POSTS
 import re
 from utils.output_writer import append_interviews
 from config.config import OUTPUT_DESTINATION, LEETCODE_STATE_FILE
-from utils.state_store import read_state
+from utils.state_store import read_state, set_one_time_last_saved_timestamp
 from utils.mongo_writer import has_interview_hash
 from hashlib import sha256
+from datetime import datetime
 
 
 def build_discuss_url(topic_id: int | None, slug: str) -> str | None:
@@ -30,6 +31,15 @@ def build_interview_hash(topic_id: int | None, slug: str | None) -> str:
     return sha256(base.encode("utf-8")).hexdigest()
 
 
+def _parse_iso_timestamp(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
 def main():
     leetcode = LeetCodeClient()
     llm = LLMClient()
@@ -40,11 +50,16 @@ def main():
     state = read_state(LEETCODE_STATE_FILE)
     one_time_data_load = bool(state.get("one_time_data_load", True))
     one_time_post_limit = state.get("one_time_post_limit", 9999)
+    one_time_load_last_saved_timestamp = state.get(
+        "one_time_load_last_saved_timestamp"
+    )
+    one_time_cutoff = _parse_iso_timestamp(one_time_load_last_saved_timestamp)
     incremental_mode = OUTPUT_DESTINATION == "MONGO" and not one_time_data_load
 
     skip = 0
     processed = 0
-    order_by = "MOST_RECENT" if incremental_mode else "HOT"
+    order_by = "MOST_RECENT" if incremental_mode or one_time_cutoff else "HOT"
+    passed_one_time_cutoff = one_time_cutoff is None
 
     while True:
         posts = leetcode.fetch_posts(MAX_POSTS, tag="interview", skip=skip, order_by=order_by)
@@ -63,6 +78,13 @@ def main():
                 slug = post["slug"]
                 summary = post.get("summary", "")
                 created_at = post.get("createdAt")
+
+                if one_time_data_load and not passed_one_time_cutoff:
+                    created_dt = _parse_iso_timestamp(created_at)
+                    if created_dt and created_dt >= one_time_cutoff:
+                        print(f"Skipping post {slug} created at {created_at} (after cutoff)")
+                        continue
+                    passed_one_time_cutoff = True
 
                 if incremental_mode:
                     topic_id = post.get("topicId")
@@ -120,6 +142,11 @@ def main():
                 interview.original_content = content
                 # append_interviews expects an iterable; pass a single-item list
                 append_interviews("apps/leetcode_crawler/output/interview.json", [interview])
+
+                if one_time_data_load and created_at:
+                    set_one_time_last_saved_timestamp(
+                        LEETCODE_STATE_FILE, created_at
+                    )
 
                 print(f"✔ Extracted: {interview.company}, created at {created_at}")
 

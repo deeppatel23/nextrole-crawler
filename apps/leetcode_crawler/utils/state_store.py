@@ -20,6 +20,7 @@ def read_state(path: str) -> Dict[str, Any]:
     state = {
         "one_time_data_load": True,
         "one_time_post_limit": 9999,
+        "one_time_load_last_saved_timestamp": None,
     }
     file_path = Path(path)
     if not file_path.exists():
@@ -51,5 +52,12 @@ def write_state(path: str, state: Dict[str, Any]) -> None:
     lines = [
         f"one_time_data_load: {_fmt(state.get('one_time_data_load', True))}",
         f"one_time_post_limit: {_fmt(state.get('one_time_post_limit', 9999))}",
+        f"one_time_load_last_saved_timestamp: {_fmt(state.get('one_time_load_last_saved_timestamp'))}",
     ]
     file_path.write_text("\n".join(lines) + "\n")
+
+
+def set_one_time_last_saved_timestamp(path: str, timestamp: str) -> None:
+    state = read_state(path)
+    state["one_time_load_last_saved_timestamp"] = timestamp
+    write_state(path, state)
