@@ -35,3 +35,17 @@ Behavior:
 - When `one_time_data_load: false`:
   - Incremental mode is enabled (only when output destination is Mongo).
   - Posts are fetched in `MOST_RECENT` order and the crawler stops once it sees a post whose `interview_hash` already exists in Mongo.
+
+## Sequential Topic ID Strategy
+
+For one-time backfills, you can also crawl by topic id using:
+`apps/leetcode_crawler/strategies/sequential_topic_loader.py`
+
+Example:
+```
+python3 apps/leetcode_crawler/strategies/sequential_topic_loader.py --start-id 6000000 --max-steps 5000
+```
+
+Notes:
+- This strategy increments topic id by 1 and attempts to fetch content for each id.
+- It stops when `--max-steps` or `--max-misses` is reached (defaults to 1000 misses).

@@ -1269,5 +1269,1145 @@
       }
     ],
     "final_verdict": "Rejected"
+  },
+  {
+    "company": "Accenture",
+    "role": "Associate Software Engineer",
+    "location": "Maharashtra, India",
+    "interview_hash": "7e1733e6e01acf818e6fa584139eae06dffa970af36ce6609a5c380ad191171d",
+    "created_date": null,
+    "title": "Accenture Interview Experience for Associate Software Engineer - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-campus-placement-associate-software-engineer",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [
+      "http://gmpg.org/xfn/11",
+      "https://apis.google.com/js/platform.js",
+      "https://assets.geeksforgeeks.org/gfg-assets",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/9nxQ_y4l8m6h7ICeqVWHE/_buildManifest.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/9nxQ_y4l8m6h7ICeqVWHE/_ssgManifest.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/1119.ecfb8447af8524c5.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/3914.951f46ff700fc404.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/4874-4abee57392ec2396.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/6710-14fb32a698c53b29.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/7792.f845f4f2c2ed5c7d.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/9873.6e4a9f877cdebe69.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/framework-3412d1150754b2fb.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/main-83950604a31ac5bb.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/%5B...params%5D-0c8f0023f8c8e297.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-d9f801bd45b1950d.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/webpack-719ae08628e5d988.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/021e599a5c276427.css",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/1142cfe37dce110f.css",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/bfe522abf3cff908.css",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/ff61881f7fc465d9.css",
+      "https://cdnads.geeksforgeeks.org/prebid.js?ver=0.1",
+      "https://cdnads.geeksforgeeks.org/synchronously_gfg_ads.min.js",
+      "https://cdnads.geeksforgeeks.org/v1/gfg_ads.min.js?ver=0.1",
+      "https://discuss.geeksforgeeks.org/commentEmbedV2.js",
+      "https://discuss.geeksforgeeks.org/commentEmbedV2.js\\",
+      "https://fonts.googleapis.com",
+      "https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap",
+      "https://fonts.gstatic.com",
+      "https://fonts.gstatic.com/l/font?kit=XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTA&skey=27bb6aa8eea8a5e7&v=v32",
+      "https://fonts.gstatic.com/l/font?kit=XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTA&skey=27bb6aa8eea8a5e7&v=v32",
+      "https://fonts.gstatic.com/l/font?kit=nwpBtKy2OAdR1K-IwhWudF-R9QMylBJAV3Bo8Kxm7FEO&skey=1497ac707ba83cff&v=v19",
+      "https://fonts.gstatic.com/l/font?kit=nwpBtKy2OAdR1K-IwhWudF-R9QMylBJAV3Bo8Ky461EO&skey=1497ac707ba83cff&v=v19",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIMeaBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIO-aBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIOOaBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIOuaBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wAaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wEaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wIaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wMaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wsaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wwaZejf5HdF8Q.woff2",
+      "https://geeksforgeeksapp.page.link/gfg-app",
+      "https://in.linkedin.com/company/geeksforgeeks",
+      "https://in.linkedin.com/in/sandeep-jain-b3940815",
+      "https://in.linkedin.com/in/sandeep-jain-b3940815\\",
+      "https://media.geeksforgeeks.org/auth-dashboard-uploads/appstore-%281%29.png",
+      "https://media.geeksforgeeks.org/auth-dashboard-uploads/gfgFooterLogo.png",
+      "https://media.geeksforgeeks.org/auth-dashboard-uploads/googleplay-%281%29.png",
+      "https://media.geeksforgeeks.org/gfg-gg-logo.svg",
+      "https://media.geeksforgeeks.org/img-practice/Location-1685004904.svg",
+      "https://media.geeksforgeeks.org/img-practice/prod/courses/234567890/Web/Header/defaultSmallBanner_1709272509.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200817185016/gfg_complete_logo_2x-min.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200817185016/gfg_complete_logo_2x-min.png\\",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_favicon.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152622059910/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152723435075/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152810683965/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152941486145/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231153021934691/Algo.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532529750/Artificial-Intelligence.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532537770/Calculus--Optimization.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532544275/DB-Management--Warehousing.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532551061/General-Aptitude.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532584514/Machine-Learning.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532591781/Probability--Statistics.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532597835/Programming-Algorithms.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183614892897/gate_csit_2027_3.webp",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183615055046/GATE-CSIT-.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183751879266/gate_csit_2027.webp",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183752019050/GATE-CSIT--.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114184111826309/GATE-CSIT--.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114184112437326/gate_csit_2028_3.webp",
+      "https://media.geeksforgeeks.org/wp-content/uploads/gfg_200X200-100x100.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/gfg_200X200-100x100.png\\",
+      "https://practice.geeksforgeeks.org/",
+      "https://practice.geeksforgeeks.org/\\",
+      "https://practice.geeksforgeeks.org/courses/?ref=ghm",
+      "https://practiceapi.geeksforgeeks.org/",
+      "https://practiceapi.geeksforgeeks.org/\\",
+      "https://schema.org",
+      "https://schema.org\\",
+      "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+      "https://twitter.com/geeksforgeeks",
+      "https://twitter.com/geeksforgeeks\\",
+      "https://www.facebook.com/geeksforgeeks.org/",
+      "https://www.facebook.com/geeksforgeeks.org/\\",
+      "https://www.geeksforgeeks.org/",
+      "https://www.geeksforgeeks.org/\\",
+      "https://www.geeksforgeeks.org/about/",
+      "https://www.geeksforgeeks.org/about/contact-us/",
+      "https://www.geeksforgeeks.org/accenture-interview-experience-campus-placement-associate-software-engineer/",
+      "https://www.geeksforgeeks.org/accenture-interview-experience-campus-placement-associate-software-engineer/\\",
+      "https://www.geeksforgeeks.org/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/",
+      "https://www.geeksforgeeks.org/aptitude/aptitude-questions-and-answers/",
+      "https://www.geeksforgeeks.org/aptitude/puzzles/",
+      "https://www.geeksforgeeks.org/articles-on-computer-science-subjects-gq/",
+      "https://www.geeksforgeeks.org/blogs/technical-scripter-gfg-connect-edition-2026/",
+      "https://www.geeksforgeeks.org/blogs/technical-scripter-gfg-connect-edition-2026/\\",
+      "https://www.geeksforgeeks.org/c/c-programming-language/",
+      "https://www.geeksforgeeks.org/campus-training-program/",
+      "https://www.geeksforgeeks.org/category/blogs/?type=recent",
+      "https://www.geeksforgeeks.org/category/experiences/interview-experiences/",
+      "https://www.geeksforgeeks.org/category/interview-experiences/",
+      "https://www.geeksforgeeks.org/category/interview-experiences/\\",
+      "https://www.geeksforgeeks.org/community/profile/hire1/",
+      "https://www.geeksforgeeks.org/computer-science-fundamentals/programming-language-tutorials/",
+      "https://www.geeksforgeeks.org/connect/home",
+      "https://www.geeksforgeeks.org/copyright-information/",
+      "https://www.geeksforgeeks.org/courses",
+      "https://www.geeksforgeeks.org/courses/category/cloud-devops",
+      "https://www.geeksforgeeks.org/courses/category/development-testing",
+      "https://www.geeksforgeeks.org/courses/category/dsa-placements",
+      "https://www.geeksforgeeks.org/courses/category/gate",
+      "https://www.geeksforgeeks.org/courses/category/gate/",
+      "https://www.geeksforgeeks.org/courses/category/machine-learning-data-science",
+      "https://www.geeksforgeeks.org/courses/category/programming-languages",
+      "https://www.geeksforgeeks.org/courses/category/trending-technologies/",
+      "https://www.geeksforgeeks.org/courses/gate-da-2027-live-recording-placement-batch-A",
+      "https://www.geeksforgeeks.org/courses/gate-da-2027-live-recording-placement-weekend-batch-A",
+      "https://www.geeksforgeeks.org/courses/gate-da-2028-live-recording-placement-batch-A",
+      "https://www.geeksforgeeks.org/courses/gate-da-2029-live",
+      "https://www.geeksforgeeks.org/courses/gate-da-recorded-course",
+      "https://www.geeksforgeeks.org/courses/gfg-160-series",
+      "https://www.geeksforgeeks.org/courses/interviewe-101-data-structures-algorithm-system-design\\",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=bengaluru",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=hyderabad",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=noida",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=pune",
+      "https://www.geeksforgeeks.org/courses/offline-courses?selectedOfflineCity=Kolkata",
+      "https://www.geeksforgeeks.org/cpp/c-plus-plus/",
+      "https://www.geeksforgeeks.org/data-science/data-science-for-beginners/",
+      "https://www.geeksforgeeks.org/devops/devops-tutorial/",
+      "https://www.geeksforgeeks.org/dsa/dsa-tutorial-learn-data-structures-and-algorithms/",
+      "https://www.geeksforgeeks.org/explore",
+      "https://www.geeksforgeeks.org/explore?page=1&amp;sortBy=submissions",
+      "https://www.geeksforgeeks.org/explore?page=1\\u0026sortBy=submissions",
+      "https://www.geeksforgeeks.org/gate-exam-tutorial/",
+      "https://www.geeksforgeeks.org/gate/gate-exam-tutorial/",
+      "https://www.geeksforgeeks.org/geeksforgeeks-practice-best-online-coding-platform/",
+      "https://www.geeksforgeeks.org/geeksforgeeks-school/",
+      "https://www.geeksforgeeks.org/gfg-academy/geeksforgeeks-school/",
+      "https://www.geeksforgeeks.org/gfg-corporate-solution/",
+      "https://www.geeksforgeeks.org/gfg-hiring-solutions-for-recruiters/",
+      "https://www.geeksforgeeks.org/interview-corner/",
+      "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-campus-placement-associate-software-engineer/",
+      "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-campus-placement-associate-software-engineer/\\",
+      "https://www.geeksforgeeks.org/interview-prep/interview-corner/",
+      "https://www.geeksforgeeks.org/java/java/",
+      "https://www.geeksforgeeks.org/javascript/javascript-tutorial/",
+      "https://www.geeksforgeeks.org/jobs",
+      "https://www.geeksforgeeks.org/jobs?search=geeksforgeeks&amp;tab_type=featured",
+      "https://www.geeksforgeeks.org/jobs?search=geeksforgeeks\\u0026tab_type=featured",
+      "https://www.geeksforgeeks.org/jobs?utm_source=gfg\\u0026utm_medium=gfg_header\\u0026utm_campaign=gfgcontest_header",
+      "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/",
+      "https://www.geeksforgeeks.org/legal/",
+      "https://www.geeksforgeeks.org/legal/privacy-policy/",
+      "https://www.geeksforgeeks.org/linux-unix/linux-tutorial/",
+      "https://www.geeksforgeeks.org/machine-learning/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/",
+      "https://www.geeksforgeeks.org/machine-learning/machine-learning/",
+      "https://www.geeksforgeeks.org/problem-of-the-day",
+      "https://www.geeksforgeeks.org/programming-language-tutorials/",
+      "https://www.geeksforgeeks.org/python/python-programming-language-tutorial/",
+      "https://www.geeksforgeeks.org/search/{search_term_string",
+      "https://www.geeksforgeeks.org/sql/sql-tutorial/",
+      "https://www.geeksforgeeks.org/studyin-go-global-challenge-2025",
+      "https://www.geeksforgeeks.org/system-design/system-design-tutorial/",
+      "https://www.geeksforgeeks.org/tag/accenture/",
+      "https://www.geeksforgeeks.org/tag/experiences-qna/",
+      "https://www.geeksforgeeks.org/web-tech/web-technology/",
+      "https://www.geeksforgeeks.org/web-technology/",
+      "https://www.geeksforgeeks.org/websites-apps/software-and-tools-a-to-z-list/",
+      "https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200.png",
+      "https://www.geeksforgeeks.org/x",
+      "https://www.googletagmanager.com/gtag/js?id=G-DWCCJLKX3X",
+      "https://www.googletagmanager.com/gtm.js?id=",
+      "https://www.instagram.com/geeks_for_geeks/",
+      "https://www.linkedin.com/company/1299009",
+      "https://www.linkedin.com/company/1299009\\",
+      "https://www.youtube.com/geeksforgeeksvideos",
+      "https://www.youtube.com/geeksforgeeksvideos/",
+      "https://www.youtube.com/geeksforgeeksvideos/\\"
+    ],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about yourself - Introduce your background, skills, and experience.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Explain your final-year project - Describe your academic project, its goals, and your contributions.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Basics of OOP concepts (Oops pillars) - Discuss the fundamental principles of Object-Oriented Programming.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Programming Languages"
+        ],
+        "description": "Difference between Java and Python - Compare and contrast the key features and characteristics of Java and Python.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "What do you know about Accenture? - Demonstrate your knowledge of the company and its operations.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Simple logic-based problem - Solve a basic programming problem requiring logical thinking.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Real-time use of technology in projects - Discuss how technology is applied in practical, real-world scenarios within projects.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why Accenture? - Explain your motivations for wanting to work at Accenture.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Are you comfortable with relocation? - State your willingness to move for the job.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Where do you see yourself in 5 years? - Describe your long-term career aspirations.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why should we hire you as a fresher? - Articulate your strengths and potential value as a new graduate.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Accenture",
+    "role": "AASE (Associate Application Software Engineer)",
+    "location": null,
+    "interview_hash": "7e43f7d6fb35c94d65b37de0578123f9de1b92662ecded2e37dce28d21bd317e",
+    "created_date": null,
+    "title": "Accenture Interview Experience - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-for-aase-advanced-associate-software-engineer-2026-batch-on-campus",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [
+      "http://gmpg.org/xfn/11",
+      "https://apis.google.com/js/platform.js",
+      "https://assets.geeksforgeeks.org/gfg-assets",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/9nxQ_y4l8m6h7ICeqVWHE/_buildManifest.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/9nxQ_y4l8m6h7ICeqVWHE/_ssgManifest.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/1119.ecfb8447af8524c5.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/3914.951f46ff700fc404.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/4874-4abee57392ec2396.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/6710-14fb32a698c53b29.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/7792.f845f4f2c2ed5c7d.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/9873.6e4a9f877cdebe69.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/framework-3412d1150754b2fb.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/main-83950604a31ac5bb.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/%5B...params%5D-0c8f0023f8c8e297.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/pages/_app-d9f801bd45b1950d.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/chunks/webpack-719ae08628e5d988.js",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/021e599a5c276427.css",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/1142cfe37dce110f.css",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/bfe522abf3cff908.css",
+      "https://assets.geeksforgeeks.org/gfg-assets/_next/static/css/ff61881f7fc465d9.css",
+      "https://cdnads.geeksforgeeks.org/prebid.js?ver=0.1",
+      "https://cdnads.geeksforgeeks.org/synchronously_gfg_ads.min.js",
+      "https://cdnads.geeksforgeeks.org/v1/gfg_ads.min.js?ver=0.1",
+      "https://discuss.geeksforgeeks.org/commentEmbedV2.js",
+      "https://discuss.geeksforgeeks.org/commentEmbedV2.js\\",
+      "https://fonts.googleapis.com",
+      "https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap",
+      "https://fonts.gstatic.com",
+      "https://fonts.gstatic.com/l/font?kit=XRXI3I6Li01BKofiOc5wtlZ2di8HDFwmRTA&skey=27bb6aa8eea8a5e7&v=v32",
+      "https://fonts.gstatic.com/l/font?kit=XRXI3I6Li01BKofiOc5wtlZ2di8HDLshRTA&skey=27bb6aa8eea8a5e7&v=v32",
+      "https://fonts.gstatic.com/l/font?kit=nwpBtKy2OAdR1K-IwhWudF-R9QMylBJAV3Bo8Kxm7FEO&skey=1497ac707ba83cff&v=v19",
+      "https://fonts.gstatic.com/l/font?kit=nwpBtKy2OAdR1K-IwhWudF-R9QMylBJAV3Bo8Ky461EO&skey=1497ac707ba83cff&v=v19",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIMeaBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIO-aBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIOOaBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofIOuaBTMnFcQIG.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wAaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wEaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wIaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wMaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wsaZejf5HdF8Q.woff2",
+      "https://fonts.gstatic.com/s/sourcesans3/v19/nwpStKy2OAdR1K-IwhWudF-R3wwaZejf5HdF8Q.woff2",
+      "https://geeksforgeeksapp.page.link/gfg-app",
+      "https://in.linkedin.com/company/geeksforgeeks",
+      "https://in.linkedin.com/in/sandeep-jain-b3940815",
+      "https://in.linkedin.com/in/sandeep-jain-b3940815\\",
+      "https://media.geeksforgeeks.org/auth-dashboard-uploads/appstore-%281%29.png",
+      "https://media.geeksforgeeks.org/auth-dashboard-uploads/gfgFooterLogo.png",
+      "https://media.geeksforgeeks.org/auth-dashboard-uploads/googleplay-%281%29.png",
+      "https://media.geeksforgeeks.org/gfg-gg-logo.svg",
+      "https://media.geeksforgeeks.org/img-practice/Location-1685004904.svg",
+      "https://media.geeksforgeeks.org/img-practice/prod/courses/234567890/Web/Header/defaultSmallBanner_1709272509.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200817185016/gfg_complete_logo_2x-min.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200817185016/gfg_complete_logo_2x-min.png\\",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_favicon.png",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg",
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152622059910/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152723435075/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152810683965/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231152941486145/file.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20241231153021934691/Algo.pdf\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532529750/Artificial-Intelligence.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532537770/Calculus--Optimization.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532544275/DB-Management--Warehousing.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532551061/General-Aptitude.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532584514/Machine-Learning.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532591781/Probability--Statistics.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114160532597835/Programming-Algorithms.png\\",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183614892897/gate_csit_2027_3.webp",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183615055046/GATE-CSIT-.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183751879266/gate_csit_2027.webp",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114183752019050/GATE-CSIT--.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114184111826309/GATE-CSIT--.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/20260114184112437326/gate_csit_2028_3.webp",
+      "https://media.geeksforgeeks.org/wp-content/uploads/gfg_200X200-100x100.png",
+      "https://media.geeksforgeeks.org/wp-content/uploads/gfg_200X200-100x100.png\\",
+      "https://practice.geeksforgeeks.org/",
+      "https://practice.geeksforgeeks.org/\\",
+      "https://practice.geeksforgeeks.org/courses/?ref=ghm",
+      "https://practiceapi.geeksforgeeks.org/",
+      "https://practiceapi.geeksforgeeks.org/\\",
+      "https://schema.org",
+      "https://schema.org\\",
+      "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+      "https://twitter.com/geeksforgeeks",
+      "https://twitter.com/geeksforgeeks\\",
+      "https://www.facebook.com/geeksforgeeks.org/",
+      "https://www.facebook.com/geeksforgeeks.org/\\",
+      "https://www.geeksforgeeks.org/",
+      "https://www.geeksforgeeks.org/\\",
+      "https://www.geeksforgeeks.org/about/",
+      "https://www.geeksforgeeks.org/about/contact-us/",
+      "https://www.geeksforgeeks.org/accenture-interview-experience-for-aase-advanced-associate-software-engineer-2026-batch-on-campus/",
+      "https://www.geeksforgeeks.org/accenture-interview-experience-for-aase-advanced-associate-software-engineer-2026-batch-on-campus/\\",
+      "https://www.geeksforgeeks.org/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/",
+      "https://www.geeksforgeeks.org/aptitude/aptitude-questions-and-answers/",
+      "https://www.geeksforgeeks.org/aptitude/puzzles/",
+      "https://www.geeksforgeeks.org/articles-on-computer-science-subjects-gq/",
+      "https://www.geeksforgeeks.org/blogs/technical-scripter-gfg-connect-edition-2026/",
+      "https://www.geeksforgeeks.org/blogs/technical-scripter-gfg-connect-edition-2026/\\",
+      "https://www.geeksforgeeks.org/c/c-programming-language/",
+      "https://www.geeksforgeeks.org/campus-training-program/",
+      "https://www.geeksforgeeks.org/category/blogs/?type=recent",
+      "https://www.geeksforgeeks.org/category/experiences/interview-experiences/",
+      "https://www.geeksforgeeks.org/category/interview-experiences/",
+      "https://www.geeksforgeeks.org/category/interview-experiences/\\",
+      "https://www.geeksforgeeks.org/community/profile/hire1/",
+      "https://www.geeksforgeeks.org/computer-science-fundamentals/programming-language-tutorials/",
+      "https://www.geeksforgeeks.org/connect/home",
+      "https://www.geeksforgeeks.org/copyright-information/",
+      "https://www.geeksforgeeks.org/courses",
+      "https://www.geeksforgeeks.org/courses/category/cloud-devops",
+      "https://www.geeksforgeeks.org/courses/category/development-testing",
+      "https://www.geeksforgeeks.org/courses/category/dsa-placements",
+      "https://www.geeksforgeeks.org/courses/category/gate",
+      "https://www.geeksforgeeks.org/courses/category/gate/",
+      "https://www.geeksforgeeks.org/courses/category/machine-learning-data-science",
+      "https://www.geeksforgeeks.org/courses/category/programming-languages",
+      "https://www.geeksforgeeks.org/courses/category/trending-technologies/",
+      "https://www.geeksforgeeks.org/courses/gate-da-2027-live-recording-placement-batch-A",
+      "https://www.geeksforgeeks.org/courses/gate-da-2027-live-recording-placement-weekend-batch-A",
+      "https://www.geeksforgeeks.org/courses/gate-da-2028-live-recording-placement-batch-A",
+      "https://www.geeksforgeeks.org/courses/gate-da-2029-live",
+      "https://www.geeksforgeeks.org/courses/gate-da-recorded-course",
+      "https://www.geeksforgeeks.org/courses/gfg-160-series",
+      "https://www.geeksforgeeks.org/courses/interviewe-101-data-structures-algorithm-system-design\\",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=bengaluru",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=hyderabad",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=noida",
+      "https://www.geeksforgeeks.org/courses/offline-courses?city=pune",
+      "https://www.geeksforgeeks.org/courses/offline-courses?selectedOfflineCity=Kolkata",
+      "https://www.geeksforgeeks.org/cpp/c-plus-plus/",
+      "https://www.geeksforgeeks.org/data-science/data-science-for-beginners/",
+      "https://www.geeksforgeeks.org/devops/devops-tutorial/",
+      "https://www.geeksforgeeks.org/dsa/dsa-tutorial-learn-data-structures-and-algorithms/",
+      "https://www.geeksforgeeks.org/explore",
+      "https://www.geeksforgeeks.org/explore?page=1&amp;sortBy=submissions",
+      "https://www.geeksforgeeks.org/explore?page=1\\u0026sortBy=submissions",
+      "https://www.geeksforgeeks.org/gate-exam-tutorial/",
+      "https://www.geeksforgeeks.org/gate/gate-exam-tutorial/",
+      "https://www.geeksforgeeks.org/geeksforgeeks-practice-best-online-coding-platform/",
+      "https://www.geeksforgeeks.org/geeksforgeeks-school/",
+      "https://www.geeksforgeeks.org/gfg-academy/geeksforgeeks-school/",
+      "https://www.geeksforgeeks.org/gfg-corporate-solution/",
+      "https://www.geeksforgeeks.org/gfg-hiring-solutions-for-recruiters/",
+      "https://www.geeksforgeeks.org/interview-corner/",
+      "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-for-aase-advanced-associate-software-engineer-2026-batch-on-campus/",
+      "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-for-aase-advanced-associate-software-engineer-2026-batch-on-campus/\\",
+      "https://www.geeksforgeeks.org/interview-prep/interview-corner/",
+      "https://www.geeksforgeeks.org/java/java/",
+      "https://www.geeksforgeeks.org/javascript/javascript-tutorial/",
+      "https://www.geeksforgeeks.org/jobs",
+      "https://www.geeksforgeeks.org/jobs?search=geeksforgeeks&amp;tab_type=featured",
+      "https://www.geeksforgeeks.org/jobs?search=geeksforgeeks\\u0026tab_type=featured",
+      "https://www.geeksforgeeks.org/jobs?utm_source=gfg\\u0026utm_medium=gfg_header\\u0026utm_campaign=gfgcontest_header",
+      "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/",
+      "https://www.geeksforgeeks.org/legal/",
+      "https://www.geeksforgeeks.org/legal/privacy-policy/",
+      "https://www.geeksforgeeks.org/linux-unix/linux-tutorial/",
+      "https://www.geeksforgeeks.org/machine-learning/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/",
+      "https://www.geeksforgeeks.org/machine-learning/machine-learning/",
+      "https://www.geeksforgeeks.org/problem-of-the-day",
+      "https://www.geeksforgeeks.org/programming-language-tutorials/",
+      "https://www.geeksforgeeks.org/python/python-programming-language-tutorial/",
+      "https://www.geeksforgeeks.org/search/{search_term_string",
+      "https://www.geeksforgeeks.org/sql/sql-tutorial/",
+      "https://www.geeksforgeeks.org/studyin-go-global-challenge-2025",
+      "https://www.geeksforgeeks.org/system-design/system-design-tutorial/",
+      "https://www.geeksforgeeks.org/tag/accenture/",
+      "https://www.geeksforgeeks.org/tag/experiences-qna/",
+      "https://www.geeksforgeeks.org/web-tech/web-technology/",
+      "https://www.geeksforgeeks.org/web-technology/",
+      "https://www.geeksforgeeks.org/websites-apps/software-and-tools-a-to-z-list/",
+      "https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200.png",
+      "https://www.geeksforgeeks.org/x",
+      "https://www.googletagmanager.com/gtag/js?id=G-DWCCJLKX3X",
+      "https://www.googletagmanager.com/gtm.js?id=",
+      "https://www.instagram.com/geeks_for_geeks/",
+      "https://www.linkedin.com/company/1299009",
+      "https://www.linkedin.com/company/1299009\\",
+      "https://www.youtube.com/geeksforgeeksvideos",
+      "https://www.youtube.com/geeksforgeeksvideos/",
+      "https://www.youtube.com/geeksforgeeksvideos/\\"
+    ],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why did you choose this project? - Explain the personal motivation and rationale behind selecting a specific project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why this technology stack? - Justify the selection of specific technologies used in the project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "How did you improve query performance? - Describe the methods and techniques implemented to optimize database query speed within the project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Deep dive into project architecture and decisions - Discuss the overall structure, components, and key design choices made for the project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about your family - Share personal information about your family background.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why Accenture? - Explain your reasons and motivations for wanting to join Accenture.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Selected for AASE profile"
+  },
+  {
+    "company": "Accenture",
+    "role": "Associate Software Engineer",
+    "location": "Maharashtra, India",
+    "interview_hash": "7e1733e6e01acf818e6fa584139eae06dffa970af36ce6609a5c380ad191171d",
+    "created_date": null,
+    "title": "Accenture Interview Experience for Associate Software Engineer - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-campus-placement-associate-software-engineer",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about yourself - Introduce your background and experience.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Explain your final-year project - Describe your academic project and its details.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "Basics of OOP concepts (Oops pillars) - Explain the fundamental principles of Object-Oriented Programming.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Programming Languages"
+        ],
+        "description": "Difference between Java and Python - Compare and contrast the two programming languages.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "What do you know about Accenture? - Demonstrate your knowledge of the company.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Simple logic-based problem - Solve a basic problem requiring logical thinking.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Software Engineering"
+        ],
+        "description": "Real-time use of technology in projects - Discuss how specific technologies are applied in real-world projects.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why Accenture? - Explain your motivation for joining the company.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Are you comfortable with relocation? - State your willingness to move for the job.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Where do you see yourself in 5 years? - Describe your long-term career aspirations.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why should we hire you as a fresher? - Articulate your strengths and value as a new graduate.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Accenture",
+    "role": "AASE (Associate Application Software Engineer)",
+    "location": null,
+    "interview_hash": "7e43f7d6fb35c94d65b37de0578123f9de1b92662ecded2e37dce28d21bd317e",
+    "created_date": null,
+    "title": "Accenture Interview Experience - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-for-aase-advanced-associate-software-engineer-2026-batch-on-campus",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why did you choose this project? - Explain the motivation behind selecting a specific project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why this technology stack? - Justify the choice of technologies used in the project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "How did you improve query performance? - Describe methods used to optimize database query speed.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "LLD"
+        ],
+        "description": "Deep dive into project architecture and decisions - Explain the design choices and structure of the project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about your family - Share personal background information.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Why Accenture? - Explain your motivation for wanting to work at Accenture.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Selected for AASE profile"
+  },
+  {
+    "company": "Accenture",
+    "role": "LLM Operations Engineer",
+    "location": "Magarpatta, Pune",
+    "interview_hash": "ddb2f968e2396bd9e1c18cb8922db7833b27bc418977e679ad677569702f8ff9",
+    "created_date": null,
+    "title": "Accenture Final Interview : Experience for LLM Operations Engineer (Experienced) \u2013 Selected - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accenture-final-interview-experience-for-llm-operations-engineer-experienced-selected",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about yourself - Introduce your background and experience.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about the latest project you worked on \u2013 I worked on RAG-based Test Case Generator; so spoke about that - Describe your most recent project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Product Thinking"
+        ],
+        "description": "What problem were you trying to solve with this project? - Explain the problem your project aimed to address.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Database"
+        ],
+        "description": "What are you storing in the Vector Database? - Describe the data stored in the vector database.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "What tech stack did you use in this project? - List the technologies used in your project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Is your system single-agent or multi-agent? - Describe the agent architecture of your system.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "What was your role, task, and responsibility in the project? - Detail your contributions and duties in the project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "How do you ensure the quality of the output in your system? - Explain methods for maintaining output quality.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "System Design"
+        ],
+        "description": "Which framework did you use (LangChain or CrewAI) and why? - Discuss your choice of LLM framework and its justification.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "System Design"
+        ],
+        "description": "What are the components of CrewAI? / Can agents work asynchronously in CrewAI? / Can multiple agents work in parallel on different tasks? - Describe the architecture and concurrency capabilities of CrewAI.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Machine Learning"
+        ],
+        "description": "What is the key difference between a Generative AI system and an Agentic AI system? - Compare and contrast Generative AI and Agentic AI systems.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Machine Learning"
+        ],
+        "description": "What do you know about Transformer architecture? - Explain the Transformer model architecture.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Machine Learning"
+        ],
+        "description": "Explain step by step how RAG works behind the scenes / Why do we need RAG? - Detail the Retrieval-Augmented Generation process and its necessity.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Machine Learning"
+        ],
+        "description": "Have you heard about MCP (Model Context Protocol)? - Discuss your knowledge of the Model Context Protocol.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Python"
+        ],
+        "description": "What is __init__() in Python? / Why does Python use double underscores (__init__)? / Can you define a method with a single underscore prefix? - Explain Python's `__init__` method, dunder methods, and single underscore conventions.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "OOP"
+        ],
+        "description": "What is abstraction in Python OOP? - Define abstraction in the context of Python Object-Oriented Programming.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Can you write a simple example of inheritance in Python? - Provide a code example demonstrating inheritance in Python.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "Why is routing required in a multi-agent system? - Explain the necessity of routing in systems with multiple agents.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Have you used any CrewAI tools? / What tools have you used (SerperDevTool, EXA Search Tool)? - Describe your experience with CrewAI tools and specific examples.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "System Design"
+        ],
+        "description": "What does EXA Search Tool do? - Explain the functionality of the EXA Search Tool.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "How did you integrate EXA Search Tool into your project? - Describe the process of integrating EXA Search Tool into your project.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Can you write code to use EXA Search Tool? - Provide a code example demonstrating the use of EXA Search Tool.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Can you write a sample function from your RAG Test Case Generator to check output quality or similarity score? - Provide a code example for a function to evaluate RAG output quality or similarity.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Networks"
+        ],
+        "description": "What are REST API methods (GET, POST, PUT, PATCH, DELETE)? / What is the difference between PUT and PATCH? - List and explain REST API methods, distinguishing between PUT and PATCH.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Selected"
+  },
+  {
+    "company": "Accenture",
+    "role": "LLM Operations Engineer",
+    "location": "Remote/Bengaluru",
+    "interview_hash": "e5a1bdfa2c0f884a8efb00a19b1d2f69ebfffd6b9099155e60d3b72801fbd0c1",
+    "created_date": null,
+    "title": "Accenture Interview Experience for LLM Operations Engineer - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-for-llm-operations-engineer-experienced",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Tell me about yourself - Introduce your background and experience.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Explain your engineering project \u2013 problem statement and your role - Describe a past engineering project, its problem, and your contribution.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Explain your current project \u2013 problem statement and your role - Describe your current project, its problem, and your contribution.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Write Python code to read a CSV and impute null values with median - Implement a Python script to process a CSV file and fill missing values using the median.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DSA"
+        ],
+        "description": "Write Python + SQLite query to find employees with more than 3 leave requests in the previous month - Implement Python code and an SQLite query to identify employees with excessive leave requests.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "DevOps"
+        ],
+        "description": "How do you manage cloud costs? - Explain strategies for optimizing and controlling expenses in cloud environments.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "AI/ML"
+        ],
+        "description": "Explain prompting techniques - Describe methods used to guide large language models to generate desired outputs.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "AI/ML"
+        ],
+        "description": "Difference between regression and classification \u2013 name some algorithms - Distinguish between regression and classification tasks in machine learning and provide examples of algorithms for each.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "AI/ML"
+        ],
+        "description": "What is overfitting? - Define overfitting in machine learning and its implications.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "HLD"
+        ],
+        "description": "How would you deploy a multilingual chatbot in ODA? - Design a strategy for deploying a chatbot that supports multiple languages using Oracle Digital Assistant.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "AI/ML"
+        ],
+        "description": "What is RAG and how did you use it in your project? - Explain Retrieval Augmented Generation and describe its application in your work.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "AI/ML"
+        ],
+        "description": "Which metrics would you focus on to improve model performance? - Identify key performance indicators for evaluating and enhancing machine learning models.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "AI/ML"
+        ],
+        "description": "What kind of LLM models are available in the market? - List and describe various large language models currently available commercially or publicly.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Data Structures"
+        ],
+        "description": "What are the data structures in Python? - Enumerate and explain built-in data structures in Python.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "Data Structures"
+        ],
+        "description": "Difference between arrays and strings - Compare and contrast arrays and strings, highlighting their fundamental differences.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Testing"
+        ],
+        "description": "How would you ensure an intent in ODA gives the correct answer? What precautions would you take? - Describe methods and safeguards to ensure accurate intent recognition and responses in Oracle Digital Assistant.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Theory",
+          "JavaScript"
+        ],
+        "description": "How are async operations handled in JavaScript, and how does the event loop work? - Explain asynchronous programming in JavaScript and the role of the event loop.",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": null
+  },
+  {
+    "company": "Accenture",
+    "role": "Technical \u2013 Packaged App Development Associate",
+    "location": "Bangalore, Karnataka, India",
+    "interview_hash": "5dc3ab19a77c521730218acd2c9f88e1785fb8d9d48afedebcd6f709628b9df1",
+    "created_date": null,
+    "title": "Accenture Interview Experience for Summer Internship 2025 - GeeksforGeeks",
+    "source_url": "https://www.geeksforgeeks.org/interview-experiences/accdenture-interview-experience-for-summer-internship-2025",
+    "source_tags": [
+      "Accenture"
+    ],
+    "additional_links": [],
+    "questions": [
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Walkthrough of past internships and projects - Describe your past internships and projects.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Motivation for joining Accenture - Explain your reasons for wanting to join Accenture.",
+        "links": [],
+        "question_approved": false
+      },
+      {
+        "topics": [
+          "Behavioral"
+        ],
+        "description": "Understanding of the role and expectations - What is your understanding of the role and what are your expectations?",
+        "links": [],
+        "question_approved": false
+      }
+    ],
+    "final_verdict": "Offer received, positive experience."
   }
 ]
