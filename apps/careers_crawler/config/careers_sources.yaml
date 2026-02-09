@@ -1,25 +1,5 @@
-- company: JP Morgan & Chase
+- company: Goldman Sachs
   source_type: api
-  handler: jpmorgan
+  handler: goldman_sachs
   last_saved: '2026-02-09'
-  max_saved_jobs: 3
-- company: Zeta
-  source_type: api
-  handler: zeta
-  last_saved: '2026-02-09'
-  max_saved_jobs: 3
-- company: Amazon
-  source_type: api
-  handler: amazon
-  last_saved: '2026-02-09'
-  max_saved_jobs: 3
-- company: Microsoft
-  source_type: api
-  handler: microsoft
-  last_saved: '2026-02-09'
-  max_saved_jobs: 3
-- company: Media.net
-  source_type: html
-  handler: mediadotnet
-  last_saved: '2026-02-08'
-  max_saved_jobs: 3
+  max_saved_jobs: 9
