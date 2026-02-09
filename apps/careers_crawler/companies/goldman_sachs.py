@@ -1,7 +1,7 @@
 """
 Goldman Sachs careers parser.
-Uses the GS GraphQL API to fetch India roles in pages of 20, then fetches per-role details.
-Skips all saving if today <= last_saved, and stops early when max_saved_jobs is reached.
+Uses the GS GraphQL API to fetch India roles in pages of 20 (DESC order), then fetches per-role details.
+Skips all saving if today <= last_saved, stops at max_saved_jobs, and stops on first existing job_hash.
 """
 from __future__ import annotations
 
@@ -353,19 +353,20 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         if remaining <= 0:
             print(f"Goldman Sachs: reached max_saved_jobs={max_saved}, stopping.")
             return True
-        if len(batch) > remaining:
-            batch = batch[:remaining]
-            print(f"Goldman Sachs: reached max_saved_jobs={max_saved}, stopping after this batch.")
 
-        saved_count, stop_fetch = append_roles(OUTPUT_FILE, batch)
-        total_saved += saved_count
-        print(f"Goldman Sachs: saved {saved_count}/{len(batch)} jobs in this batch")
-        if stop_fetch:
-            print("Goldman Sachs: existing job_hash found, stopping further fetch.")
-            return True
-        if total_saved >= max_saved:
-            print(f"Goldman Sachs: reached max_saved_jobs={max_saved}, stopping.")
-            return True
+        saved_in_batch = 0
+        for role in batch:
+            if total_saved >= max_saved:
+                print(f"Goldman Sachs: reached max_saved_jobs={max_saved}, stopping.")
+                return True
+            saved_count, stop_fetch = append_roles(OUTPUT_FILE, [role])
+            total_saved += saved_count
+            saved_in_batch += saved_count
+            if stop_fetch:
+                print("Goldman Sachs: existing job_hash found, stopping further fetch.")
+                return True
+
+        print(f"Goldman Sachs: saved {saved_in_batch}/{len(batch)} jobs in this batch")
         return False
 
     first_items = _iter_items(first_response)
