@@ -6,6 +6,7 @@ De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the cra
 """
 import math
 import re
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from clients.http_client import call_api
@@ -82,7 +83,6 @@ MAPPING = {
     "country": "normalizedCountryCode",
     "skills": "basicQualifications",
     "apply_link": "urlNextStep",
-    "created_at": "createdDate",
     "updated_at": "updatedDate",
 }
 
@@ -114,6 +114,7 @@ def _unwrap_list(value: Any) -> Any:
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    today = datetime.utcnow().date().isoformat()
     max_saved = source_cfg.get("max_saved_jobs", 9999)
     first_body = dict(API["body"])
     first_body["start"] = 0
@@ -172,6 +173,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 skills=enrichment["skills"],
                 min_yoe=enrichment["min_yoe"],
                 max_yoe=enrichment["max_yoe"],
+                created_at=today,
                 **mapped,
             )
 

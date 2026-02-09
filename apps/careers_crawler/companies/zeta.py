@@ -4,6 +4,7 @@ Backend API: Lever postings API (JSON); no explicit sort control (API order is u
 Logic: maps fields, enriches with page text, and appends RoleDetail entries in one batch.
 De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
 """
+from datetime import datetime
 from typing import Any, Dict, List
 
 from clients.http_client import call_api
@@ -29,7 +30,6 @@ MAPPING = {
     "country": "country",
     "workplace_type": "workplaceType",
     "apply_link": "applyUrl",
-    "created_at": "createdAt",
 }
 
 
@@ -46,6 +46,7 @@ def _iter_postings(response: Any):
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    today = datetime.utcnow().date().isoformat()
     response = call_api(
         method=API["method"],
         url=API["url"],
@@ -82,6 +83,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             skills=enrichment["skills"],
             min_yoe=enrichment["min_yoe"],
             max_yoe=enrichment["max_yoe"],
+            created_at=today,
             **mapped,
         )
 

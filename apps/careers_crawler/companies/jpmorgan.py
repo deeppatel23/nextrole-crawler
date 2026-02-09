@@ -5,6 +5,7 @@ Ordering: API uses RELEVANCY sort (not explicitly date-descending).
 De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
 """
 import math
+from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 
@@ -140,6 +141,7 @@ def _get_total_count(response: Dict[str, Any]) -> int:
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
+    today = datetime.utcnow().date().isoformat()
     max_saved = source_cfg.get("max_saved_jobs", 9999)
     print(f"JP Morgan & Chase: start iteration 1 calling {_build_url(0)}")
     first_response = call_api(
@@ -187,7 +189,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 skills=enrichment["skills"],
                 min_yoe=enrichment["min_yoe"],
                 max_yoe=enrichment["max_yoe"],
-                created_at=req.get("PostedDate"),
+                created_at=today,
                 updated_at=req.get("PostingEndDate"),
             )
             batch.append(role)
