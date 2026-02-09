@@ -3,6 +3,7 @@ Media.net careers parser.
 HTML-based: crawls category pages + pagination, extracts job links by category URL prefix.
 Ordering: uses page/link discovery order (no guaranteed date-descending sort).
 De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
+Skips any link that matches the category URL itself.
 """
 from __future__ import annotations
 
@@ -138,6 +139,8 @@ def _build_role(
     company: str,
     source_type: Optional[str],
 ) -> Optional[RoleDetail]:
+    if job_url in CATEGORY_URLS:
+        return None
     html = _fetch_html(job_url)
     title = _extract_title(html or "")
     page_text = html if html else ""
