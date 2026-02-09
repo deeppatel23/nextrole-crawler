@@ -1,3 +1,9 @@
+"""
+Zeta careers parser.
+Backend API: Lever postings API (JSON); no explicit sort control (API order is used).
+Logic: maps fields, enriches with page text, and appends RoleDetail entries in one batch.
+De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
+"""
 from typing import Any, Dict, List
 
 from clients.http_client import call_api
@@ -22,7 +28,6 @@ MAPPING = {
     "city": "categories.location",
     "country": "country",
     "workplace_type": "workplaceType",
-    "description": "descriptionPlain",
     "apply_link": "applyUrl",
     "created_at": "createdAt",
 }
@@ -65,7 +70,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         page_text = fetch_visible_text(apply_link) or ""
         enrichment = get_enrichment(
             mapped.get("title"),
-            mapped.get("description"),
             apply_link,
             page_text,
         )

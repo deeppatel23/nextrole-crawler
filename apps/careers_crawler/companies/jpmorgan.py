@@ -1,3 +1,9 @@
+"""
+JP Morgan & Chase careers parser.
+Backend API: Oracle Cloud recruiting API with paging + per-job detail API for extra text.
+Ordering: API uses RELEVANCY sort (not explicitly date-descending).
+De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
+"""
 import math
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
@@ -161,7 +167,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             external_desc = _fetch_external_description(str(job_id))
             enrichment = get_enrichment(
                 req.get("Title"),
-                req.get("ShortDescriptionStr"),
                 apply_link,
                 external_desc,
             )
@@ -178,7 +183,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 state=state,
                 country=country or req.get("PrimaryLocationCountry"),
                 workplace_type=req.get("WorkplaceType"),
-                description=req.get("ShortDescriptionStr"),
                 apply_link=apply_link,
                 skills=enrichment["skills"],
                 min_yoe=enrichment["min_yoe"],

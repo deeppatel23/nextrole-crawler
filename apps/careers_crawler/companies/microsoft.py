@@ -1,3 +1,9 @@
+"""
+Microsoft careers parser.
+Backend API: Microsoft PCS search API with pagination + detail API for extra text.
+Ordering: API sort_by=timestamp (newest-first), but API controls final order.
+De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
+"""
 import math
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
@@ -173,7 +179,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             detail_desc = _fetch_job_description(str(job_id))
             enrichment = get_enrichment(
                 mapped.get("title"),
-                mapped.get("description"),
                 mapped.get("apply_link"),
                 detail_desc,
             )

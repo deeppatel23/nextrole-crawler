@@ -1,3 +1,9 @@
+"""
+Amazon careers parser.
+Backend API: Amazon Jobs search API (JSON) with pagination; results sorted by API (DESCENDING by score).
+Logic: maps key fields, normalizes job links, enriches text, and appends in batches.
+De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
+"""
 import math
 import re
 from typing import Any, Dict, List, Optional
@@ -74,7 +80,6 @@ MAPPING = {
     "city": "normalizedCityName",
     "state": "normalizedStateName",
     "country": "normalizedCountryCode",
-    "description": "description",
     "skills": "basicQualifications",
     "apply_link": "urlNextStep",
     "created_at": "createdDate",
@@ -146,17 +151,13 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             mapped.pop("job_id", None)
             mapped["apply_link"] = _normalize_amazon_job_link(mapped.get("apply_link"))
 
-            desc_text = mapped.get("description") or ""
             skills_text = mapped.get("skills") or ""
-            if isinstance(desc_text, list):
-                desc_text = " ".join(str(s) for s in desc_text if s)
             if isinstance(skills_text, list):
                 skills_text = " ".join(str(s) for s in skills_text if s)
-            combined_text = " ".join([str(desc_text), str(skills_text)]).strip()
+            combined_text = str(skills_text).strip()
 
             enrichment = get_enrichment(
                 mapped.get("title"),
-                mapped.get("description"),
                 mapped.get("apply_link"),
                 combined_text,
             )

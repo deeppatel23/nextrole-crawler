@@ -27,7 +27,6 @@ class RoleDetail:
     workplace_type: Optional[str] = None  # onsite / remote / hybrid
 
     # content
-    description: Optional[str] = None
     skills: List[str] = field(default_factory=list)
 
     # links

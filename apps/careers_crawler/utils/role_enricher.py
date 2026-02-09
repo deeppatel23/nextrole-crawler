@@ -15,7 +15,7 @@ def _get_llm_client() -> LLMClient:
     return _llm_client
 
 
-def _build_prompt(title: Optional[str], description: Optional[str], page_text: str) -> str:
+def _build_prompt(title: Optional[str], page_text: str) -> str:
     return f"""
 You are an information extraction system.
 Return ONLY valid JSON. No markdown, no code fences, no extra text.
@@ -31,13 +31,10 @@ Rules:
 - Only extract years of experience if explicitly stated.
 - For ranges like "3-5 years", use min_yoe=3 and max_yoe=5.
 - For "3+ years" or "at least 3 years", set min_yoe=3 and max_yoe=null.
-- If unsure, first try to infer from Job Title and Job Description. If still unsure, use null.
+- If unsure, first try to infer from Job Title and Job Page Text. If still unsure, use null.
 
 Job Title:
 {title or ""}
-
-Job Description:
-{description or ""}
 
 Job Page Text:
 {page_text}
@@ -65,7 +62,6 @@ def _coerce_json(text: str) -> str:
 
 def get_enrichment(
     title: Optional[str],
-    description: Optional[str],
     apply_link: Optional[str],
     extra_text: Optional[str] = None,
 ) -> dict:
@@ -76,9 +72,9 @@ def get_enrichment(
     if not page_text:
         page_text = fetch_visible_text(apply_link) or ""
         if not page_text:
-            print(f"Careers: failed to fetch text for {apply_link}, using title/description only")
+            print(f"Careers: failed to fetch text for {apply_link}, using title only")
 
-    prompt = _build_prompt(title, description, page_text[:6000])
+    prompt = _build_prompt(title, page_text[:6000])
     try:
         raw = _get_llm_client().extract_json(prompt)
     except Exception as e:
