@@ -7,7 +7,7 @@ OUTPUT_FILE = os.getenv(
     "CAREERS_OUTPUT_FILE",
     "apps/careers_crawler/output/jobs.json",
 )
-OUTPUT_DESTINATION = os.getenv("CAREERS_OUTPUT_DESTINATION", "FILE").upper()
+OUTPUT_DESTINATION = os.getenv("CAREERS_OUTPUT_DESTINATION", "MONGO").upper()
 
 # MongoDB settings (used when CAREERS_OUTPUT_DESTINATION=MONGO)
 MONGO_DB_USER = os.getenv("MONGO_DB_USER", "")

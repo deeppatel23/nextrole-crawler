@@ -31,7 +31,8 @@ Rules:
 - Only extract years of experience if explicitly stated.
 - For ranges like "3-5 years", use min_yoe=3 and max_yoe=5.
 - For "3+ years" or "at least 3 years", set min_yoe=3 and max_yoe=null.
-- If unsure, first try to infer from Job Title and Job Page Text. If still unsure, use null.
+- If not found in the page text, try to infer from the Job Title (e.g., Intern/Junior/Senior/Lead/Principal).
+- If still unsure, use null.
 
 Job Title:
 {title or ""}
