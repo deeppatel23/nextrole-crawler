@@ -33,8 +33,13 @@
 #   handler: arcesium
 #   last_saved: '2026-02-10'
 #   max_saved_jobs: 999
-- company: DE Shaw
+# - company: DE Shaw
+#   source_type: html
+#   handler: de_shaw_india
+#   last_saved: '2026-02-09'
+#   max_saved_jobs: 999
+- company: Atlassian
   source_type: html
-  handler: de_shaw_india
+  handler: atlassian
   last_saved: '2026-02-09'
   max_saved_jobs: 999
