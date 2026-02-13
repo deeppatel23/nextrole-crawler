@@ -53,3 +53,13 @@
   handler: infosys
   last_saved: '2026-02-11'
   max_saved_jobs: 999
+- company: Cisco
+  source_type: api
+  handler: cisco
+  last_saved: '2026-02-11'
+  max_saved_jobs: 999
+- company: EY
+  source_type: html
+  handler: ey
+  last_saved: '2026-02-13'
+  max_saved_jobs: 999
