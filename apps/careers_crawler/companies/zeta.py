@@ -2,16 +2,17 @@
 Zeta careers parser.
 Backend API: Lever postings API (JSON); no explicit sort control (API order is used).
 Logic: maps fields, enriches with page text, and appends RoleDetail entries in one batch.
-De-dupe: if job_hash exists (mongo), append_roles returns stop_fetch and the crawler stops early.
+De-dupe: checks mongo for existing job_hash before enrichment; append_roles handles file-level duplicates.
 """
 from datetime import datetime
 from typing import Any, Dict, List
 
 from clients.http_client import call_api
 from models.role_detail import RoleDetail
-from config.config import OUTPUT_FILE
+from config.config import OUTPUT_DESTINATION, OUTPUT_FILE
 from utils.extract_utils import get_by_path
 from utils.hash_utils import generate_job_hash
+from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
 from utils.html_utils import fetch_visible_text
 from utils.role_enricher import get_enrichment
@@ -54,6 +55,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
     company = source_cfg.get("company")
     source_type = source_cfg.get("source_type")
+    checker = MongoJobHashChecker()
 
     roles: List[RoleDetail] = []
 
@@ -64,6 +66,12 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         if not job_id:
             continue
 
+        job_hash = generate_job_hash(company, str(job_id))
+        if OUTPUT_DESTINATION == "MONGO" and checker.exists(job_hash):
+            print(f"Zeta: existing job_hash found for job_id={job_id}, skipping.")
+            continue
+
+        checker.record(job_hash)
         mapped.pop("job_id", None)
 
         apply_link = f"https://jobs.lever.co/zeta/{job_id}"
@@ -76,7 +84,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         )
 
         role = RoleDetail(
-            job_hash=generate_job_hash(company, str(job_id)),
+            job_hash=job_hash,
             job_id=str(job_id),
             company=company,
             source_type=source_type,
