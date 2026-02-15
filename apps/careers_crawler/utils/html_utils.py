@@ -30,7 +30,16 @@ _KEYWORDS = (
     "roles",
     "detail",
     "details",
-    "description"
+    "description",
+    "job-details",
+    "job_description",
+    "job-responsibilities",
+    "job_qualification",
+    "job_qualifications",
+    "job_requirements",
+    "job_responsibilities",
+    "job-qualification",
+    "job-requirements"
 )
 
 
