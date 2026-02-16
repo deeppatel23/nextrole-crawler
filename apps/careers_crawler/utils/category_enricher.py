@@ -1,7 +1,7 @@
 import json
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from utils.llm_client import LLMClient
 
@@ -22,19 +22,46 @@ def _categories_path() -> Path:
 
 
 @lru_cache(maxsize=1)
-def get_category_options() -> List[str]:
+def _load_category_config() -> Tuple[List[str], Dict[str, List[str]]]:
     try:
         raw = _categories_path().read_text(encoding="utf-8")
         data = json.loads(raw)
     except Exception:
-        return [_DEFAULT_CATEGORY]
+        return [_DEFAULT_CATEGORY], {}
 
-    options = data.get("category")
+    options = data.get("categories")
     if not isinstance(options, list):
-        return [_DEFAULT_CATEGORY]
+        options = data.get("category")
+    if not isinstance(options, list):
+        options = [_DEFAULT_CATEGORY]
 
     cleaned = [str(item).strip() for item in options if str(item).strip()]
-    return cleaned or [_DEFAULT_CATEGORY]
+    if not cleaned:
+        cleaned = [_DEFAULT_CATEGORY]
+
+    raw_keyword_map = data.get("keyword_map")
+    keyword_map: Dict[str, List[str]] = {}
+    if isinstance(raw_keyword_map, dict):
+        for key, values in raw_keyword_map.items():
+            if not isinstance(key, str):
+                continue
+            if not isinstance(values, list):
+                continue
+            cleaned_values = [str(v).strip().lower() for v in values if str(v).strip()]
+            if cleaned_values:
+                keyword_map[key.strip()] = cleaned_values
+
+    return cleaned, keyword_map
+
+
+def get_category_options() -> List[str]:
+    options, _ = _load_category_config()
+    return options
+
+
+def get_keyword_map() -> Dict[str, List[str]]:
+    _, keyword_map = _load_category_config()
+    return keyword_map
 
 
 def _coerce_json(text: str) -> str:
@@ -82,39 +109,22 @@ def _score_by_keywords(text: str, options: List[str]) -> Optional[str]:
     if not text.strip():
         return None
     lowered = text.lower()
-
-    keyword_map: Dict[str, List[str]] = {
-        "Administration & Corporate Support": ["admin", "assistant", "office", "support"],
-        "Artificial Intelligence & Machine Learning": ["machine learning", "ai ", "llm", "deep learning", "nlp"],
-        "Cloud & Solution Architecture": ["cloud", "solution architect", "aws", "azure", "gcp"],
-        "Cybersecurity & Information Security": ["security", "cyber", "infosec", "soc", "vulnerability"],
-        "Data Engineering & Analytics": ["data engineer", "analytics", "bi", "sql", "warehouse"],
-        "Finance & Accounting": ["finance", "accounting", "fp&a", "audit", "tax"],
-        "Hardware & Embedded Engineering": ["embedded", "firmware", "hardware", "rtos", "electronics"],
-        "Human Resources & Talent": ["hr", "recruit", "talent", "people operations"],
-        "Infrastructure & Platform Engineering": ["sre", "devops", "infrastructure", "platform", "kubernetes"],
-        "Marketing & Communications": ["marketing", "brand", "communications", "content"],
-        "Operations": ["operations", "ops", "process", "service delivery"],
-        "Product & Design": ["product manager", "product design", "ux", "ui", "designer"],
-        "Program & Project Management": ["program manager", "project manager", "pm", "scrum"],
-        "Research & Investment": ["research", "investment", "quant", "portfolio"],
-        "Risk, Compliance & Legal": ["risk", "compliance", "legal", "regulatory", "governance"],
-        "Sales & Business Development": ["sales", "account executive", "business development", "partnership"],
-        "Software Engineering": ["software engineer", "developer", "backend", "frontend", "full stack"],
-        "Specialized / Internal Groups": ["internal", "special projects", "chief of staff", "strategy office"],
-        "Supply Chain & Manufacturing": ["supply chain", "manufacturing", "procurement", "logistics"],
-    }
+    keyword_map = get_keyword_map()
+    if not keyword_map:
+        return None
 
     best_option = None
     best_score = 0
-    allowed = set(options)
+    option_lookup = {opt.lower(): opt for opt in options}
+
     for option, keywords in keyword_map.items():
-        if option not in allowed:
+        mapped_option = option_lookup.get(option.lower())
+        if not mapped_option:
             continue
         score = sum(1 for keyword in keywords if keyword in lowered)
         if score > best_score:
             best_score = score
-            best_option = option
+            best_option = mapped_option
 
     return best_option
 
