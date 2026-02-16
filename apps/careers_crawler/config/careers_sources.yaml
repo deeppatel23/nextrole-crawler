@@ -73,3 +73,8 @@
   handler: myntra
   last_saved: '2026-02-14'
   max_saved_jobs: 999
+- company: Adobe
+  source_type: api
+  handler: adobe
+  last_saved: '2026-02-14'
+  max_saved_jobs: 999
