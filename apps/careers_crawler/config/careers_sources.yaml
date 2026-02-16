@@ -68,3 +68,8 @@
   handler: kpmg
   last_saved: '2026-02-14'
   max_saved_jobs: 333
+- company: Myntra
+  source_type: api
+  handler: myntra
+  last_saved: '2026-02-14'
+  max_saved_jobs: 999
