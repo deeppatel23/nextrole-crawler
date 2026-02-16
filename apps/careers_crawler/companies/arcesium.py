@@ -119,7 +119,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
         city = _extract_primary_city(location_name)
         title = job.get("title")
-        category = _extract_category(job)
         apply_link = job.get("absolute_url")
         content_text = _html_to_text(job.get("content"))
 
@@ -136,7 +135,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             source_type=source_type,
             title=title,
             role=None,
-            category=category,
+            category=enrichment["category"],
             city=city,
             country="India",
             apply_link=apply_link,

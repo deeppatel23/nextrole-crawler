@@ -165,7 +165,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
         location_parts = _extract_location_parts(first_location, second_location)
 
         title = job.get("title")
-        category = job.get("category")
         portal_url = portal.get("portalUrl") if isinstance(portal, dict) else None
         apply_link = job.get("applyUrl")
 
@@ -182,7 +181,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             source_type=source_type,
             title=title,
             role=None,
-            category=category,
+            category=enrichment["category"],
             city=location_parts["city"],
             state=None,
             country=location_parts["country"],

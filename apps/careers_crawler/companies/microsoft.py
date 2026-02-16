@@ -183,6 +183,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 mapped.get("apply_link"),
                 detail_desc,
             )
+            mapped["category"] = enrichment["category"]
 
             role = RoleDetail(
                 job_hash=generate_job_hash(company, str(job_id)),

@@ -180,7 +180,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 source_type=source_type,
                 title=req.get("Title"),
                 role=req.get("JobFamily"),
-                category=req.get("JobFunction"),
+                category=enrichment["category"],
                 city=city,
                 state=state,
                 country=country or req.get("PrimaryLocationCountry"),

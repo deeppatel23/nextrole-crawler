@@ -330,7 +330,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 source_type=source_type,
                 title=detail_mapped.get("title"),
                 role=detail_mapped.get("role"),
-                category=detail_mapped.get("category"),
+                category=enrichment["category"],
                 city=city,
                 state=state,
                 country=country,

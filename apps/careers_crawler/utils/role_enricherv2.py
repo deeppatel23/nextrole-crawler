@@ -1,6 +1,7 @@
 import json
 from typing import List, Optional
 
+from utils.category_enricher import get_category_options, match_category
 from utils.html_utils import fetch_visible_text
 from utils.llm_client import LLMClient
 
@@ -20,18 +21,7 @@ def _build_prompt(
     page_text: str,
     category_options: Optional[List[str]] = None,
 ) -> str:
-    category_hint = ""
-    if category_options:
-        choices = ", ".join(category_options)
-        category_hint = f"""
-- Also extract "category" and choose only one from: [{choices}].
-- If no confident match, set category=null.
-"""
-    else:
-        category_hint = """
-- Also extract "category" from the job text and title.
-- If no confident match, set category=null.
-"""
+    choices = ", ".join(get_category_options())
 
     return f"""
 You are an information extraction system.
@@ -42,7 +32,7 @@ Schema:
   "top_skills": [string],  // up to 5 items, most important first
   "min_yoe": number | null,
   "max_yoe": number | null,
-  "category": string | null
+  "category": string
 }}
 
 Rules:
@@ -51,7 +41,7 @@ Rules:
 - For "3+ years" or "at least 3 years", set min_yoe=3 and max_yoe=null.
 - If not found in the page text, try to infer from the Job Title (e.g., Intern/Junior/Senior/Lead/Principal).
 - If still unsure, use null.
-{category_hint}
+- Category must be exactly one of: [{choices}]
 
 Job Title:
 {title or ""}
@@ -86,11 +76,8 @@ def get_enrichment_with_category(
     extra_text: Optional[str] = None,
     category_options: Optional[List[str]] = None,
 ) -> dict:
-    if not apply_link:
-        return {"skills": [], "min_yoe": None, "max_yoe": None, "category": None}
-
     page_text = extra_text or ""
-    if not page_text:
+    if apply_link and not page_text:
         page_text = fetch_visible_text(apply_link) or ""
         if not page_text:
             print(f"Careers v2: failed to fetch text for {apply_link}, using title only")
@@ -100,7 +87,12 @@ def get_enrichment_with_category(
         raw = _get_llm_client().extract_json(prompt)
     except Exception as e:
         print(f"Careers v2: LLM failed for {apply_link}: {e}")
-        return {"skills": [], "min_yoe": None, "max_yoe": None, "category": None}
+        return {
+            "skills": [],
+            "min_yoe": None,
+            "max_yoe": None,
+            "category": match_category(title=title, page_text=page_text),
+        }
 
     try:
         data = json.loads(raw)
@@ -109,7 +101,12 @@ def get_enrichment_with_category(
             data = json.loads(_coerce_json(raw))
         except json.JSONDecodeError:
             print(f"Careers v2: LLM returned invalid JSON for {apply_link}")
-            return {"skills": [], "min_yoe": None, "max_yoe": None, "category": None}
+            return {
+                "skills": [],
+                "min_yoe": None,
+                "max_yoe": None,
+                "category": match_category(title=title, page_text=page_text),
+            }
 
     skills = data.get("top_skills") or []
     out_skills = []
@@ -121,15 +118,12 @@ def get_enrichment_with_category(
     out_min = int(min_yoe) if isinstance(min_yoe, (int, float)) else None
     out_max = int(max_yoe) if isinstance(max_yoe, (int, float)) else None
 
-    out_category = None
-    category_raw = data.get("category")
-    if isinstance(category_raw, str):
-        candidate = category_raw.strip()
-        if candidate:
-            out_category = candidate
-    if category_options and out_category:
-        normalized = {opt.lower(): opt for opt in category_options}
-        out_category = normalized.get(out_category.lower())
+    out_category = match_category(
+        title=title,
+        page_text=page_text,
+        skills=out_skills,
+        category_hint=data.get("category"),
+    )
 
     return {
         "skills": out_skills,

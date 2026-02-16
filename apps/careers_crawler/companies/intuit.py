@@ -339,7 +339,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
         apply_link = _normalize_apply_link(job.get("apply_link"))
         title = job.get("title")
-        category = job.get("category")
         location = job.get("location")
         city = _extract_city(location)
 
@@ -352,7 +351,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             source_type=source_type,
             title=title,
             role=None,
-            category=category,
+            category=enrichment["category"],
             city=city,
             state=None,
             country="India",

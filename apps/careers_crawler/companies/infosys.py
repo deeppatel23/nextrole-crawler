@@ -86,6 +86,7 @@ from typing import Any, Dict, List, Optional
 from clients.http_client import call_api
 from config.config import OUTPUT_DESTINATION, OUTPUT_FILE
 from models.role_detail import RoleDetail
+from utils.category_enricher import match_category
 from utils.hash_utils import generate_job_hash
 from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
@@ -190,6 +191,22 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 "https://career.infosys.com/jobdesc?jobReferenceCode="
                 f"{reference_code}"
             )
+        raw_skills = _extract_skills(job.get("preferredSkills"))
+        matched_category = match_category(
+            title=job.get("postingTitle"),
+            department=job.get("functionalArea"),
+            skills=raw_skills,
+            page_text=" ".join(
+                str(v or "")
+                for v in [
+                    job.get("technicalRequirement"),
+                    job.get("rolesResponsibilities"),
+                    job.get("additionalResponsibility"),
+                    job.get("postingDescription"),
+                ]
+            ),
+            category_hint=job.get("functionalArea"),
+        )
 
         role = RoleDetail(
             job_hash=job_hash,
@@ -198,14 +215,14 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             source_type=source_type,
             title=job.get("postingTitle"),
             role=None,
-            category=job.get("functionalArea"),
+            category=matched_category,
             min_yoe=_to_int(job.get("minExperienceLevel")),
             max_yoe=_to_int(job.get("maxExperienceLevel")),
             city=job.get("location"),
             state=None,
             country=job.get("country"),
             workplace_type=None,
-            skills=_extract_skills(job.get("preferredSkills")),
+            skills=raw_skills,
             apply_link=apply_link,
             created_at=now_iso,
             updated_at=None,

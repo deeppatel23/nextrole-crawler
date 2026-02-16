@@ -161,7 +161,7 @@ def _build_role(
         company=company,
         source_type=source_type,
         title=title,
-        category=category,
+        category=enrichment["category"],
         apply_link=job_url,
         skills=enrichment["skills"],
         min_yoe=enrichment["min_yoe"],

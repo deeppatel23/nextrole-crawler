@@ -281,7 +281,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                     source_type=source_type,
                     title=title,
                     role=None,
-                    category=category,
+                    category=enrichment["category"],
                     min_yoe=enrichment["min_yoe"],
                     max_yoe=enrichment["max_yoe"],
                     city=city,

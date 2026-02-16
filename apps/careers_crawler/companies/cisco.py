@@ -309,7 +309,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             break
 
         title = job.get("title")
-        category = job.get("category")
         city = job.get("cityState")
         workplace_type = job.get("RemoteType")
         apply_link = job.get("applyUrl")
@@ -324,7 +323,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             source_type=source_type,
             title=title,
             role=None,
-            category=category,
+            category=enrichment["category"],
             min_yoe=enrichment["min_yoe"],
             max_yoe=enrichment["max_yoe"],
             city=city,

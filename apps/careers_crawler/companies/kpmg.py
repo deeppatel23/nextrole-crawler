@@ -188,7 +188,6 @@ API_URL = (
 )
 SITE_NUMBERS = ("CX_1", "CX_3", "CX_3001")
 DEFAULT_LIMIT = 25
-KPMG_CATEGORIES = ["Technology", "Business Functions", "Law and Legal"]
 
 
 def _build_params(site_number: str, limit: int, offset: int) -> Dict[str, str]:
@@ -351,7 +350,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 enrichment = get_enrichment_with_category(
                     str(title),
                     apply_link,
-                    category_options=KPMG_CATEGORIES,
                 )
 
                 role = RoleDetail(

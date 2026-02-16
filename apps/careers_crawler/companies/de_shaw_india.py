@@ -167,7 +167,6 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             continue
 
         title = data.get("displayName")
-        category = _normalize_category(data.get("jobCategory"))
         job_desc = data.get("jobDescription") or {}
         website_desc = None
         if isinstance(job_desc, dict):
@@ -200,7 +199,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 source_type=source_type,
                 title=title,
                 role=None,
-                category=category,
+                category=enrichment["category"],
                 city=location_name,
                 state=None,
                 country="India",
