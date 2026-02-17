@@ -53,3 +53,8 @@
   handler: adobe
   last_saved: '2026-02-17'
   max_saved_jobs: 999
+- company: Morgan Stanley
+  source_type: api
+  handler: morganstanley
+  last_saved: '2026-02-16'
+  max_saved_jobs: 999

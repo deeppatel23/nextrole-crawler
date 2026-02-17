@@ -221,5 +221,97 @@
     "source_type": "API",
     "created_at": "2026-02-16",
     "updated_at": null
+  },
+  {
+    "job_hash": "42d76b6903f70d325e92ec2198da001b890214e54a0a21642e520d039416470b",
+    "job_id": "549795501880",
+    "company": "Morgan Stanley",
+    "title": "Dir, P3, Data & Analytics Eng III : Job Level - Director",
+    "role": null,
+    "category": "Data Engineering & Analytics",
+    "min_yoe": 5,
+    "max_yoe": null,
+    "city": "Mumbai",
+    "state": null,
+    "country": "Maharashtra",
+    "workplace_type": "onsite",
+    "skills": [
+      "Data Warehousing / Data Lake Solutions",
+      "Relational Database (Teradata)",
+      "Optimizing Large Data Loads"
+    ],
+    "apply_link": "https://morganstanley.eightfold.ai/careers/job/549795501880",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
+  },
+  {
+    "job_hash": "49add99b089a478c01a179a98f7e3a0229e9ba4cd49e01ebd1a516b21ab2793b",
+    "job_id": "549796076592",
+    "company": "Morgan Stanley",
+    "title": "Senior Business Analyst - Parametric",
+    "role": null,
+    "category": "Product & Design",
+    "min_yoe": 7,
+    "max_yoe": null,
+    "city": "Mumbai",
+    "state": null,
+    "country": "Maharashtra",
+    "workplace_type": "onsite",
+    "skills": [
+      "Business Analysis",
+      "Data Analysis",
+      "Feature Specification"
+    ],
+    "apply_link": "https://morganstanley.eightfold.ai/careers/job/549796076592",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
+  },
+  {
+    "job_hash": "822647adb7eee4f079d40b9a900f5798576fd5c2e1d913f5cd3b63d026b18d45",
+    "job_id": "549795877782",
+    "company": "Morgan Stanley",
+    "title": ".Net Developer_Associate_Software Engineering",
+    "role": null,
+    "category": "Software Engineering",
+    "min_yoe": 4,
+    "max_yoe": null,
+    "city": "Mumbai",
+    "state": null,
+    "country": "Maharashtra",
+    "workplace_type": "onsite",
+    "skills": [
+      ".NET",
+      "C#",
+      "SQL Server"
+    ],
+    "apply_link": "https://morganstanley.eightfold.ai/careers/job/549795877782",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
+  },
+  {
+    "job_hash": "776aaab35addf29f4d932968f64cc66d651e8849f06a90915c9271410665ad26",
+    "job_id": "549795920501",
+    "company": "Morgan Stanley",
+    "title": "Java Developer_Associate_Software Engineering",
+    "role": null,
+    "category": "Software Engineering",
+    "min_yoe": 6,
+    "max_yoe": null,
+    "city": "Bengaluru",
+    "state": null,
+    "country": "Karnataka",
+    "workplace_type": "onsite",
+    "skills": [
+      "Java",
+      "JavaScript",
+      "SQL"
+    ],
+    "apply_link": "https://morganstanley.eightfold.ai/careers/job/549795920501",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
   }
 ]
