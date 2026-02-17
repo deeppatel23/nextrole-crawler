@@ -58,3 +58,8 @@
   handler: morganstanley
   last_saved: '2026-02-16'
   max_saved_jobs: 999
+- company: Sprinklr
+  source_type: api
+  handler: sprinklr
+  last_saved: '2026-02-16'
+  max_saved_jobs: 999

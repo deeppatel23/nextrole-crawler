@@ -313,5 +313,74 @@
     "source_type": "API",
     "created_at": "2026-02-17",
     "updated_at": null
+  },
+  {
+    "job_hash": "323e3b78e11737861f47b5784508592ca9e320638f1e101321b2148b1ac230fd",
+    "job_id": "b7c839335a9f1000f69c9fcefc660000",
+    "company": "Sprinklr",
+    "title": "Lead Software Engineer",
+    "role": null,
+    "category": "Software Engineering",
+    "min_yoe": 4,
+    "max_yoe": 7,
+    "city": "Gurgaon",
+    "state": "Haryana",
+    "country": "India",
+    "workplace_type": null,
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "Distributed Systems"
+    ],
+    "apply_link": "https://sprinklr.wd1.myworkdayjobs.com/careers/job/India---Haryana---Gurgaon/Lead-Software-Engineer_112655-JOB",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
+  },
+  {
+    "job_hash": "e0c7285af7f8b18373d612cd46038718fbde11adc6f777e0dc79a4b9f856d15e",
+    "job_id": "b7c839335a9f10009a5e40d174120000",
+    "company": "Sprinklr",
+    "title": "Lead Product Solution",
+    "role": null,
+    "category": "Cloud & Solution Architecture",
+    "min_yoe": 8,
+    "max_yoe": null,
+    "city": "Gurgaon",
+    "state": "Haryana",
+    "country": "India",
+    "workplace_type": null,
+    "skills": [
+      "Contact Center Solutions",
+      "VoIP",
+      "Conversational AI"
+    ],
+    "apply_link": "https://sprinklr.wd1.myworkdayjobs.com/careers/job/India---Haryana---Gurgaon/Lead-Product-Solution_112775-JOB",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
+  },
+  {
+    "job_hash": "f7b9a68b5f07c1bcd12d17be4c73f341f7c1043cd3fd564b45fa6f3511fcdbfb",
+    "job_id": "d1f8c1c24b231001aa69e64f7fa60000",
+    "company": "Sprinklr",
+    "title": "Senior Product Manager",
+    "role": null,
+    "category": "Product & Design",
+    "min_yoe": 5,
+    "max_yoe": null,
+    "city": "Gurgaon",
+    "state": "Haryana",
+    "country": "India",
+    "workplace_type": null,
+    "skills": [
+      "Product Strategy",
+      "Product Roadmap Definition",
+      "Cross-functional Collaboration"
+    ],
+    "apply_link": "https://sprinklr.wd1.myworkdayjobs.com/careers/job/India---Haryana---Gurgaon/Senior-Product-Manager_111399-JOB",
+    "source_type": "API",
+    "created_at": "2026-02-17",
+    "updated_at": null
   }
 ]
