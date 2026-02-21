@@ -1,65 +1,70 @@
 - company: Goldman Sachs
   source_type: api
   handler: goldman_sachs
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Arcesium
   source_type: api
   handler: arcesium
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: DE Shaw
   source_type: html
   handler: de_shaw_india
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Atlassian
   source_type: html
   handler: atlassian
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Intuit
   source_type: html
   handler: intuit
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Infosys
   source_type: api
   handler: infosys
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Cisco
   source_type: api
   handler: cisco
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: EY
   source_type: html
   handler: ey
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: KPMG
   source_type: api
   handler: kpmg
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 333
 - company: Myntra
   source_type: api
   handler: myntra
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Adobe
   source_type: api
   handler: adobe
-  last_saved: '2026-02-17'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Morgan Stanley
   source_type: api
   handler: morganstanley
-  last_saved: '2026-02-16'
+  last_saved: '2026-02-21'
   max_saved_jobs: 999
 - company: Sprinklr
   source_type: api
   handler: sprinklr
-  last_saved: '2026-02-16'
+  last_saved: '2026-02-21'
+  max_saved_jobs: 999
+- company: Google
+  source_type: html
+  handler: google
+  last_saved: '2026-02-20'
   max_saved_jobs: 999
