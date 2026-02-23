@@ -215,16 +215,24 @@ def _normalize_whitespace(value: Optional[str]) -> str:
 def _extract_location_parts(raw: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     if not raw:
         return None, None, None
+
+    def _sanitize_city(value: Optional[str]) -> Optional[str]:
+        if not value:
+            return None
+        # Remove semicolons and all spaces from city values.
+        cleaned = value.replace(";", "").replace(" ", "").strip()
+        return cleaned or None
+
     clean = raw.strip()
     if "|" in clean:
         clean = clean.split("|", 1)[1].strip()
     parts = [part.strip() for part in clean.split(",") if part.strip()]
     if len(parts) == 3:
-        return parts[0], parts[1], parts[2]
+        return _sanitize_city(parts[0]), parts[1], parts[2]
     if len(parts) == 2:
-        return parts[0], None, parts[1]
+        return _sanitize_city(parts[0]), None, parts[1]
     if len(parts) == 1:
-        return parts[0], None, None
+        return _sanitize_city(parts[0]), None, None
     return None, None, None
 
 
