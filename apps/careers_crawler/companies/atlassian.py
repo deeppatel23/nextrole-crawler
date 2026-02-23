@@ -74,6 +74,7 @@ import requests
 
 from config.config import OUTPUT_FILE, OUTPUT_DESTINATION
 from models.role_detail import RoleDetail
+from utils.extract_utils import normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
@@ -182,7 +183,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             title=title,
             role=None,
             category=enrichment["category"],
-            city=location_parts["city"],
+            city=normalize_city(location_parts["city"]),
             state=None,
             country=location_parts["country"],
             workplace_type=location_parts["workplace_type"],

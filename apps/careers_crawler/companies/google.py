@@ -195,6 +195,7 @@ import requests
 
 from config.config import OUTPUT_DESTINATION, OUTPUT_FILE
 from models.role_detail import RoleDetail
+from utils.extract_utils import normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
@@ -216,23 +217,16 @@ def _extract_location_parts(raw: str) -> Tuple[Optional[str], Optional[str], Opt
     if not raw:
         return None, None, None
 
-    def _sanitize_city(value: Optional[str]) -> Optional[str]:
-        if not value:
-            return None
-        # Remove semicolons and all spaces from city values.
-        cleaned = value.replace(";", "").replace(" ", "").strip()
-        return cleaned or None
-
     clean = raw.strip()
     if "|" in clean:
         clean = clean.split("|", 1)[1].strip()
     parts = [part.strip() for part in clean.split(",") if part.strip()]
     if len(parts) == 3:
-        return _sanitize_city(parts[0]), parts[1], parts[2]
+        return normalize_city(parts[0]), parts[1], parts[2]
     if len(parts) == 2:
-        return _sanitize_city(parts[0]), None, parts[1]
+        return normalize_city(parts[0]), None, parts[1]
     if len(parts) == 1:
-        return _sanitize_city(parts[0]), None, None
+        return normalize_city(parts[0]), None, None
     return None, None, None
 
 
@@ -577,7 +571,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                     category=enrichment["category"],
                     min_yoe=enrichment["min_yoe"],
                     max_yoe=enrichment["max_yoe"],
-                    city=city,
+                    city=normalize_city(city),
                     state=state,
                     country=country,
                     workplace_type=None,

@@ -12,7 +12,7 @@ from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from clients.http_client import call_api
 from models.role_detail import RoleDetail
 from config.config import OUTPUT_FILE
-from utils.extract_utils import get_by_path
+from utils.extract_utils import get_by_path, normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
 from utils.role_enricher import get_enrichment
@@ -172,6 +172,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             city, state, country = _extract_location(position)
             if city and not mapped.get("city"):
                 mapped["city"] = city
+            mapped["city"] = normalize_city(mapped.get("city"))
             if state and not mapped.get("state"):
                 mapped["state"] = state
             if country and not mapped.get("country"):

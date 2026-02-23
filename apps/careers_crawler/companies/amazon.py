@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 from clients.http_client import call_api
 from models.role_detail import RoleDetail
 from config.config import OUTPUT_FILE
-from utils.extract_utils import get_by_path
+from utils.extract_utils import get_by_path, normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
 from utils.role_enricher import get_enrichment
@@ -151,6 +151,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
             mapped.pop("job_id", None)
             mapped["apply_link"] = _normalize_amazon_job_link(mapped.get("apply_link"))
+            mapped["city"] = normalize_city(mapped.get("city"))
 
             skills_text = mapped.get("skills") or ""
             if isinstance(skills_text, list):

@@ -12,6 +12,7 @@ from urllib.parse import urlencode, urlparse, urlunparse, parse_qsl
 from clients.http_client import call_api
 from config.config import OUTPUT_FILE
 from models.role_detail import RoleDetail
+from utils.extract_utils import normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.output_writer import append_roles
 from utils.role_enricher import get_enrichment
@@ -181,7 +182,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 title=req.get("Title"),
                 role=req.get("JobFamily"),
                 category=enrichment["category"],
-                city=city,
+                city=normalize_city(city),
                 state=state,
                 country=country or req.get("PrimaryLocationCountry"),
                 workplace_type=req.get("WorkplaceType"),

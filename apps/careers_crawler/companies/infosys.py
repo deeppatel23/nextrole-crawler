@@ -87,6 +87,7 @@ from clients.http_client import call_api
 from config.config import OUTPUT_DESTINATION, OUTPUT_FILE
 from models.role_detail import RoleDetail
 from utils.category_enricher import match_category
+from utils.extract_utils import normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
@@ -218,7 +219,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             category=matched_category,
             min_yoe=_to_int(job.get("minExperienceLevel")),
             max_yoe=_to_int(job.get("maxExperienceLevel")),
-            city=job.get("location"),
+            city=normalize_city(job.get("location")),
             state=None,
             country=job.get("country"),
             workplace_type=None,

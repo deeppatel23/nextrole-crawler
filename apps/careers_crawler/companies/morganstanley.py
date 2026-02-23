@@ -158,6 +158,7 @@ from urllib.parse import urlencode
 from clients.http_client import call_api
 from config.config import OUTPUT_DESTINATION, OUTPUT_FILE
 from models.role_detail import RoleDetail
+from utils.extract_utils import normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
@@ -373,7 +374,7 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 category=enrichment["category"],
                 min_yoe=enrichment["min_yoe"],
                 max_yoe=enrichment["max_yoe"],
-                city=city,
+                city=normalize_city(city),
                 state=None,
                 country=country_value,
                 workplace_type=workplace_type,
