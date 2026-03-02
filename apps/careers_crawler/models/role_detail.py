@@ -28,6 +28,7 @@ class RoleDetail:
 
     # content
     skills: List[str] = field(default_factory=list)
+    title_embedding: List[float] = field(default_factory=list)
 
     # links
     apply_link: Optional[str] = None

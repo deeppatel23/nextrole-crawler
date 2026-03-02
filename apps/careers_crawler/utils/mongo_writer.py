@@ -6,6 +6,7 @@ import certifi
 from pymongo import MongoClient, UpdateOne
 
 from config.config import MONGO_COLLECTION, MONGO_DB_NAME, MONGO_URI, CAREERS_TTL_DAYS
+from utils.title_embeddings import get_title_embedding_map
 
 _client = None
 _ttl_index_created = False
@@ -35,6 +36,23 @@ def append_jobs_mongo(jobs: Iterable) -> Tuple[int, bool]:
     for doc in payload:
         if "job_hash" in doc:
             doc["_id"] = doc["job_hash"]
+    try:
+        title_embedding_map, embedding_model = get_title_embedding_map(
+            [doc.get("title") for doc in payload if not doc.get("title_embedding")]
+        )
+    except Exception as exc:
+        print(f"Careers: failed to generate title embeddings, continuing without them: {exc}")
+        title_embedding_map, embedding_model = {}, ""
+
+    expires_at = datetime.utcnow() + timedelta(days=CAREERS_TTL_DAYS)
+    embedding_generated_at = datetime.utcnow()
+    for doc in payload:
+        normalized_title = " ".join(str(doc.get("title", "")).split()).strip()
+        vector = title_embedding_map.get(normalized_title)
+        if vector and not doc.get("title_embedding"):
+            doc["title_embedding"] = vector
+            doc["title_embedding_model"] = embedding_model
+            doc["title_embedding_updated_at"] = embedding_generated_at
         doc["expires_at"] = expires_at
     ops = []
     for doc in payload:
