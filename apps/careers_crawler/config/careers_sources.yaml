@@ -1,238 +1,238 @@
 - company: Paytm
   source_type: api
   handler: paytm
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Tower Research Capital
   source_type: api
   handler: tower_research_capital
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Razorpay
   source_type: api
   handler: razorpay
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Gojek
   source_type: html
   handler: gojek
   careers_url: https://www.gojek.io/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Delhivery Courier And Logistics
   source_type: html
   handler: delhivery
   careers_url: https://www.delhivery.com/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: MindTickle
   source_type: html
   handler: mindtickle
   careers_url: https://www.mindtickle.com/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Informatica
   source_type: html
   handler: informatica
   careers_url: https://careers.informatica.com/us/en
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Uber
   source_type: html
   handler: uber
   careers_url: https://www.uber.com/us/en/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Udaan
   source_type: html
   handler: udaan
   careers_url: https://careers.udaan.com/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: CureFit
   source_type: html
   handler: curefit
   careers_url: https://careers.cult.fit/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: ShareChat
   source_type: html
   handler: sharechat
   careers_url: https://we.sharechat.com/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Ola
   source_type: html
   handler: ola
   careers_url: https://www.olacabs.com/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Expedia
   source_type: html
   handler: expedia
   careers_url: https://lifeatexpediagroup.com/jobs
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Nutanix
   source_type: html
   handler: nutanix
   careers_url: https://www.nutanix.com/company/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Zomato
   source_type: html
   handler: zomato
   careers_url: https://www.zomato.com/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Yelp
   source_type: html
   handler: yelp
   careers_url: https://www.yelp.careers/us/en
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: ByteDance
   source_type: html
   handler: bytedance
   careers_url: https://jobs.bytedance.com/en/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Dunzo
   source_type: html
   handler: dunzo
   careers_url: https://www.dunzo.com/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: MakeMyTrip
   source_type: html
   handler: makemytrip
   careers_url: https://careers.makemytrip.com/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Toppr
   source_type: api
   handler: toppr
   careers_url: https://apply.workable.com/toppr/?lng=en
   workable_account: toppr
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: VMWare
   source_type: html
   handler: vmware
   careers_url: https://careers.vmware.com/main/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Intel Corporation
   source_type: html
   handler: intel_corporation
   careers_url: https://jobs.intel.com/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Postman
   source_type: html
   handler: postman
   careers_url: https://www.postman.com/company/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Walmart
   source_type: html
   handler: walmart
   careers_url: https://careers.walmart.com/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Oracle
   source_type: html
   handler: oracle
   careers_url: https://www.oracle.com/in/corporate/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: ThoughtWorks
   source_type: html
   handler: thoughtworks
   careers_url: https://www.thoughtworks.com/careers
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Directi
   source_type: html
   handler: directi
   careers_url: https://careers.directi.com/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Swiggy
   source_type: html
   handler: swiggy
   careers_url: https://careers.swiggy.com/#/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Innovacer
   source_type: html
   handler: innovacer
   careers_url: https://innovaccer.com/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Mastercard
   source_type: html
   handler: mastercard
   careers_url: https://careers.mastercard.com/us/en
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Visa
   source_type: html
   handler: visa
   careers_url: https://www.visa.co.in/careers.html
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Samsung
   source_type: html
   handler: samsung
   careers_url: https://www.samsung.com/in/about-us/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Hashedin
   source_type: html
   handler: hashedin
   careers_url: https://hashedin.com/careers/
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Goldman Sachs
   source_type: api
   handler: goldman_sachs
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Arcesium
   source_type: api
   handler: arcesium
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: DE Shaw
   source_type: html
   handler: de_shaw_india
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Atlassian
   source_type: html
   handler: atlassian
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Intuit
   source_type: html
   handler: intuit
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Infosys
   source_type: api
   handler: infosys
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: Cisco
   source_type: api
   handler: cisco
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: EY
   source_type: html
   handler: ey
-  last_saved: '2026-03-10'
+  last_saved: '2026-03-09'
   max_saved_jobs: 3
 - company: KPMG
   source_type: api

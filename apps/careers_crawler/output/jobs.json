@@ -160,5 +160,29 @@
     "source_type": "API",
     "created_at": "2026-03-10",
     "updated_at": null
+  },
+  {
+    "job_hash": "a691c8cc88e4168109f010949a1406113bb6a753f4a2eb9884fc059297c923fe",
+    "job_id": "852331",
+    "company": "Paytm",
+    "title": "KAM-Midmarket Sales-Indore",
+    "role": null,
+    "category": "Sales & Business Development",
+    "min_yoe": 3,
+    "max_yoe": 6,
+    "city": "Indore",
+    "state": null,
+    "country": "India",
+    "workplace_type": null,
+    "skills": [
+      "Sales",
+      "Negotiation",
+      "Communication"
+    ],
+    "title_embedding": [],
+    "apply_link": "https://paytm.ripplehire.com/candidate/?token=Jrn4GUz6HCYtOdlkVCzo&source=CAREERSITE#apply/job/852331",
+    "source_type": "API",
+    "created_at": "2026-03-10",
+    "updated_at": null
   }
 ]
