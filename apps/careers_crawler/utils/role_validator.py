@@ -30,10 +30,6 @@ def validate_role(role: RoleDetail) -> Tuple[bool, List[str]]:
         errors.append("title")
     if _is_blank(role.category):
         errors.append("category")
-    if _is_blank(role.city):
-        errors.append("city")
-    if _is_blank(role.skills):
-        errors.append("skills")
     if _is_blank(role.apply_link):
         errors.append("apply_link")
     if _is_blank(role.created_at):
@@ -46,4 +42,3 @@ def validate_role(role: RoleDetail) -> Tuple[bool, List[str]]:
             errors.append("category_invalid")
 
     return len(errors) == 0, errors
-

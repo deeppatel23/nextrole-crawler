@@ -46,7 +46,7 @@
 - company: Udaan
   source_type: html
   handler: udaan
-  careers_url: https://careers.udaan.com/
+  careers_url: https://www.udaanindia.com/job
   last_saved: '2026-03-09'
   max_saved_jobs: 999
 - company: CureFit
@@ -56,9 +56,9 @@
   last_saved: '2026-03-09'
   max_saved_jobs: 999
 - company: ShareChat
-  source_type: html
+  source_type: api
   handler: sharechat
-  careers_url: https://we.sharechat.com/careers
+  careers_url: https://sharechat.com/api/careersList?limit=100
   last_saved: '2026-03-09'
   max_saved_jobs: 999
 - company: Ola
