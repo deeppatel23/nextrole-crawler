@@ -31,12 +31,12 @@
   careers_url: https://www.mindtickle.com/careers/
   last_saved: '2026-03-09'
   max_saved_jobs: 999
-- company: Informatica
-  source_type: html
-  handler: informatica
-  careers_url: https://careers.informatica.com/us/en
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
+# - company: Informatica
+#   source_type: html
+#   handler: informatica
+#   careers_url: https://careers.informatica.com/us/en
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
 - company: Uber
   source_type: html
   handler: uber
@@ -67,12 +67,12 @@
   careers_url: https://www.olacabs.com/careers
   last_saved: '2026-03-09'
   max_saved_jobs: 999
-- company: Expedia
-  source_type: html
-  handler: expedia
-  careers_url: https://lifeatexpediagroup.com/jobs
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
+# - company: Expedia
+#   source_type: html
+#   handler: expedia
+#   careers_url: https://lifeatexpediagroup.com/jobs
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
 - company: Nutanix
   source_type: html
   handler: nutanix
@@ -85,18 +85,18 @@
   careers_url: https://www.zomato.com/careers
   last_saved: '2026-03-09'
   max_saved_jobs: 999
-- company: Yelp
-  source_type: html
-  handler: yelp
-  careers_url: https://www.yelp.careers/us/en
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
-- company: ByteDance
-  source_type: html
-  handler: bytedance
-  careers_url: https://jobs.bytedance.com/en/
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
+# - company: Yelp
+#   source_type: html
+#   handler: yelp
+#   careers_url: https://www.yelp.careers/us/en
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
+# - company: ByteDance
+#   source_type: html
+#   handler: bytedance
+#   careers_url: https://jobs.bytedance.com/en/
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
 - company: Dunzo
   source_type: html
   handler: dunzo
@@ -140,18 +140,18 @@
   careers_url: https://careers.walmart.com/
   last_saved: '2026-03-09'
   max_saved_jobs: 999
-- company: Oracle
-  source_type: html
-  handler: oracle
-  careers_url: https://www.oracle.com/in/corporate/careers/
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
-- company: ThoughtWorks
-  source_type: html
-  handler: thoughtworks
-  careers_url: https://www.thoughtworks.com/careers
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
+# - company: Oracle
+#   source_type: html
+#   handler: oracle
+#   careers_url: https://www.oracle.com/in/corporate/careers/
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
+# - company: ThoughtWorks
+#   source_type: html
+#   handler: thoughtworks
+#   careers_url: https://www.thoughtworks.com/careers
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
 - company: Directi
   source_type: html
   handler: directi
@@ -182,12 +182,12 @@
   careers_url: https://www.visa.co.in/careers.html
   last_saved: '2026-03-09'
   max_saved_jobs: 999
-- company: Samsung
-  source_type: html
-  handler: samsung
-  careers_url: https://www.samsung.com/in/about-us/careers/
-  last_saved: '2026-03-09'
-  max_saved_jobs: 999
+# - company: Samsung
+#   source_type: html
+#   handler: samsung
+#   careers_url: https://www.samsung.com/in/about-us/careers/
+#   last_saved: '2026-03-09'
+#   max_saved_jobs: 999
 - company: Hashedin
   source_type: html
   handler: hashedin
