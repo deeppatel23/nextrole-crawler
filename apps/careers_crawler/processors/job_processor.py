@@ -5,6 +5,7 @@ from pathlib import Path
 import yaml
 
 from config.config import DEBUG_MODE
+from utils.max_error_guard import MaxAllowedErrorsReached, guard_requests_errors
 
 
 def process_source(source_cfg):
@@ -21,8 +22,10 @@ def process_source(source_cfg):
         return {"saved_count": 0, "status": "success"}
 
     try:
-        handler_mod = importlib.import_module(f"companies.{handler_name}")
-        saved_count = handler_mod.fetch_and_save(source_cfg)
+        max_allowed_error = int(source_cfg.get("max_allowed_error", 5) or 5)
+        with guard_requests_errors(company_label=str(company), max_allowed_error=max_allowed_error):
+            handler_mod = importlib.import_module(f"companies.{handler_name}")
+            saved_count = handler_mod.fetch_and_save(source_cfg)
 
         if DEBUG_MODE:
             print(f"{company}: DEBUG_MODE=true, not updating careers_sources.yaml (last_saved stays unchanged).")
@@ -37,6 +40,10 @@ def process_source(source_cfg):
             print(f"{company}: updated last_saved to {today}")
 
         return {"saved_count": saved_count, "status": "success"}
+    except MaxAllowedErrorsReached as exc:
+        print(str(exc))
+        print(f"{company}: skipping due to max_allowed_error.")
+        return {"saved_count": 0, "status": "skipped"}
     except Exception as e:
         print(f"Failed to load handler '{handler_name}': {e}")
         return {"saved_count": 0, "status": "failed"}

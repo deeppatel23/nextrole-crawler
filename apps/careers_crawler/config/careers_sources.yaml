@@ -4,6 +4,7 @@
   careers_url: https://paytm.com/careers
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Tower Research Capital
   source_type: api
   handler: tower_research_capital
@@ -11,6 +12,7 @@
   greenhouse_board: towerresearchcapital
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Razorpay
   source_type: api
   handler: razorpay
@@ -18,12 +20,14 @@
   greenhouse_board: razorpaysoftwareprivatelimited
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Gojek
   source_type: html
   handler: gojek
   careers_url: https://www.gojek.io/careers
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Delhivery Courier And Logistics
   source_type: api
   handler: delhivery
@@ -31,6 +35,7 @@
   delhivery_jobs_api: https://delhivery.darwinbox.in/ms/candidateapi/job/alljobs?companyId=main
   last_saved: '2026-03-12'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: MindTickle
   source_type: api
   handler: mindtickle
@@ -38,48 +43,56 @@
   lever_company: mindtickle
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Salesforce
   source_type: html
   handler: salesforce
   careers_url: https://careers.salesforce.com/en/jobs/?search
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Uber
   source_type: api
   handler: uber
   careers_url: https://www.uber.com/in/en/careers/list/
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Udaan
   source_type: html
   handler: udaan
   careers_url: https://www.udaanindia.com/job
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: CureFit
   source_type: api
   handler: curefit
   careers_url: https://careers.cult.fit/cult/jobslist
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: ShareChat
   source_type: api
   handler: sharechat
   careers_url: https://sharechat.com/api/careersList?limit=100
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Ola
   source_type: api
   handler: ola
   careers_url: https://olacareers.turbohire.co/careerpage/e0c1eb37-eb7a-4ca4-bcc5-d59ce4ce9212
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Expedia
   source_type: api
   handler: expedia
   careers_url: https://lifeatexpediagroup.com/jobs
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Nutanix
   source_type: api
   handler: nutanix
@@ -88,24 +101,28 @@
   playwright_headless: false
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Yelp
   source_type: api
   handler: yelp
   careers_url: https://www.yelp.careers/us/en
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: ByteDance
   source_type: api
   handler: bytedance
   careers_url: https://jobs.bytedance.com/en/
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: MakeMyTrip
   source_type: html
   handler: makemytrip
   careers_url: https://careers.makemytrip.com/prod/jobs
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Toppr
   source_type: api
   handler: toppr
@@ -113,6 +130,7 @@
   workable_account: toppr
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Broadcom
   source_type: api
   handler: broadcom
@@ -120,6 +138,7 @@
   workday_jobs_api: https://broadcom.wd1.myworkdayjobs.com/wday/cxs/broadcom/External_Career/jobs
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Intel Corporation
   source_type: api
   handler: intel_corporation
@@ -127,6 +146,7 @@
   workday_jobs_api: https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Postman
   source_type: api
   handler: postman
@@ -134,127 +154,151 @@
   greenhouse_board: postman
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Walmart
   source_type: api
   handler: walmart
   careers_url: https://careers.walmart.com/us/en/results
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Oracle
   source_type: api
   handler: oracle
   careers_url: https://www.oracle.com/in/corporate/careers/
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: ThoughtWorks
   source_type: html
   handler: thoughtworks
   careers_url: https://www.thoughtworks.com/careers
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Swiggy
   source_type: html
   handler: swiggy
   careers_url: https://careers.swiggy.com/#/careers?src=careers
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Innovacer
   source_type: html
   handler: innovacer
   careers_url: https://innovaccer.com/careers/jobs#view-jobs
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Mastercard
   source_type: api
   handler: mastercard
   careers_url: https://careers.mastercard.com/us/en/search-results
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Visa
   source_type: api
   handler: visa
   careers_url: https://www.visa.co.uk/en_gb/jobs/?cities=Bangalore&cities=Mumbai
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Samsung
   source_type: html
   handler: samsung
   careers_url: https://www.samsung.com/in/about-us/careers/
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Hashedin
   source_type: html
   handler: hashedin
   careers_url: https://hashedin.com/careers/
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Goldman Sachs
   source_type: api
   handler: goldman_sachs
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Arcesium
   source_type: api
   handler: arcesium
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: DE Shaw
   source_type: html
   handler: de_shaw_india
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Atlassian
   source_type: html
   handler: atlassian
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Intuit
   source_type: html
   handler: intuit
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Infosys
   source_type: api
   handler: infosys
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Cisco
   source_type: api
   handler: cisco
   last_saved: '2026-03-09'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: EY
   source_type: html
   handler: ey
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: KPMG
   source_type: api
   handler: kpmg
   last_saved: '2026-02-21'
   max_saved_jobs: 333
+  max_allowed_error: 5
 - company: Myntra
   source_type: api
   handler: myntra
   last_saved: '2026-02-21'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Adobe
   source_type: api
   handler: adobe
   last_saved: '2026-02-21'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Morgan Stanley
   source_type: api
   handler: morganstanley
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Sprinklr
   source_type: api
   handler: sprinklr
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
 - company: Google
   source_type: html
   handler: google
   last_saved: '2026-04-19'
   max_saved_jobs: 999
+  max_allowed_error: 5
