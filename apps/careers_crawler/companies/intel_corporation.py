@@ -6,8 +6,8 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Intel Corporation"
-CAREERS_URL = "https://jobs.intel.com/"
-SOURCE_TYPE = "HTML"
+CAREERS_URL = "https://intel.wd1.myworkdayjobs.com/External"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""

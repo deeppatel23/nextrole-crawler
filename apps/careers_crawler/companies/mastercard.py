@@ -6,8 +6,8 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Mastercard"
-CAREERS_URL = "https://careers.mastercard.com/us/en"
-SOURCE_TYPE = "HTML"
+CAREERS_URL = "https://careers.mastercard.com/us/en/search-results"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""

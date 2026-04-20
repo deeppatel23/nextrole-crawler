@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/careers_crawler",
+      "schedule": "30 2 * * *"
+    }
+  ],
+  "functions": {
+    "api/**/*.py": {
+      "maxDuration": 300,
+      "excludeFiles": "{.env,.env.*,.git/**,.tmp/**,.venv/**,**/__pycache__/**,apps/careers_crawler/output/**}"
+    }
+  }
+}

@@ -6,9 +6,9 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Postman"
-CAREERS_URL = "https://www.postman.com/company/careers/"
-SOURCE_TYPE = "HTML"
-GREENHOUSE_BOARD = ""
+CAREERS_URL = "https://job-boards.greenhouse.io/postman/"
+SOURCE_TYPE = "API"
+GREENHOUSE_BOARD = "postman"
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""
 

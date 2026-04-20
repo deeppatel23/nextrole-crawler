@@ -49,3 +49,10 @@ python3 apps/leetcode_crawler/strategies/sequential_topic_loader.py --start-id 6
 Notes:
 - This strategy increments topic id by 1 and attempts to fetch content for each id.
 - It stops when `--max-steps` or `--max-misses` is reached (defaults to 1000 misses).
+
+## Deploy `careers_crawler` on Vercel (Cron)
+
+- Cron config lives in `vercel.json` and calls `api/cron/careers_crawler.py` at `/api/cron/careers_crawler`.
+- Current schedule is `30 2 * * *` (02:30 UTC = 08:00 Asia/Kolkata).
+- Set `CRON_SECRET` in Vercel and call the endpoint with `Authorization: Bearer $CRON_SECRET` (or `?secret=$CRON_SECRET`).
+- Set `CAREERS_OUTPUT_DESTINATION=MONGO` and configure Mongo env vars (`MONGO_URI` or `MONGO_URI_TEMPLATE`, `MONGO_DB_NAME`, etc.).

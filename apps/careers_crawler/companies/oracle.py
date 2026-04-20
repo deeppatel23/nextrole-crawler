@@ -7,7 +7,7 @@ from companies._provider_common import fetch_company_jobs
 
 COMPANY = "Oracle"
 CAREERS_URL = "https://www.oracle.com/in/corporate/careers/"
-SOURCE_TYPE = "HTML"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""

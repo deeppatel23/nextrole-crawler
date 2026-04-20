@@ -12,6 +12,7 @@ from __future__ import annotations
 import html
 import re
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import urljoin, urlparse
 
@@ -24,6 +25,8 @@ from utils.extract_utils import normalize_city
 from utils.hash_utils import generate_job_hash
 from utils.mongo_job_hash_checker import MongoJobHashChecker
 from utils.output_writer import append_roles
+
+UNRESOLVED_LOG_PATH = Path("apps/careers_crawler/output/unresolved_careers_pages.log")
 
 
 def _clean_text(value: Optional[str]) -> str:
@@ -87,6 +90,24 @@ def _extract_skills(text: str) -> List[str]:
     return out
 
 
+def _extract_city_from_text(text: str) -> Optional[str]:
+    if not text:
+        return None
+    patterns = [
+        r"\bLocation(?:s)?\s*[:\-]\s*([A-Za-z .\-]+)",
+        r"\bBased in\s+([A-Za-z .\-]+)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if not match:
+            continue
+        raw = (match.group(1) or "").strip(" .,-")
+        if not raw:
+            continue
+        return raw.split(",")[0].strip() or None
+    return None
+
+
 def _parse_location(raw: Optional[str]) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     if not raw:
         return None, None, None
@@ -119,6 +140,17 @@ def _guess_workable_account(url: str) -> Optional[str]:
     return None
 
 
+def _guess_greenhouse_board(url: str) -> Optional[str]:
+    parsed = urlparse(url)
+    host = parsed.netloc.lower()
+    path = parsed.path.strip("/")
+    if "job-boards.greenhouse.io" in host and path:
+        return path.split("/")[0]
+    if "boards.greenhouse.io" in host and path:
+        return path.split("/")[0]
+    return None
+
+
 def _guess_lever_company(url: str, html_text: str) -> Optional[str]:
     parsed = urlparse(url)
     host = parsed.netloc.lower()
@@ -131,6 +163,36 @@ def _guess_lever_company(url: str, html_text: str) -> Optional[str]:
     return None
 
 
+def _detect_workday_jobs_api(careers_url: str, html_text: str) -> Optional[str]:
+    if not html_text:
+        return None
+    absolute = re.search(
+        r"https?://[^\"'\s]+/wday/cxs/[^\"'\s]+/jobs(?:\?[^\"'\s]*)?",
+        html_text,
+        flags=re.I,
+    )
+    if absolute:
+        return absolute.group(0)
+
+    relative = re.search(
+        r"(/wday/cxs/[^\"'\s]+/jobs(?:\?[^\"'\s]*)?)",
+        html_text,
+        flags=re.I,
+    )
+    if relative:
+        return urljoin(careers_url, relative.group(1))
+
+    return None
+
+
+def _log_unresolved(company_label: str, careers_url: str, reason: str) -> None:
+    UNRESOLVED_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    now_iso = datetime.utcnow().isoformat()
+    line = f"{now_iso}\t{company_label}\t{careers_url}\t{reason}\n"
+    with UNRESOLVED_LOG_PATH.open("a", encoding="utf-8") as fh:
+        fh.write(line)
+
+
 def _fetch_html(url: str) -> str:
     resp = requests.get(
         url,
@@ -139,6 +201,36 @@ def _fetch_html(url: str) -> str:
     )
     resp.raise_for_status()
     return resp.text
+
+
+def _fetch_workday(api_url: str) -> List[Dict[str, Any]]:
+    out: List[Dict[str, Any]] = []
+    offset = 0
+    limit = 20
+
+    while True:
+        resp = requests.post(
+            api_url,
+            json={"appliedFacets": {}, "limit": limit, "offset": offset, "searchText": ""},
+            headers={"User-Agent": "Mozilla/5.0", "Content-Type": "application/json"},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        payload = resp.json() if resp.content else {}
+        if not isinstance(payload, dict):
+            break
+
+        rows = payload.get("jobPostings")
+        if not isinstance(rows, list) or not rows:
+            break
+
+        out.extend([r for r in rows if isinstance(r, dict)])
+        total = int(payload.get("total") or 0)
+        offset += len(rows)
+        if offset >= total or len(rows) < limit:
+            break
+
+    return out
 
 
 def _fetch_greenhouse(board: str) -> List[Dict[str, Any]]:
@@ -228,6 +320,38 @@ def _build_role(
     )
 
 
+def _enrich_role_from_detail_page(role: RoleDetail) -> None:
+    needs_city = not role.city
+    needs_skills = not role.skills
+    needs_yoe = role.min_yoe is None and role.max_yoe is None
+    if not (needs_city or needs_skills or needs_yoe):
+        return
+    if not role.apply_link:
+        return
+
+    try:
+        detail_html = _fetch_html(role.apply_link)
+    except Exception:
+        return
+
+    detail_text = _clean_text(detail_html)
+    if not detail_text:
+        return
+
+    if needs_city:
+        role.city = normalize_city(_extract_city_from_text(detail_text))
+
+    if needs_skills:
+        role.skills = _extract_skills(detail_text)
+
+    if needs_yoe:
+        min_yoe, max_yoe = _extract_yoe(detail_text)
+        if min_yoe is not None:
+            role.min_yoe = min_yoe
+        if max_yoe is not None:
+            role.max_yoe = max_yoe
+
+
 def _save_roles_sorted(
     roles: Iterable[RoleDetail],
     checker: MongoJobHashChecker,
@@ -246,6 +370,8 @@ def _save_roles_sorted(
                 "stopping subsequent jobs (sorted feed)."
             )
             return total_saved, True
+
+        _enrich_role_from_detail_page(role)
 
         saved_count, stop_fetch = append_roles(OUTPUT_FILE, [role])
         if saved_count:
@@ -299,12 +425,254 @@ def fetch_company_jobs(
     now_iso = today.isoformat()
     total_saved = 0
 
+    # Direct provider routing from URL/config (avoid dependency on fetching landing HTML first).
+    direct_workday_api = source_cfg.get("workday_jobs_api")
+    if direct_workday_api:
+        print(f"{company_label}: using configured Workday jobs api={direct_workday_api}")
+        try:
+            jobs = _fetch_workday(direct_workday_api)
+        except Exception as exc:
+            print(f"{company_label}: configured Workday api fetch failed: {exc}")
+            _log_unresolved(company_label, careers_url, f"configured_workday_api_failed: {exc}")
+            jobs = []
+
+        roles: List[RoleDetail] = []
+        for job in jobs:
+            title = str(job.get("title") or "").strip()
+            external_path = str(job.get("externalPath") or "").strip()
+            if not title or not external_path:
+                continue
+
+            location_text = str(job.get("locationsText") or "").strip()
+            if not location_text:
+                fields = job.get("bulletFields") if isinstance(job.get("bulletFields"), list) else []
+                if len(fields) > 1:
+                    location_text = str(fields[1] or "").strip()
+            city, state, country = _parse_location(location_text)
+            apply_link = urljoin(careers_url, external_path)
+            page_text = _clean_text(
+                " ".join(
+                    str(job.get(k) or "")
+                    for k in ("title", "postedOn", "timeType", "jobReqId")
+                )
+            )
+            roles.append(
+                _build_role(
+                    company=company,
+                    source_type="API",
+                    now_iso=now_iso,
+                    job_id=external_path,
+                    title=title,
+                    apply_link=apply_link,
+                    page_text=page_text,
+                    city=city,
+                    state=state,
+                    country=country,
+                )
+            )
+
+        if not roles:
+            _log_unresolved(company_label, careers_url, "configured_workday_api_no_roles")
+        total_saved, _ = _save_roles_sorted(roles, checker, company_label, max_saved, total_saved)
+        print(f"{company_label}: total saved {total_saved} jobs.")
+        return total_saved
+
+    direct_greenhouse = source_cfg.get("greenhouse_board") or greenhouse_board or _guess_greenhouse_board(careers_url)
+    if direct_greenhouse:
+        print(f"{company_label}: using direct greenhouse board={direct_greenhouse}")
+        try:
+            jobs = _fetch_greenhouse(direct_greenhouse)
+        except Exception as exc:
+            print(f"{company_label}: direct greenhouse fetch failed: {exc}")
+            _log_unresolved(company_label, careers_url, f"direct_greenhouse_fetch_failed: {exc}")
+            jobs = []
+        roles: List[RoleDetail] = []
+        for job in jobs:
+            if not isinstance(job, dict):
+                continue
+            job_id = str(job.get("id") or "")
+            title = str(job.get("title") or "").strip()
+            apply_link = str(job.get("absolute_url") or "").strip()
+            if not job_id or not title or not apply_link:
+                continue
+            departments = job.get("departments")
+            category_hint = None
+            if isinstance(departments, list) and departments and isinstance(departments[0], dict):
+                category_hint = departments[0].get("name")
+            offices = job.get("offices")
+            office_loc = None
+            if isinstance(offices, list) and offices and isinstance(offices[0], dict):
+                office_loc = offices[0].get("location") or offices[0].get("name")
+            city, state, country = _parse_location(office_loc)
+            content = _clean_text(job.get("content"))
+            roles.append(
+                _build_role(
+                    company=company,
+                    source_type="API",
+                    now_iso=now_iso,
+                    job_id=job_id,
+                    title=title,
+                    apply_link=apply_link,
+                    page_text=content,
+                    city=city,
+                    state=state,
+                    country=country,
+                    category_hint=category_hint,
+                )
+            )
+        if not roles:
+            _log_unresolved(company_label, careers_url, "direct_greenhouse_no_roles")
+        total_saved, _ = _save_roles_sorted(roles, checker, company_label, max_saved, total_saved)
+        print(f"{company_label}: total saved {total_saved} jobs.")
+        return total_saved
+
+    direct_workable = source_cfg.get("workable_account") or workable_account or _guess_workable_account(careers_url)
+    if direct_workable:
+        print(f"{company_label}: using direct workable account={direct_workable}")
+        try:
+            jobs = _fetch_workable(direct_workable)
+        except Exception as exc:
+            print(f"{company_label}: direct workable fetch failed: {exc}")
+            _log_unresolved(company_label, careers_url, f"direct_workable_fetch_failed: {exc}")
+            jobs = []
+        roles: List[RoleDetail] = []
+        for job in jobs:
+            if not isinstance(job, dict):
+                continue
+            shortcode = str(job.get("shortcode") or job.get("id") or "").strip()
+            title = str(job.get("title") or "").strip()
+            apply_link = str(job.get("url") or "").strip()
+            if not shortcode or not title or not apply_link:
+                continue
+            location = job.get("location")
+            location_name = location.get("location_str") if isinstance(location, dict) else None
+            city, state, country = _parse_location(location_name)
+            content = _clean_text(job.get("description"))
+            roles.append(
+                _build_role(
+                    company=company,
+                    source_type="API",
+                    now_iso=now_iso,
+                    job_id=shortcode,
+                    title=title,
+                    apply_link=apply_link,
+                    page_text=content,
+                    city=city,
+                    state=state,
+                    country=country,
+                    category_hint=job.get("department"),
+                )
+            )
+        if not roles:
+            _log_unresolved(company_label, careers_url, "direct_workable_no_roles")
+        total_saved, _ = _save_roles_sorted(roles, checker, company_label, max_saved, total_saved)
+        print(f"{company_label}: total saved {total_saved} jobs.")
+        return total_saved
+
+    direct_lever = source_cfg.get("lever_company") or lever_company or _guess_lever_company(careers_url, "")
+    if direct_lever:
+        print(f"{company_label}: using direct lever company={direct_lever}")
+        try:
+            jobs = _fetch_lever(direct_lever)
+        except Exception as exc:
+            print(f"{company_label}: direct lever fetch failed: {exc}")
+            _log_unresolved(company_label, careers_url, f"direct_lever_fetch_failed: {exc}")
+            jobs = []
+        roles: List[RoleDetail] = []
+        for job in jobs:
+            if not isinstance(job, dict):
+                continue
+            job_id = str(job.get("id") or "").strip()
+            title = str(job.get("text") or "").strip()
+            apply_link = str(job.get("hostedUrl") or "").strip()
+            if not job_id or not title or not apply_link:
+                continue
+            categories = job.get("categories") if isinstance(job.get("categories"), dict) else {}
+            city, state, country = _parse_location(categories.get("location"))
+            content = _clean_text(job.get("descriptionPlain") or job.get("description"))
+            roles.append(
+                _build_role(
+                    company=company,
+                    source_type="API",
+                    now_iso=now_iso,
+                    job_id=job_id,
+                    title=title,
+                    apply_link=apply_link,
+                    page_text=content,
+                    city=city,
+                    state=state,
+                    country=country,
+                    category_hint=categories.get("team"),
+                )
+            )
+        if not roles:
+            _log_unresolved(company_label, careers_url, "direct_lever_no_roles")
+        total_saved, _ = _save_roles_sorted(roles, checker, company_label, max_saved, total_saved)
+        print(f"{company_label}: total saved {total_saved} jobs.")
+        return total_saved
+
     print(f"{company_label}: fetching careers page {careers_url}")
     try:
         page_html = _fetch_html(careers_url)
     except Exception as exc:
         print(f"{company_label}: failed to fetch careers_url: {exc}")
+        _log_unresolved(company_label, careers_url, f"careers_page_fetch_failed: {exc}")
         return 0
+
+    # Provider 0: Workday
+    workday_jobs_api = source_cfg.get("workday_jobs_api") or _detect_workday_jobs_api(careers_url, page_html)
+    if workday_jobs_api:
+        print(f"{company_label}: detected Workday jobs api={workday_jobs_api}")
+        try:
+            jobs = _fetch_workday(workday_jobs_api)
+        except Exception as exc:
+            print(f"{company_label}: workday api fetch failed: {exc}")
+            _log_unresolved(company_label, careers_url, f"workday_api_fetch_failed: {exc}")
+            jobs = []
+
+        roles: List[RoleDetail] = []
+        for job in jobs:
+            title = str(job.get("title") or "").strip()
+            external_path = str(job.get("externalPath") or "").strip()
+            job_id = external_path
+            if not title or not external_path:
+                continue
+
+            apply_link = urljoin(careers_url, external_path)
+
+            location_text = str(job.get("locationsText") or "").strip()
+            if not location_text:
+                fields = job.get("bulletFields") if isinstance(job.get("bulletFields"), list) else []
+                if len(fields) > 1:
+                    location_text = str(fields[1] or "").strip()
+            city, state, country = _parse_location(location_text)
+            page_text = _clean_text(
+                " ".join(
+                    str(job.get(k) or "")
+                    for k in ("title", "postedOn", "timeType", "jobReqId")
+                )
+            )
+
+            roles.append(
+                _build_role(
+                    company=company,
+                    source_type="API",
+                    now_iso=now_iso,
+                    job_id=job_id,
+                    title=title,
+                    apply_link=apply_link,
+                    page_text=page_text,
+                    city=city,
+                    state=state,
+                    country=country,
+                )
+            )
+
+        if not roles:
+            _log_unresolved(company_label, careers_url, "workday_detected_but_no_roles")
+        total_saved, _ = _save_roles_sorted(roles, checker, company_label, max_saved, total_saved)
+        print(f"{company_label}: total saved {total_saved} jobs.")
+        return total_saved
 
     # Provider 1: Greenhouse
     board = source_cfg.get("greenhouse_board") or greenhouse_board or _detect_greenhouse_board(page_html)
@@ -425,6 +793,12 @@ def fetch_company_jobs(
     # Fallback: HTML anchor extraction (unsorted, so do not stop on first duplicate).
     print(f"{company_label}: using HTML fallback parsing.")
     html_jobs = _extract_html_jobs(careers_url, page_html)
+    if not html_jobs:
+        _log_unresolved(
+            company_label,
+            careers_url,
+            "no_provider_detected_and_no_html_jobs_extracted",
+        )
     for row in html_jobs:
         if total_saved >= max_saved:
             print(f"{company_label}: reached max_saved_jobs={max_saved}, stopping.")
@@ -442,6 +816,7 @@ def fetch_company_jobs(
             apply_link=row["url"],
             page_text=row["title"],
         )
+        _enrich_role_from_detail_page(role)
         saved_count, stop_fetch = append_roles(OUTPUT_FILE, [role])
         if saved_count:
             total_saved += saved_count

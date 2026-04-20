@@ -2,24 +2,18 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from companies._provider_common import fetch_company_jobs
+from companies.salesforce import fetch_and_save as fetch_salesforce_and_save
 
 
-COMPANY = "Informatica"
-CAREERS_URL = "https://careers.informatica.com/us/en"
+# Backward-compatible alias. Source has been migrated from Informatica to Salesforce.
+COMPANY = "Salesforce"
+CAREERS_URL = "https://careers.salesforce.com/en/jobs/?search"
 SOURCE_TYPE = "HTML"
-GREENHOUSE_BOARD = ""
-WORKABLE_ACCOUNT = ""
-LEVER_COMPANY = ""
 
 
 def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
-    return fetch_company_jobs(
-        source_cfg,
-        default_company=COMPANY,
-        default_careers_url=CAREERS_URL,
-        default_source_type=SOURCE_TYPE,
-        greenhouse_board=GREENHOUSE_BOARD or None,
-        workable_account=WORKABLE_ACCOUNT or None,
-        lever_company=LEVER_COMPANY or None,
-    )
+    source_cfg = dict(source_cfg or {})
+    source_cfg.setdefault("company", COMPANY)
+    source_cfg.setdefault("careers_url", CAREERS_URL)
+    source_cfg.setdefault("source_type", SOURCE_TYPE)
+    return fetch_salesforce_and_save(source_cfg)

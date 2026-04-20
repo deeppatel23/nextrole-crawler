@@ -6,8 +6,8 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Nutanix"
-CAREERS_URL = "https://www.nutanix.com/company/careers"
-SOURCE_TYPE = "HTML"
+CAREERS_URL = "https://careers.nutanix.com/en/jobs/"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""

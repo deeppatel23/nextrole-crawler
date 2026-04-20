@@ -145,7 +145,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
     total_saved = 0
 
     print(f"{company_label}: fetching jobs from {API_URL}")
-    jobs = _fetch_jobs()
+    try:
+        jobs = _fetch_jobs()
+    except Exception as exc:
+        print(f"{company_label}: failed to fetch jobs from API: {exc}")
+        return 0
     if not jobs:
         print(f"{company_label}: no jobs found.")
         return 0
@@ -235,4 +239,3 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
     print(f"{company_label}: total saved {total_saved} jobs.")
     return total_saved
-

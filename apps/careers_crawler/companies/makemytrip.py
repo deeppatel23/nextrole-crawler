@@ -6,8 +6,8 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "MakeMyTrip"
-CAREERS_URL = "https://careers.makemytrip.com/"
-SOURCE_TYPE = "HTML"
+CAREERS_URL = "https://careers.makemytrip.com/prod/jobs"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""

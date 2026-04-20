@@ -8,8 +8,8 @@ from companies._provider_common import fetch_company_jobs
 COMPANY = "Toppr"
 CAREERS_URL = "https://apply.workable.com/toppr/?lng=en"
 SOURCE_TYPE = "API"
-GREENHOUSE_BOARD = "toppr"
-WORKABLE_ACCOUNT = ""
+GREENHOUSE_BOARD = ""
+WORKABLE_ACCOUNT = "toppr"
 LEVER_COMPANY = ""
 
 

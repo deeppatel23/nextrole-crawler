@@ -6,7 +6,7 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Swiggy"
-CAREERS_URL = "https://careers.swiggy.com/#/"
+CAREERS_URL = "https://careers.swiggy.com/#/careers?src=careers"
 SOURCE_TYPE = "HTML"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""

@@ -6,7 +6,7 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Innovacer"
-CAREERS_URL = "https://innovaccer.com/careers/"
+CAREERS_URL = "https://innovaccer.com/careers/jobs#view-jobs"
 SOURCE_TYPE = "HTML"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""

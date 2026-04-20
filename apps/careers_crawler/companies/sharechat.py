@@ -134,7 +134,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             print(f"{company_label}: reached max_saved_jobs={max_saved}, stopping.")
             break
 
-        payload = _fetch_page(offset_token=offset_token, limit=limit)
+        try:
+            payload = _fetch_page(offset_token=offset_token, limit=limit)
+        except Exception as exc:
+            print(f"{company_label}: failed to fetch careers page from API: {exc}")
+            break
         data = payload.get("data") if isinstance(payload.get("data"), dict) else {}
         careers_list = data.get("careersList") if isinstance(data.get("careersList"), list) else []
         has_next = bool(data.get("hasNext"))

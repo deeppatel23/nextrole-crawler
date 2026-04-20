@@ -3,9 +3,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+_is_vercel = os.getenv("VERCEL", "").lower() in {"1", "true", "yes", "y"}
+
 OUTPUT_FILE = os.getenv(
     "CAREERS_OUTPUT_FILE",
-    "apps/careers_crawler/output/jobs.json",
+    "/tmp/careers_jobs.json" if _is_vercel else "apps/careers_crawler/output/jobs.json",
 )
 OUTPUT_DESTINATION = os.getenv("CAREERS_OUTPUT_DESTINATION", "MONGO").upper()
 

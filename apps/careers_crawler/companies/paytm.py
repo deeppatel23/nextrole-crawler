@@ -184,7 +184,11 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
             print(f"{company_label}: reached max_saved_jobs={max_saved}, stopping.")
             break
 
-        page_root = _fetch_list_page(page, PAGE_SIZE)
+        try:
+            page_root = _fetch_list_page(page, PAGE_SIZE)
+        except Exception as exc:
+            print(f"{company_label}: failed to fetch jobs page={page}: {exc}")
+            break
         if page_root is None:
             print(f"{company_label}: failed to parse XML page={page}.")
             break
@@ -217,7 +221,10 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
                 stop_all = True
                 break
 
-            detail_root = _fetch_job_detail(job_seq)
+            try:
+                detail_root = _fetch_job_detail(job_seq)
+            except Exception:
+                detail_root = None
             detail_job = detail_root.find("jobVO") if detail_root is not None else None
 
             raw_desc = _first_text(detail_job, "jobDesc") or ""
@@ -288,4 +295,3 @@ def fetch_and_save(source_cfg: Dict[str, Any]) -> int:
 
     print(f"{company_label}: total saved {total_saved} jobs.")
     return total_saved
-

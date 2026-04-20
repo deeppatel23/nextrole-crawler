@@ -7,7 +7,7 @@ from companies._provider_common import fetch_company_jobs
 
 COMPANY = "Yelp"
 CAREERS_URL = "https://www.yelp.careers/us/en"
-SOURCE_TYPE = "HTML"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""

@@ -2,8 +2,15 @@ from __future__ import annotations
 
 from typing import Optional, Set
 
-import certifi
-from pymongo import MongoClient
+try:
+    import certifi
+except Exception:  # pragma: no cover - optional dependency in local dry runs
+    certifi = None  # type: ignore[assignment]
+
+try:
+    from pymongo import MongoClient
+except Exception:  # pragma: no cover - optional dependency in local dry runs
+    MongoClient = None  # type: ignore[assignment]
 
 from config.config import MONGO_COLLECTION, MONGO_DB_NAME, MONGO_URI
 
@@ -14,7 +21,7 @@ class MongoJobHashChecker:
     def __init__(self) -> None:
         self._seen: Set[str] = set()
         self._collection = None
-        if MONGO_URI and MONGO_COLLECTION:
+        if MONGO_URI and MONGO_COLLECTION and MongoClient is not None and certifi is not None:
             client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
             self._collection = client[MONGO_DB_NAME][MONGO_COLLECTION]
 

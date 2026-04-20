@@ -6,8 +6,8 @@ from companies._provider_common import fetch_company_jobs
 
 
 COMPANY = "Walmart"
-CAREERS_URL = "https://careers.walmart.com/"
-SOURCE_TYPE = "HTML"
+CAREERS_URL = "https://careers.walmart.com/us/en/results"
+SOURCE_TYPE = "API"
 GREENHOUSE_BOARD = ""
 WORKABLE_ACCOUNT = ""
 LEVER_COMPANY = ""
