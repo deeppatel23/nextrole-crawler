@@ -3,6 +3,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def _get_bool(value: str, default: bool = False) -> bool:
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
 _is_vercel = os.getenv("VERCEL", "").lower() in {"1", "true", "yes", "y"}
 
 OUTPUT_FILE = os.getenv(
@@ -10,6 +16,13 @@ OUTPUT_FILE = os.getenv(
     "/tmp/careers_jobs.json" if _is_vercel else "apps/careers_crawler/output/jobs.json",
 )
 OUTPUT_DESTINATION = os.getenv("CAREERS_OUTPUT_DESTINATION", "MONGO").upper()
+
+# When enabled, the crawler reads `careers_sources.yaml` but will not write updates back (e.g., last_saved).
+# Supports env vars: debug_mode, DEBUG_MODE, CAREERS_DEBUG_MODE.
+DEBUG_MODE = _get_bool(
+    os.getenv("CAREERS_DEBUG_MODE", os.getenv("DEBUG_MODE", os.getenv("debug_mode", "false"))),
+    default=False,
+)
 
 # MongoDB settings (used when CAREERS_OUTPUT_DESTINATION=MONGO)
 MONGO_DB_USER = os.getenv("MONGO_DB_USER", "")

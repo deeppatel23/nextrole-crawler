@@ -4,6 +4,8 @@ from pathlib import Path
 
 import yaml
 
+from config.config import DEBUG_MODE
+
 
 def process_source(source_cfg):
     handler_name = source_cfg.get("handler")
@@ -22,14 +24,17 @@ def process_source(source_cfg):
         handler_mod = importlib.import_module(f"companies.{handler_name}")
         saved_count = handler_mod.fetch_and_save(source_cfg)
 
-        config_path = Path("apps/careers_crawler/config/careers_sources.yaml")
-        sources = yaml.safe_load(config_path.read_text())
-        for source in sources:
-            if source.get("company") == company:
-                source["last_saved"] = today
-                break
-        config_path.write_text(yaml.safe_dump(sources, sort_keys=False))
-        print(f"{company}: updated last_saved to {today}")
+        if DEBUG_MODE:
+            print(f"{company}: DEBUG_MODE=true, not updating careers_sources.yaml (last_saved stays unchanged).")
+        else:
+            config_path = Path("apps/careers_crawler/config/careers_sources.yaml")
+            sources = yaml.safe_load(config_path.read_text())
+            for source in sources:
+                if source.get("company") == company:
+                    source["last_saved"] = today
+                    break
+            config_path.write_text(yaml.safe_dump(sources, sort_keys=False))
+            print(f"{company}: updated last_saved to {today}")
 
         return {"saved_count": saved_count, "status": "success"}
     except Exception as e:

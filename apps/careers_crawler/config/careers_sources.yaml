@@ -84,6 +84,8 @@
   source_type: api
   handler: nutanix
   careers_url: https://careers.nutanix.com/en/jobs/
+  use_browser_cookie: true
+  playwright_headless: false
   last_saved: '2026-04-19'
   max_saved_jobs: 999
 - company: Yelp
